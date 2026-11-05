@@ -318,3 +318,17 @@ body.pagina-login {
         font-size: 30px;
     }
 }
+
+/* ===== Formulário de cadastro ===== */
+
+.card-cadastro {
+    max-width: 480px;
+}
+
+.card-cadastro .descricao-login {
+    margin-bottom: 22px;
+}
+
+.card-cadastro .form-login {
+    gap: 14px;
+}
