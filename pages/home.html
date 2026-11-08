@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<div class="tela">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../assets/imagens/liga-logo.png">
+        </div>
+
+        <nav>
+            <a href="../pages/home.html" class="ativo">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="../pages/paciente.html">
+                <i class="fa-solid fa-user"></i>
+                <span>Pacientes</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Médicos</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Agendamentos</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-box"></i>
+                <span>Estoque</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Relatórios</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="conteudo">
+
+        <header class="topo">
+            <div class="topo-home">
+                <span>Home</span>
+            </div>
+
+            <div class="usuario">
+                <span>Olá, Admin</span>
+                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </header>
+
+        <section class="home-conteudo">
+
+            <div class="home-cabecalho">
+                <div>
+                    <h1>Bem-vindo!</h1>
+                    <p>Aqui está um resumo da sua clínica.</p>
+                </div>
+
+                <div class="data-atual">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="data-atual"></span>
+                </div>
+            </div>
+
+            <section class="cards-resumo">
+
+                <article class="card-resumo card-agendamentos">
+                    <div class="card-icone">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+
+                    <p class="card-titulo">Agendamentos de hoje</p>
+                    <h2 id="total-agendamentos">10</h2>
+
+                    <a href="#" class="card-link">
+                        Ver agenda
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="card-resumo card-pacientes">
+                    <div class="card-icone">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <p class="card-titulo">Pacientes cadastrados</p>
+                    <h2 id="total-pacientes">0</h2>
+
+                    <a href="../pages/paciente.html" class="card-link">
+                        Ver pacientes
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="card-resumo card-estoque">
+                    <div class="card-icone">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+
+                    <p class="card-titulo">Produtos com estoque baixo</p>
+                    <h2 id="total-estoque-baixo">8</h2>
+
+                    <a href="#" class="card-link">
+                        Ver estoque
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="card-resumo card-medicos">
+                    <div class="card-icone">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+
+                    <p class="card-titulo">Médicos cadastrados</p>
+                    <h2 id="total-medicos">6</h2>
+
+                    <a href="#" class="card-link">
+                        Ver médicos
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+            </section>
+
+            <section class="painel-alertas">
+                <div class="painel-titulo">
+                    <div class="painel-icone">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <div>
+                        <h2>Alertas e lembretes</h2>
+                        <p>Informações que merecem sua atenção.</p>
+                    </div>
+                </div>
+
+                <div class="lista-alertas">
+
+                    <div class="alerta alerta-rosa">
+                        <div class="alerta-icone">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <div class="alerta-texto">
+                            <strong>Agendamentos do dia</strong>
+                            <p>Confira os horários e confirme as consultas.</p>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right alerta-seta"></i>
+                    </div>
+
+                    <div class="alerta alerta-laranja">
+                        <div class="alerta-icone">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div class="alerta-texto">
+                            <strong>Estoque precisa de atenção</strong>
+                            <p>Verifique os produtos que estão acabando.</p>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right alerta-seta"></i>
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+    </main>
+</div>
+
+<script>
+    // Exibe a data atual.
+    const hoje = new Date();
+
+    document.getElementById('data-atual').textContent =
+        hoje.toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+
+    // Conta os pacientes salvos no localStorage.
+    function atualizarTotalPacientes() {
+        const pacientes =
+            JSON.parse(localStorage.getItem('pacientes')) || [];
+
+        document.getElementById('total-pacientes').textContent =
+            pacientes.length;
+    }
+
+    atualizarTotalPacientes();
+</script>
+
+</body>
+</html>

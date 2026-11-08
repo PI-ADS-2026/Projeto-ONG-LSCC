@@ -102,6 +102,7 @@ formulario.addEventListener('submit', function(event) {
     const id = salvarPaciente();
 
     if (id) {
-        window.location.href = 'pacientes.html';
+        alert('Paciente cadastrado com sucesso!');
+        window.location.href = '../pages/paciente.html';
     }
 });

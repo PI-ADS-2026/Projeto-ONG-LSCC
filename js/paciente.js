@@ -92,7 +92,7 @@ function renderizar() {
         acoes.append(
             criarBotao('Editar', () => {
                 window.location.href =
-                    'cadastro-paciente.html?id=' + p.id;
+                    '../pages/cadastro-paciente.html?id=' + p.id;
             }),
 
             criarBotao('Excluir', () => {
