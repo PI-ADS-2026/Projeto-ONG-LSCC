@@ -191,7 +191,7 @@
 </div>
 
 <script>
-    // Exibe a data atual.
+        // Exibe a data atual.
     const hoje = new Date();
 
     document.getElementById('data-atual').textContent =
@@ -201,27 +201,41 @@
             year: 'numeric'
         });
 
-    // Conta os pacientes salvos no localStorage.
+
+    // Atualiza a quantidade de pacientes cadastrados.
     function atualizarTotalPacientes() {
-        const pacientes =
-            JSON.parse(localStorage.getItem('pacientes')) || [];
+        const pacientes = JSON.parse(
+            localStorage.getItem('pacientes')
+        ) || [];
 
         document.getElementById('total-pacientes').textContent =
             pacientes.length;
     }
 
-    atualizarTotalProfissionais();
 
-    // Conta os profissionais salvos no localStorage.
+    // Atualiza a quantidade de profissionais cadastrados.
     function atualizarTotalProfissionais() {
-        const profissional =
-            JSON.parse(localStorage.getItem('profissional')) || [];
+        const profissionais = JSON.parse(
+            localStorage.getItem('profissionais')
+        ) || [];
 
         document.getElementById('total-profissional').textContent =
-            profissional.length;
+            profissionais.length;
     }
 
-    atualizarTotalProfissional();
+
+    // Atualiza os dois contadores.
+    function atualizarContadores() {
+        atualizarTotalPacientes();
+        atualizarTotalProfissionais();
+    }
+
+    atualizarContadores();
+
+
+    // Atualiza os números quando a Home é aberta ou recebe foco novamente.
+    window.addEventListener('pageshow', atualizarContadores);
+    window.addEventListener('storage', atualizarContadores);
 
 </script>
 
