@@ -28,9 +28,9 @@
                 <span>Pacientes</span>
             </a>
 
-            <a href="#">
+            <a href="../pages/profissional.html">
                 <i class="fa-solid fa-user-doctor"></i>
-                <span>Médicos</span>
+                <span>Profissionais</span>
             </a>
 
             <a href="#">
@@ -132,11 +132,11 @@
                         <i class="fa-solid fa-user-doctor"></i>
                     </div>
 
-                    <p class="card-titulo">Médicos cadastrados</p>
-                    <h2 id="total-medicos">6</h2>
+                    <p class="card-titulo">Profissionais cadastrados</p>
+                    <h2 id="total-profissional">6</h2>
 
-                    <a href="#" class="card-link">
-                        Ver médicos
+                    <a href="../pages/profissional.html" class="card-link">
+                        Ver profissionais
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </article>
@@ -210,7 +210,19 @@
             pacientes.length;
     }
 
-    atualizarTotalPacientes();
+    atualizarTotalProfissionais();
+
+    // Conta os profissionais salvos no localStorage.
+    function atualizarTotalProfissionais() {
+        const profissional =
+            JSON.parse(localStorage.getItem('profissional')) || [];
+
+        document.getElementById('total-profissional').textContent =
+            profissional.length;
+    }
+
+    atualizarTotalProfissional();
+
 </script>
 
 </body>

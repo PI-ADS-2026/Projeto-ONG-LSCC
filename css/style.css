@@ -1,6 +1,14 @@
-/* ========================================
-   1. RESET E CONFIGURAÇÕES GERAIS
-======================================== */
+
+/* =====================================================
+   SISTEMA DE GESTÃO CLÍNICA
+   CSS PRINCIPAL
+   Identidade visual: Rosa, branco e azul-marinho
+===================================================== */
+
+
+/* =====================================================
+   1. VARIÁVEIS E RESET
+===================================================== */
 
 :root {
     --rosa-principal: #e91e63;
@@ -11,8 +19,10 @@
 
     --fundo: #f5f6fb;
     --branco: #ffffff;
+
     --texto: #172747;
     --texto-secundario: #78859e;
+
     --borda: #e8eaf1;
 
     --sombra: 0 4px 18px rgba(32, 48, 80, 0.06);
@@ -36,9 +46,9 @@ html {
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--fundo);
-    color: var(--texto);
     font-size: 14px;
+    color: var(--texto);
+    background: var(--fundo);
 }
 
 button,
@@ -48,31 +58,33 @@ select {
     font: inherit;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
 button {
     cursor: pointer;
 }
 
 a {
     color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
     outline: 2px solid var(--rosa-principal);
     outline-offset: 3px;
 }
 
 
-/* ========================================
+/* =====================================================
    2. ESTRUTURA PRINCIPAL
-======================================== */
+===================================================== */
 
 .tela {
     display: flex;
@@ -89,12 +101,14 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
+/* =====================================================
    3. SIDEBAR
-======================================== */
+===================================================== */
 
 .sidebar {
     position: relative;
+    z-index: 5;
+
     display: flex;
     flex-direction: column;
 
@@ -104,12 +118,9 @@ textarea:focus-visible {
 
     background: var(--branco);
     border-right: 1px solid var(--borda);
-
-    overflow: hidden;
-    z-index: 5;
 }
 
-/* Espaço reservado para a logo */
+/* Logo */
 
 .logo {
     display: flex;
@@ -123,23 +134,21 @@ textarea:focus-visible {
     padding: 20px;
 
     color: var(--rosa-principal);
+
     background: linear-gradient(
         180deg,
-        #ffffff 0%,
-        #fffafd 100%
+        #ffffff,
+        #fffafd
     );
 }
 
-/*
-   Quando tiver a imagem da logo, você poderá
-   inserir uma tag img dentro de .logo.
-*/
-
 .logo img {
     display: block;
+
     width: 100%;
     max-width: 185px;
-    max-height: 115px;
+    max-height: 100%;
+
     object-fit: contain;
 }
 
@@ -148,9 +157,10 @@ textarea:focus-visible {
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 5px;
 
-    padding: 5px 14px 20px;
+    width: 100%;
+    padding: 15px 12px 30px;
 }
 
 .sidebar nav a {
@@ -166,14 +176,13 @@ textarea:focus-visible {
     border-radius: 10px;
 
     color: #59667e;
-    text-decoration: none;
+
     font-size: 14px;
     font-weight: 500;
 
     transition:
         background var(--transicao),
-        color var(--transicao),
-        transform var(--transicao);
+        color var(--transicao);
 }
 
 .sidebar nav a i {
@@ -184,8 +193,8 @@ textarea:focus-visible {
     width: 20px;
     flex-shrink: 0;
 
-    font-size: 17px;
     color: #68758b;
+    font-size: 17px;
 
     transition: color var(--transicao);
 }
@@ -197,8 +206,8 @@ textarea:focus-visible {
 /* Hover */
 
 .sidebar nav a:hover {
-    background: var(--rosa-suave);
     color: var(--rosa-principal);
+    background: var(--rosa-suave);
 }
 
 .sidebar nav a:hover i {
@@ -208,8 +217,8 @@ textarea:focus-visible {
 /* Página ativa */
 
 .sidebar nav a.ativo {
-    background: var(--rosa-claro);
     color: var(--rosa-principal);
+    background: var(--rosa-claro);
     font-weight: 600;
 }
 
@@ -221,7 +230,7 @@ textarea:focus-visible {
     content: "";
 
     position: absolute;
-    left: -14px;
+    left: -12px;
     top: 8px;
     bottom: 8px;
 
@@ -232,11 +241,9 @@ textarea:focus-visible {
 }
 
 
-
-
-/* ========================================
+/* =====================================================
    4. CABEÇALHO SUPERIOR
-======================================== */
+===================================================== */
 
 .topo {
     display: flex;
@@ -246,9 +253,11 @@ textarea:focus-visible {
 
     width: 100%;
     min-height: 82px;
+
     padding: 0 30px;
 
     color: var(--branco);
+
     background: linear-gradient(
         110deg,
         #d71959 0%,
@@ -265,6 +274,8 @@ textarea:focus-visible {
     gap: 22px;
 }
 
+/* Botão menu */
+
 .btn-menu {
     display: flex;
     align-items: center;
@@ -280,12 +291,15 @@ textarea:focus-visible {
     background: transparent;
 
     font-size: 21px;
+
     transition: background var(--transicao);
 }
 
 .btn-menu:hover {
     background: rgba(255, 255, 255, 0.15);
 }
+
+/* Botão voltar */
 
 .btn-voltar {
     display: flex;
@@ -316,7 +330,7 @@ textarea:focus-visible {
     font-size: 14px;
 }
 
-/* Usuário */
+/* Informações do usuário */
 
 .usuario {
     display: flex;
@@ -328,11 +342,11 @@ textarea:focus-visible {
 
 .btn-notificacao,
 .btn-configuracoes {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: relative;
 
     width: 38px;
     height: 38px;
@@ -344,6 +358,7 @@ textarea:focus-visible {
     background: transparent;
 
     font-size: 19px;
+
     transition: background var(--transicao);
 }
 
@@ -362,8 +377,8 @@ textarea:focus-visible {
 }
 
 .usuario-perfil .fa-circle-user {
+    color: var(--branco);
     font-size: 35px;
-    color: #ffffff;
 }
 
 .usuario-perfil .fa-chevron-down {
@@ -371,10 +386,21 @@ textarea:focus-visible {
     font-size: 11px;
 }
 
+.topo-home {
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: 600;
+}
 
-/* ========================================
-   5. CABEÇALHO DA PÁGINA DE PACIENTES
-======================================== */
+.topo-home span {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   5. CABEÇALHO DAS PÁGINAS
+===================================================== */
 
 .cabecalho-pagina {
     display: flex;
@@ -390,8 +416,8 @@ textarea:focus-visible {
 
     background: linear-gradient(
         110deg,
-        #fff0f6 0%,
-        #fff8fb 100%
+        #fff0f6,
+        #fff8fb
     );
 
     box-shadow: var(--sombra);
@@ -419,6 +445,7 @@ textarea:focus-visible {
     border-radius: 50%;
 
     color: var(--branco);
+
     background: linear-gradient(
         145deg,
         #f04482,
@@ -448,9 +475,9 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   6. PESQUISA E BOTÃO NOVO PACIENTE
-======================================== */
+/* =====================================================
+   6. PESQUISA E BOTÕES DE AÇÃO
+===================================================== */
 
 .acoes {
     display: flex;
@@ -461,7 +488,7 @@ textarea:focus-visible {
     min-width: 0;
 }
 
-/* Campo de pesquisa */
+/* Pesquisa */
 
 .campo-pesquisa {
     display: flex;
@@ -491,7 +518,6 @@ textarea:focus-visible {
 
 .campo-pesquisa > i {
     flex-shrink: 0;
-
     color: #8793a8;
     font-size: 16px;
 }
@@ -540,16 +566,11 @@ textarea:focus-visible {
 
     font-size: 13px;
     font-weight: 600;
-    text-decoration: none;
     white-space: nowrap;
 
     box-shadow: 0 4px 10px rgba(233, 30, 99, 0.12);
 
-    transition:
-        background var(--transicao),
-        border-color var(--transicao),
-        transform var(--transicao),
-        box-shadow var(--transicao);
+    transition: all var(--transicao);
 }
 
 .btn-novo i {
@@ -564,11 +585,12 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   7. PAINEL DA LISTA DE PACIENTES
-======================================== */
+/* =====================================================
+   7. PAINÉIS COMPARTILHADOS
+===================================================== */
 
-.painel-pacientes {
+.painel-pacientes,
+.painel-profissionais {
     margin: 0 25px 25px;
     padding: 24px;
 
@@ -579,7 +601,8 @@ textarea:focus-visible {
     box-shadow: var(--sombra);
 }
 
-.painel-pacientes-topo {
+.painel-pacientes-topo,
+.painel-profissionais-topo {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -588,7 +611,8 @@ textarea:focus-visible {
     margin-bottom: 20px;
 }
 
-.painel-pacientes-topo h2 {
+.painel-pacientes-topo h2,
+.painel-profissionais-topo h2 {
     color: var(--texto);
     font-size: 19px;
     font-weight: 700;
@@ -596,9 +620,9 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   8. LISTA E CABEÇALHO DA TABELA
-======================================== */
+/* =====================================================
+   8. LISTA DE PACIENTES
+===================================================== */
 
 .lista-pacientes {
     width: 100%;
@@ -612,7 +636,7 @@ textarea:focus-visible {
 
 /* Cabeçalho */
 
-.cabecalho-lista {
+.lista-pacientes .cabecalho-lista {
     display: grid;
     grid-template-columns: minmax(180px, 1fr) 440px;
     align-items: center;
@@ -629,18 +653,15 @@ textarea:focus-visible {
     font-weight: 700;
 }
 
-.cabecalho-lista span:first-child {
+.lista-pacientes .cabecalho-lista span:first-child {
     text-align: left;
 }
 
-.cabecalho-lista span:last-child {
+.lista-pacientes .cabecalho-lista span:last-child {
     text-align: center;
 }
 
-
-/* ========================================
-   9. LINHAS DOS PACIENTES
-======================================== */
+/* Linha */
 
 .paciente {
     display: grid;
@@ -668,7 +689,7 @@ textarea:focus-visible {
     background: #fffafd;
 }
 
-/* Informações do paciente */
+/* Informações */
 
 .info-paciente {
     display: flex;
@@ -697,10 +718,11 @@ textarea:focus-visible {
     height: 46px;
     flex-shrink: 0;
 
-    border: 2px solid #ffffff;
+    border: 2px solid var(--branco);
     border-radius: 50%;
 
     color: var(--branco);
+
     background: linear-gradient(
         145deg,
         #f18ab0,
@@ -713,10 +735,7 @@ textarea:focus-visible {
     font-weight: 700;
 }
 
-
-/* ========================================
-   10. BOTÕES DE AÇÃO DOS PACIENTES
-======================================== */
+/* Ações */
 
 .acoes-paciente {
     display: flex;
@@ -744,10 +763,7 @@ textarea:focus-visible {
     font-weight: 600;
     white-space: nowrap;
 
-    transition:
-        background var(--transicao),
-        border-color var(--transicao),
-        color var(--transicao);
+    transition: all var(--transicao);
 }
 
 .acoes-paciente button:hover {
@@ -756,13 +772,7 @@ textarea:focus-visible {
     background: var(--rosa-principal);
 }
 
-/*
-   Os botões são criados pelo JavaScript usando
-   textContent. Por isso, o CSS não acrescenta
-   ícones que não existem no HTML.
-*/
-
-/* Botão Excluir: diferenciado pelo último botão */
+/* Excluir */
 
 .acoes-paciente button:last-child {
     border-color: #f3a0bd;
@@ -777,9 +787,188 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   11. LISTA VAZIA
-======================================== */
+/* =====================================================
+   9. LISTA DE PROFISSIONAIS
+===================================================== */
+
+.lista-profissionais {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    background: var(--branco);
+}
+
+/* Cabeçalho e linhas */
+
+.lista-profissionais .cabecalho-lista,
+.lista-profissionais .profissional {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 2fr)
+        minmax(150px, 2fr)
+        minmax(180px, 1fr);
+
+    align-items: center;
+    gap: 15px;
+
+    min-width: 650px;
+    padding: 15px 20px;
+}
+
+/* Cabeçalho */
+
+.lista-profissionais .cabecalho-lista {
+    min-height: 50px;
+
+    color: var(--texto);
+    background: #fff0f6;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.lista-profissionais .cabecalho-lista span:last-child {
+    text-align: center;
+}
+
+/* Linhas */
+
+.lista-profissionais .profissional {
+    min-height: 82px;
+
+    border-bottom: 1px solid var(--borda);
+
+    background: var(--branco);
+
+    transition: background var(--transicao);
+}
+
+.lista-profissionais .profissional:last-child {
+    border-bottom: none;
+}
+
+.lista-profissionais .profissional:hover {
+    background: #fffafd;
+}
+
+/* Nome e profissão */
+
+.nome-profissional,
+.profissao-profissional {
+    min-width: 0;
+
+    color: var(--texto);
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+.nome-profissional {
+    font-weight: 600;
+}
+
+/* Informações */
+
+.info-profissional {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    min-width: 0;
+
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.info-profissional > span:last-child {
+    overflow-wrap: anywhere;
+}
+
+/* Avatar */
+
+.avatar-profissional {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+
+    border: 2px solid var(--branco);
+    border-radius: 50%;
+
+    color: var(--branco);
+
+    background: linear-gradient(
+        145deg,
+        #f18ab0,
+        #e73576
+    );
+
+    box-shadow: 0 2px 6px rgba(233, 30, 99, 0.12);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Ações */
+
+.acoes-profissional {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.acoes-profissional button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+    padding: 0 12px;
+
+    border: 1px solid #f9e3ed;
+    border-radius: 9px;
+
+    color: var(--rosa-principal);
+    background: #fff0f6;
+
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    transition: all var(--transicao);
+}
+
+.acoes-profissional button:hover {
+    border-color: var(--rosa-principal);
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+.acoes-profissional button:last-child {
+    border-color: #f3a0bd;
+    color: var(--rosa-principal);
+    background: var(--branco);
+}
+
+.acoes-profissional button:last-child:hover {
+    border-color: var(--rosa-principal);
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+
+/* =====================================================
+   10. LISTAS VAZIAS E BARRAS DE ROLAGEM
+===================================================== */
 
 .lista-vazia {
     padding: 35px 20px;
@@ -792,11 +981,33 @@ textarea:focus-visible {
     line-height: 1.6;
 }
 
+.lista-pacientes::-webkit-scrollbar,
+.lista-profissionais::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
 
-/* ========================================
-   12. FORMULÁRIO DE CADASTRO
-   Mantido para as outras páginas
-======================================== */
+.lista-pacientes::-webkit-scrollbar-thumb,
+.lista-profissionais::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #e7a1bd;
+}
+
+.lista-pacientes::-webkit-scrollbar-thumb:hover,
+.lista-profissionais::-webkit-scrollbar-thumb:hover {
+    background: var(--rosa-principal);
+}
+
+.lista-pacientes::-webkit-scrollbar-track,
+.lista-profissionais::-webkit-scrollbar-track {
+    background: #fff5f9;
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   11. FORMULÁRIO DE CADASTRO GENÉRICO
+===================================================== */
 
 .formulario {
     width: 75%;
@@ -842,9 +1053,7 @@ textarea:focus-visible {
 
     font-size: 13px;
 
-    transition:
-        border-color var(--transicao),
-        box-shadow var(--transicao);
+    transition: all var(--transicao);
 }
 
 .campo input:focus {
@@ -860,7 +1069,7 @@ textarea:focus-visible {
     width: 100%;
 }
 
-/* Linhas do formulário */
+/* Linhas */
 
 .linha {
     display: flex;
@@ -884,75 +1093,9 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   13. BOTÕES DO FORMULÁRIO
-======================================== */
-
-.botoes-formulario {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 12px;
-
-    margin-top: 40px;
-}
-
-.botoes-formulario button,
-.botoes-formulario a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 42px;
-    padding: 0 20px;
-
-    border: 1px solid transparent;
-    border-radius: 8px;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-    text-decoration: none;
-
-    transition:
-        background var(--transicao),
-        border-color var(--transicao),
-        color var(--transicao);
-}
-
-.btn-clinicas,
-.btn-cancelar {
-    border-color: #f4c5d7 !important;
-
-    color: var(--rosa-principal);
-    background: var(--rosa-suave);
-}
-
-.btn-clinicas:hover,
-.btn-cancelar:hover {
-    border-color: var(--rosa-medio) !important;
-    background: var(--rosa-claro);
-}
-
-.btn-salvar {
-    color: var(--branco);
-    background: var(--rosa-principal);
-}
-
-.botoes-formulario .btn-salvar {
-    border-color: var(--rosa-principal);
-}
-
-.btn-salvar:hover {
-    background: var(--rosa-escuro);
-}
-
-
-/* ========================================
-   14. INFORMAÇÕES CLÍNICAS
-   Mantido para a página clínica
-======================================== */
+/* =====================================================
+   12. FORMULÁRIO CLÍNICO
+===================================================== */
 
 .formulario-clinico {
     width: 75%;
@@ -996,9 +1139,7 @@ textarea:focus-visible {
 
     font-size: 13px;
 
-    transition:
-        border-color var(--transicao),
-        box-shadow var(--transicao);
+    transition: all var(--transicao);
 }
 
 .campo-clinico input:focus {
@@ -1018,10 +1159,7 @@ textarea:focus-visible {
     margin-bottom: 20px;
 }
 
-
-/* ========================================
-   15. OBSERVAÇÕES CLÍNICAS
-======================================== */
+/* Observações */
 
 .observacoes {
     margin-top: 20px;
@@ -1060,8 +1198,7 @@ textarea:focus-visible {
     width: 100%;
     min-height: 150px;
 
-    padding: 15px;
-    padding-right: 65px;
+    padding: 15px 65px 15px 15px;
 
     border: none;
     border-radius: inherit;
@@ -1101,9 +1238,7 @@ textarea:focus-visible {
 
     font-size: 13px;
 
-    transition:
-        color var(--transicao),
-        background var(--transicao);
+    transition: all var(--transicao);
 }
 
 .botoes-observacao button:hover {
@@ -1111,10 +1246,7 @@ textarea:focus-visible {
     background: var(--rosa-suave);
 }
 
-
-/* ========================================
-   16. BOTÃO SALVAR INFORMAÇÕES CLÍNICAS
-======================================== */
+/* Salvar */
 
 .salvar-clinico {
     display: flex;
@@ -1130,6 +1262,7 @@ textarea:focus-visible {
 
     min-width: 120px;
     min-height: 42px;
+
     padding: 0 22px;
 
     border: 1px solid var(--rosa-principal);
@@ -1149,33 +1282,745 @@ textarea:focus-visible {
 }
 
 
-/* ========================================
-   17. BARRA DE ROLAGEM
-======================================== */
+/* =====================================================
+   13. BOTÕES DE FORMULÁRIOS
+===================================================== */
 
-.lista-pacientes::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+.botoes-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 40px;
 }
 
-.lista-pacientes::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #e7a1bd;
+.botoes-formulario button,
+.botoes-formulario a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 0 20px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: all var(--transicao);
 }
 
-.lista-pacientes::-webkit-scrollbar-thumb:hover {
+.btn-clinicas,
+.btn-cancelar {
+    border: 1px solid #f4c5d7;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.btn-clinicas:hover,
+.btn-cancelar:hover {
+    border-color: var(--rosa-medio);
+    background: var(--rosa-claro);
+}
+
+.btn-salvar {
+    border: 1px solid var(--rosa-principal);
+    color: var(--branco);
     background: var(--rosa-principal);
 }
 
-.lista-pacientes::-webkit-scrollbar-track {
-    background: #fff5f9;
-    border-radius: 10px;
+.btn-salvar:hover {
+    border-color: var(--rosa-escuro);
+    background: var(--rosa-escuro);
 }
 
 
-/* ========================================
-   18. RESPONSIVIDADE — NOTEBOOKS
-======================================== */
+/* =====================================================
+   14. CADASTRO DE PACIENTES E PROFISSIONAIS
+===================================================== */
+
+/* Página */
+
+.pagina-cadastro {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 28px 32px 40px;
+}
+
+/* Cabeçalho */
+
+.cabecalho-cadastro {
+    margin-bottom: 24px;
+}
+
+.cabecalho-cadastro h1 {
+    margin-bottom: 7px;
+
+    color: var(--texto);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.cabecalho-cadastro p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Formulários */
+
+.formulario-paciente,
+.formulario-profissional {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    width: 100%;
+
+    padding: 28px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+
+    box-shadow: var(--sombra);
+}
+
+/* Separação de seções */
+
+.formulario-paciente .secao-cadastro + .secao-cadastro,
+.formulario-profissional .secao-cadastro + .secao-cadastro {
+    padding-top: 24px;
+    border-top: 1px solid #f0e7ec;
+}
+
+/* Títulos */
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 22px;
+}
+
+.titulo-secao > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    border-radius: 11px;
+
+    font-size: 17px;
+}
+
+.titulo-secao h2 {
+    margin-bottom: 4px;
+
+    color: var(--texto);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.titulo-secao p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Grade */
+
+.grade-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px 22px;
+}
+
+/* Campos */
+
+.campo-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    min-width: 0;
+}
+
+.campo-cadastro.campo-largo {
+    grid-column: 1 / -1;
+}
+
+.campo-cadastro label {
+    color: #34415d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Inputs, selects e textareas */
+
+.campo-cadastro input,
+.campo-cadastro select,
+.campo-cadastro textarea {
+    width: 100%;
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    color: var(--texto);
+    background: var(--branco);
+
+    border: 1px solid #e8c4d3;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition: all var(--transicao);
+}
+
+.campo-cadastro input,
+.campo-cadastro select {
+    height: 44px;
+}
+
+.campo-cadastro textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.campo-cadastro input:focus,
+.campo-cadastro select:focus,
+.campo-cadastro textarea:focus {
+    border-color: var(--rosa-principal);
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.09);
+}
+
+.campo-cadastro input::placeholder,
+.campo-cadastro textarea::placeholder {
+    color: #a3aabe;
+}
+
+.campo-cadastro select {
+    cursor: pointer;
+}
+
+/* Botões */
+
+.botoes-cadastro {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #f0e7ec;
+}
+
+.botoes-cadastro .btn-cancelar,
+.botoes-cadastro .btn-salvar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 43px;
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all var(--transicao);
+}
+
+/* Cancelar */
+
+.botoes-cadastro .btn-cancelar {
+    color: var(--rosa-principal);
+    background: var(--branco);
+    border: 1px solid #f3bfd2;
+}
+
+.botoes-cadastro .btn-cancelar:hover {
+    background: var(--rosa-suave);
+    border-color: var(--rosa-medio);
+}
+
+/* Salvar */
+
+.botoes-cadastro .btn-salvar {
+    color: var(--branco);
+    background: var(--rosa-principal);
+    border: 1px solid var(--rosa-principal);
+}
+
+.botoes-cadastro .btn-salvar:hover {
+    background: var(--rosa-escuro);
+    border-color: var(--rosa-escuro);
+}
+
+.botoes-cadastro .btn-cancelar:active,
+.botoes-cadastro .btn-salvar:active {
+    transform: translateY(1px);
+}
+
+
+/* =====================================================
+   15. HOME
+===================================================== */
+
+.home-conteudo {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* Cabeçalho */
+
+.home-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.home-cabecalho h1 {
+    margin-bottom: 8px;
+
+    color: var(--texto);
+    font-size: 28px;
+}
+
+.home-cabecalho p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* Data */
+
+.data-atual {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 16px;
+
+    color: #596985;
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Cards */
+
+.cards-resumo {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.card-resumo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 24px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 13px;
+
+    box-shadow: 0 3px 12px rgba(23, 39, 71, 0.035);
+
+    transition:
+        transform var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.card-resumo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(23, 39, 71, 0.07);
+}
+
+.card-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+}
+
+.card-titulo {
+    min-height: 40px;
+    margin-bottom: 8px;
+
+    color: #596985;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card-resumo h2 {
+    margin-bottom: 22px;
+
+    color: var(--texto);
+    font-size: 34px;
+    font-weight: 700;
+}
+
+/* Cores dos cards */
+
+.card-agendamentos {
+    background: linear-gradient(145deg, #ffffff, #fff5f9);
+    border-color: #f6d8e5;
+}
+
+.card-agendamentos .card-icone {
+    color: var(--rosa-principal);
+    background: #fce3ee;
+}
+
+.card-pacientes .card-icone {
+    color: #4683bd;
+    background: #e7f1fc;
+}
+
+.card-estoque {
+    background: linear-gradient(145deg, #ffffff, #fffaf3);
+    border-color: #f5e5d2;
+}
+
+.card-estoque .card-icone {
+    color: #df812b;
+    background: #fff0dc;
+}
+
+.card-medicos .card-icone {
+    color: #7950c9;
+    background: #f0e9ff;
+}
+
+/* Links dos cards */
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: auto;
+
+    color: var(--rosa-principal);
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-link i {
+    font-size: 11px;
+    transition: transform var(--transicao);
+}
+
+.card-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Alertas */
+
+.painel-alertas {
+    padding: 26px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 13px;
+
+    box-shadow: 0 3px 12px rgba(23, 39, 71, 0.035);
+}
+
+.painel-titulo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 22px;
+}
+
+.painel-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    border-radius: 11px;
+
+    font-size: 17px;
+}
+
+.painel-titulo h2 {
+    margin-bottom: 5px;
+
+    color: var(--texto);
+    font-size: 17px;
+}
+
+.painel-titulo p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.lista-alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alerta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px;
+
+    border-radius: 10px;
+}
+
+.alerta-rosa {
+    background: #fff5f9;
+}
+
+.alerta-laranja {
+    background: #fffaf3;
+}
+
+.alerta-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+}
+
+.alerta-rosa .alerta-icone {
+    color: var(--rosa-principal);
+    background: #fce3ee;
+}
+
+.alerta-laranja .alerta-icone {
+    color: #df812b;
+    background: #ffefd9;
+}
+
+.alerta-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.alerta-texto strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #263653;
+    font-size: 13px;
+}
+
+.alerta-texto p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.alerta-seta {
+    color: #9aa5b8;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   16. MODAL DE EXCLUSÃO
+===================================================== */
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(23, 39, 71, 0.45);
+    backdrop-filter: blur(3px);
+}
+
+.modal-exclusao {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 30px;
+
+    background: var(--branco);
+    border: 1px solid #f4e5eb;
+    border-radius: 16px;
+
+    box-shadow: 0 18px 50px rgba(23, 39, 71, 0.18);
+
+    text-align: center;
+
+    animation: modal-aparecer 0.2s ease;
+}
+
+.icone-exclusao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 18px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+.modal-exclusao h2 {
+    margin-bottom: 12px;
+
+    color: var(--texto);
+    font-size: 21px;
+}
+
+.modal-exclusao p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+.modal-exclusao p strong {
+    color: #34415d;
+}
+
+.botoes-exclusao {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.botoes-exclusao button {
+    flex: 1;
+
+    min-height: 44px;
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background var(--transicao);
+}
+
+.btn-modal-cancelar {
+    color: #34415d;
+    background: var(--branco);
+    border: 1px solid #dfe3ec;
+}
+
+.btn-modal-cancelar:hover {
+    background: var(--fundo);
+}
+
+.btn-modal-excluir {
+    color: var(--branco);
+    background: var(--rosa-principal);
+    border: 1px solid var(--rosa-principal);
+}
+
+.btn-modal-excluir:hover {
+    background: var(--rosa-escuro);
+}
+
+@keyframes modal-aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   17. RESPONSIVIDADE - NOTEBOOKS
+===================================================== */
 
 @media (max-width: 1200px) {
 
@@ -1202,7 +2047,7 @@ textarea:focus-visible {
         width: auto;
     }
 
-    .cabecalho-lista,
+    .lista-pacientes .cabecalho-lista,
     .paciente {
         grid-template-columns: minmax(180px, 1fr) 400px;
     }
@@ -1211,12 +2056,16 @@ textarea:focus-visible {
     .formulario-clinico {
         width: 85%;
     }
+
+    .cards-resumo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 
-/* ========================================
-   19. RESPONSIVIDADE — TABLETS
-======================================== */
+/* =====================================================
+   18. RESPONSIVIDADE - TABLETS
+===================================================== */
 
 @media (max-width: 800px) {
 
@@ -1225,7 +2074,7 @@ textarea:focus-visible {
     }
 
     .logo {
-        height: 125px;
+        height: 110px;
     }
 
     .sidebar nav {
@@ -1272,12 +2121,13 @@ textarea:focus-visible {
         font-size: 24px;
     }
 
-    .painel-pacientes {
+    .painel-pacientes,
+    .painel-profissionais {
         margin: 0 16px 20px;
         padding: 18px;
     }
 
-    .cabecalho-lista,
+    .lista-pacientes .cabecalho-lista,
     .paciente {
         grid-template-columns: minmax(160px, 1fr) 360px;
     }
@@ -1296,6 +2146,21 @@ textarea:focus-visible {
         font-size: 11px;
     }
 
+    .lista-profissionais .cabecalho-lista,
+    .lista-profissionais .profissional {
+        min-width: 650px;
+    }
+
+    .acoes-profissional {
+        gap: 6px;
+    }
+
+    .acoes-profissional button {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
     .formulario,
     .formulario-clinico {
         width: 90%;
@@ -1309,14 +2174,25 @@ textarea:focus-visible {
     .numero {
         flex-basis: 140px;
     }
+
+    .pagina-cadastro {
+        padding: 24px 20px 32px;
+    }
+
+    .formulario-paciente,
+    .formulario-profissional {
+        padding: 22px;
+    }
 }
 
 
-/* ========================================
-   20. RESPONSIVIDADE — CELULARES
-======================================== */
+/* =====================================================
+   19. RESPONSIVIDADE - CELULARES
+===================================================== */
 
 @media (max-width: 600px) {
+
+    /* Estrutura */
 
     .tela {
         flex-direction: column;
@@ -1325,7 +2201,6 @@ textarea:focus-visible {
     .sidebar {
         width: 100%;
         min-height: auto;
-        overflow: visible;
 
         border-right: none;
         border-bottom: 1px solid var(--borda);
@@ -1342,10 +2217,10 @@ textarea:focus-visible {
     }
 
     .sidebar nav {
-        display: flex;
         flex-direction: row;
         gap: 5px;
 
+        width: 100%;
         padding: 8px 10px 12px;
 
         overflow-x: auto;
@@ -1384,8 +2259,11 @@ textarea:focus-visible {
     }
 
     .conteudo {
+        width: 100%;
         min-height: auto;
     }
+
+    /* Topo */
 
     .topo {
         min-height: 65px;
@@ -1427,6 +2305,8 @@ textarea:focus-visible {
         display: none;
     }
 
+    /* Cabeçalho das páginas */
+
     .cabecalho-pagina {
         gap: 20px;
         margin: 14px 12px;
@@ -1455,6 +2335,8 @@ textarea:focus-visible {
         font-size: 12px;
     }
 
+    /* Pesquisa */
+
     .acoes {
         align-items: stretch;
         flex-direction: column;
@@ -1472,20 +2354,27 @@ textarea:focus-visible {
         min-height: 44px;
     }
 
-    .painel-pacientes {
+    /* Painéis */
+
+    .painel-pacientes,
+    .painel-profissionais {
         margin: 0 12px 16px;
         padding: 14px;
     }
 
-    .painel-pacientes-topo {
+    .painel-pacientes-topo,
+    .painel-profissionais-topo {
         margin-bottom: 14px;
     }
 
-    .painel-pacientes-topo h2 {
+    .painel-pacientes-topo h2,
+    .painel-profissionais-topo h2 {
         font-size: 17px;
     }
 
-    .cabecalho-lista,
+    /* Pacientes */
+
+    .lista-pacientes .cabecalho-lista,
     .paciente {
         grid-template-columns: minmax(150px, 1fr) 330px;
     }
@@ -1504,6 +2393,15 @@ textarea:focus-visible {
         height: 38px;
         font-size: 14px;
     }
+
+    /* Profissionais */
+
+    .lista-profissionais .cabecalho-lista,
+    .lista-profissionais .profissional {
+        min-width: 650px;
+    }
+
+    /* Formulários */
 
     .formulario,
     .formulario-clinico {
@@ -1557,260 +2455,9 @@ textarea:focus-visible {
     .salvar-clinico button {
         width: 100%;
     }
-}
 
+    /* Cadastro */
 
-/* ========================================
-   21. CELULARES PEQUENOS
-======================================== */
-
-@media (max-width: 380px) {
-
-    .topo {
-        gap: 5px;
-        padding: 0 8px;
-    }
-
-    .topo-esquerda {
-        gap: 5px;
-    }
-
-    .btn-menu {
-        width: 30px;
-    }
-
-    .btn-voltar {
-        gap: 6px;
-        padding: 0 8px;
-    }
-
-    .usuario-perfil span {
-        display: none;
-    }
-
-    .cabecalho-pagina {
-        padding: 13px;
-    }
-
-    .titulo-pagina-texto h1 {
-        font-size: 19px;
-    }
-
-    .painel-pacientes {
-        padding: 10px;
-    }
-
-    .botoes-formulario {
-        flex-direction: column;
-    }
-
-    .botoes-formulario button,
-    .botoes-formulario a {
-        width: 100%;
-        flex: auto;
-    }
-}
-
-
-/* ===== Cadastro de paciente ===== */
-
-.pagina-cadastro {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 28px 32px 40px;
-}
-
-.cabecalho-cadastro {
-    margin-bottom: 24px;
-}
-
-.cabecalho-cadastro h1 {
-    margin: 0 0 7px;
-    color: #172747;
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.cabecalho-cadastro p {
-    margin: 0;
-    color: #78859e;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.formulario-paciente {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    width: 100%;
-    padding: 28px;
-    background: #ffffff;
-    border: 1px solid #e8eaf1;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(23, 39, 71, 0.04);
-}
-
-.secao-cadastro + .secao-cadastro {
-    padding-top: 24px;
-    border-top: 1px solid #f0e7ec;
-}
-
-.titulo-secao {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 22px;
-}
-
-.titulo-secao > i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    color: #e91e63;
-    background: #fff0f6;
-    border-radius: 11px;
-    font-size: 17px;
-}
-
-.titulo-secao h2 {
-    margin: 0 0 4px;
-    color: #172747;
-    font-size: 17px;
-    font-weight: 700;
-}
-
-.titulo-secao p {
-    margin: 0;
-    color: #78859e;
-    font-size: 13px;
-}
-
-.grade-campos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 19px 22px;
-}
-
-.campo-cadastro {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-}
-
-.campo-cadastro.campo-largo {
-    grid-column: 1 / -1;
-}
-
-.campo-cadastro label {
-    color: #34415d;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.campo-cadastro input,
-.campo-cadastro textarea {
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 0;
-    padding: 12px 14px;
-    color: #172747;
-    background: #ffffff;
-    border: 1px solid #e8c4d3;
-    border-radius: 8px;
-    outline: none;
-    font: inherit;
-    font-size: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.campo-cadastro input {
-    height: 44px;
-}
-
-.campo-cadastro textarea {
-    min-height: 110px;
-    resize: vertical;
-    line-height: 1.5;
-}
-
-.campo-cadastro input:focus,
-.campo-cadastro textarea:focus {
-    border-color: #e91e63;
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.09);
-}
-
-.campo-cadastro input::placeholder,
-.campo-cadastro textarea::placeholder {
-    color: #a3aabe;
-}
-
-.botoes-cadastro {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid #f0e7ec;
-}
-
-.botoes-cadastro .btn-cancelar,
-.botoes-cadastro .btn-salvar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 43px;
-    padding: 0 20px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.botoes-cadastro .btn-cancelar {
-    color: #e91e63;
-    background: #ffffff;
-    border: 1px solid #f3bfd2;
-}
-
-.botoes-cadastro .btn-cancelar:hover {
-    background: #fff0f6;
-}
-
-.botoes-cadastro .btn-salvar {
-    color: #ffffff;
-    background: #e91e63;
-    border: 1px solid #e91e63;
-}
-
-.botoes-cadastro .btn-salvar:hover {
-    background: #c81752;
-}
-
-.botoes-cadastro .btn-cancelar:active,
-.botoes-cadastro .btn-salvar:active {
-    transform: translateY(1px);
-}
-
-/* Ajustes para tablets e celulares */
-@media (max-width: 850px) {
-    .pagina-cadastro {
-        padding: 24px 20px 32px;
-    }
-
-    .formulario-paciente {
-        padding: 22px;
-    }
-}
-
-@media (max-width: 560px) {
     .pagina-cadastro {
         padding: 20px 14px 28px;
     }
@@ -1819,7 +2466,8 @@ textarea:focus-visible {
         font-size: 23px;
     }
 
-    .formulario-paciente {
+    .formulario-paciente,
+    .formulario-profissional {
         padding: 18px;
         gap: 20px;
     }
@@ -1843,284 +2491,9 @@ textarea:focus-visible {
         width: 100%;
         box-sizing: border-box;
     }
-}
 
+    /* Home */
 
-/* ===== HOME ===== */
-
-.home-conteudo {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 32px;
-}
-
-.home-cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 28px;
-}
-
-.home-cabecalho h1 {
-    margin: 0 0 8px;
-    color: #172747;
-    font-size: 28px;
-}
-
-.home-cabecalho p {
-    margin: 0;
-    color: #78859e;
-    font-size: 14px;
-}
-
-.topo-home span {
-    font-size: 25px;
-    font-weight: 700;
-}
-
-.data-atual {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    color: #596985;
-    background: #ffffff;
-    border: 1px solid #e8eaf1;
-    border-radius: 9px;
-    font-size: 13px;
-    white-space: nowrap;
-}
-
-/* Cards de resumo */
-
-.cards-resumo {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-    margin-bottom: 28px;
-}
-
-.card-resumo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 0;
-    padding: 24px;
-    background: #ffffff;
-    border: 1px solid #e8eaf1;
-    border-radius: 13px;
-    box-shadow: 0 3px 12px rgba(23, 39, 71, 0.035);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card-resumo:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(23, 39, 71, 0.07);
-}
-
-.card-icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    font-size: 19px;
-}
-
-.card-titulo {
-    min-height: 40px;
-    margin: 0 0 8px;
-    color: #596985;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.card-resumo h2 {
-    margin: 0 0 22px;
-    color: #172747;
-    font-size: 34px;
-    font-weight: 700;
-}
-
-/* Cores individuais dos cards */
-
-.card-agendamentos {
-    background: linear-gradient(145deg, #ffffff, #fff5f9);
-    border-color: #f6d8e5;
-}
-
-.card-agendamentos .card-icone {
-    color: #e91e63;
-    background: #fce3ee;
-}
-
-.card-pacientes .card-icone {
-    color: #4683bd;
-    background: #e7f1fc;
-}
-
-.card-estoque {
-    background: linear-gradient(145deg, #ffffff, #fffaf3);
-    border-color: #f5e5d2;
-}
-
-.card-estoque .card-icone {
-    color: #df812b;
-    background: #fff0dc;
-}
-
-.card-medicos .card-icone {
-    color: #7950c9;
-    background: #f0e9ff;
-}
-
-.card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-top: auto;
-    color: #e91e63;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.card-link i {
-    font-size: 11px;
-    transition: transform 0.2s;
-}
-
-.card-link:hover i {
-    transform: translateX(4px);
-}
-
-/* Painel de alertas */
-
-.painel-alertas {
-    padding: 26px;
-    background: #ffffff;
-    border: 1px solid #e8eaf1;
-    border-radius: 13px;
-    box-shadow: 0 3px 12px rgba(23, 39, 71, 0.035);
-}
-
-.painel-titulo {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 22px;
-}
-
-.painel-icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    color: #e91e63;
-    background: #fff0f6;
-    border-radius: 11px;
-    font-size: 17px;
-}
-
-.painel-titulo h2 {
-    margin: 0 0 5px;
-    color: #172747;
-    font-size: 17px;
-}
-
-.painel-titulo p {
-    margin: 0;
-    color: #78859e;
-    font-size: 13px;
-}
-
-.lista-alertas {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.alerta {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px;
-    border-radius: 10px;
-}
-
-.alerta-rosa {
-    background: #fff5f9;
-}
-
-.alerta-laranja {
-    background: #fffaf3;
-}
-
-.alerta-icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-}
-
-.alerta-rosa .alerta-icone {
-    color: #e91e63;
-    background: #fce3ee;
-}
-
-.alerta-laranja .alerta-icone {
-    color: #df812b;
-    background: #ffefd9;
-}
-
-.alerta-texto {
-    flex: 1;
-    min-width: 0;
-}
-
-.alerta-texto strong {
-    display: block;
-    margin-bottom: 5px;
-    color: #263653;
-    font-size: 13px;
-}
-
-.alerta-texto p {
-    margin: 0;
-    color: #78859e;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.alerta-seta {
-    color: #9aa5b8;
-    font-size: 13px;
-}
-
-/* Cabeçalho da Home */
-
-.topo-home {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* Responsividade */
-
-@media (max-width: 1150px) {
-    .cards-resumo {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 700px) {
     .home-conteudo {
         padding: 24px 18px;
     }
@@ -2166,132 +2539,88 @@ textarea:focus-visible {
     .alerta {
         padding: 12px;
     }
-}
 
-/* ===== Modal de exclusão de paciente ===== */
+    /* Modal */
 
-.modal-overlay[hidden] {
-    display: none;
-}
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-    background: rgba(23, 39, 71, 0.45);
-    backdrop-filter: blur(3px);
-}
-
-.modal-exclusao {
-    width: 100%;
-    max-width: 420px;
-    padding: 30px;
-
-    background: #ffffff;
-    border: 1px solid #f4e5eb;
-    border-radius: 16px;
-    box-shadow: 0 18px 50px rgba(23, 39, 71, 0.18);
-
-    text-align: center;
-    animation: modal-aparecer 0.2s ease;
-}
-
-.icone-exclusao {
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #e91e63;
-    background: #fff0f6;
-    border-radius: 50%;
-
-    font-size: 23px;
-}
-
-.modal-exclusao h2 {
-    margin: 0 0 12px;
-    color: #172747;
-    font-size: 21px;
-}
-
-.modal-exclusao p {
-    margin: 0;
-    color: #78859e;
-    font-size: 14px;
-    line-height: 1.7;
-    overflow-wrap: anywhere;
-}
-
-.modal-exclusao p strong {
-    color: #34415d;
-}
-
-.botoes-exclusao {
-    display: flex;
-    gap: 12px;
-    margin-top: 26px;
-}
-
-.botoes-exclusao button {
-    flex: 1;
-    min-height: 44px;
-    padding: 10px 14px;
-
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-modal-cancelar {
-    color: #34415d;
-    background: #ffffff;
-    border: 1px solid #dfe3ec;
-}
-
-.btn-modal-cancelar:hover {
-    background: #f5f6fb;
-}
-
-.btn-modal-excluir {
-    color: #ffffff;
-    background: #e91e63;
-    border: 1px solid #e91e63;
-}
-
-.btn-modal-excluir:hover {
-    background: #c81752;
-}
-
-@keyframes modal-aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 420px) {
     .modal-exclusao {
         padding: 24px 20px;
     }
 
     .botoes-exclusao {
         flex-direction: column-reverse;
+    }
+}
+
+
+/* =====================================================
+   20. CELULARES PEQUENOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .topo {
+        gap: 5px;
+        padding: 0 8px;
+    }
+
+    .topo-esquerda {
+        gap: 5px;
+    }
+
+    .btn-menu {
+        width: 30px;
+    }
+
+    .btn-voltar {
+        gap: 6px;
+        padding: 0 8px;
+    }
+
+    .usuario-perfil span {
+        display: none;
+    }
+
+    .cabecalho-pagina {
+        padding: 13px;
+    }
+
+    .titulo-pagina-texto h1 {
+        font-size: 19px;
+    }
+
+    .painel-pacientes,
+    .painel-profissionais {
+        padding: 10px;
+    }
+
+    .botoes-formulario {
+        flex-direction: column;
+    }
+
+    .botoes-formulario button,
+    .botoes-formulario a {
+        width: 100%;
+        flex: auto;
+    }
+
+    .pagina-cadastro {
+        padding: 16px 10px 24px;
+    }
+
+    .formulario-paciente,
+    .formulario-profissional {
+        padding: 14px;
+    }
+
+    .titulo-secao {
+        gap: 10px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 15px;
+    }
+
+    .titulo-secao p {
+        font-size: 12px;
     }
 }
