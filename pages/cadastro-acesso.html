@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="../js/autenticacao.js" defer></script>
 </head>
 
 <body class="pagina-login">
@@ -126,11 +128,15 @@
     </main>
 
     <script>
+        
         const form = document.getElementById('form-cadastro');
 
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            const nome = document.getElementById('nome').value.trim();
+            const cpf = document.getElementById('cpf').value.trim();
+            const email = document.getElementById('email').value.trim();
             const senha = document.getElementById('senha').value;
             const confirmarSenha = document.getElementById('confirmar-senha').value;
 
@@ -139,9 +145,18 @@
                 return;
             }
 
-            alert('Cadastro demonstrativo realizado com sucesso!');
-            window.location.href = '../pages/index.html';
+            const resultado = cadastrarUsuario(nome, cpf, email, senha);
+
+            if (!resultado.sucesso) {
+                alert(resultado.mensagem);
+                return;
+            }
+
+            alert(resultado.mensagem);
+
+            window.location.href = '../pages/entrar.html';
         });
+
     </script>
 
 </body>

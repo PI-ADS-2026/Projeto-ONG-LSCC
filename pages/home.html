@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
 </head>
 <body>
 <div class="tela">
@@ -63,7 +64,18 @@
             </div>
 
             <div class="usuario">
-                <span>Olá, Admin</span>
+                <span id="nome-usuario">Olá, usuário</span>
+
+                <button type="button" id="btn-trocar-conta">
+                    <i class="fa-solid fa-users"></i>
+                    Trocar conta
+                </button>
+
+                <button type="button" id="btn-sair">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
+
                 <i class="fa-solid fa-circle-user"></i>
                 <i class="fa-solid fa-gear"></i>
             </div>
@@ -190,7 +202,20 @@
     </main>
 </div>
 
+<script src="../js/autenticacao.js"></script>
+
 <script>
+        // Verifica se existe um usuário conectado.
+    const usuario = obterUsuarioLogado();
+
+    // Se não houver usuário conectado, volta para a tela de login.
+    if (!usuario) {
+        window.location.href = '../pages/entrar.html';
+    } else {
+        // Exibe o nome do usuário na Home.
+        document.getElementById('nome-usuario').textContent =
+            `Olá, ${usuario.nome}`;
+    }
         // Exibe a data atual.
     const hoje = new Date();
 
@@ -236,6 +261,18 @@
     // Atualiza os números quando a Home é aberta ou recebe foco novamente.
     window.addEventListener('pageshow', atualizarContadores);
     window.addEventListener('storage', atualizarContadores);
+
+        // Encerra a sessão e volta para a página inicial.
+    document.getElementById('btn-sair').addEventListener('click', function () {
+        sairDaConta();
+        window.location.href = '../pages/index.html';
+    });
+
+    // Encerra a sessão e volta para o login.
+    document.getElementById('btn-trocar-conta').addEventListener('click', function () {
+        sairDaConta();
+        window.location.href = '../pages/entrar.html';
+    });
 
 </script>
 

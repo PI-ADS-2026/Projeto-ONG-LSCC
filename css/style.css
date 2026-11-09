@@ -396,6 +396,32 @@ select:focus-visible {
     font-size: 25px;
     font-weight: 700;
 }
+/* Botões de ação do usuário */
+.usuario #btn-trocar-conta,
+.usuario #btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+
+    color: var(--branco);
+    background: rgba(255, 255, 255, 0.12);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background var(--transicao);
+}
+
+.usuario #btn-trocar-conta:hover,
+.usuario #btn-sair:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
 
 
 /* =====================================================

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/autenticacao.js" defer></script>
 </head>
 <body class="pagina-login">
 
@@ -76,10 +77,26 @@
     </main>
 
     <script>
-    document.getElementById('form-login').addEventListener('submit', function(event) {
-        event.preventDefault();
-        window.location.href = '../pages/home.html';
-    });
+
+        const form = document.getElementById('form-login');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value;
+
+            const resultado = fazerLogin(email, senha);
+
+            if (!resultado.sucesso) {
+                alert(resultado.mensagem);
+                return;
+            }
+
+            window.location.href = '../pages/home.html';
+        });
+
+    
 </script>
 
 </body>
