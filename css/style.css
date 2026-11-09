@@ -1523,6 +1523,10 @@ select:focus-visible {
     cursor: pointer;
 }
 
+.campo-cadastro label.obrigatorio {
+    color: #c81752;
+}
+
 /* Botões */
 
 .botoes-cadastro {
