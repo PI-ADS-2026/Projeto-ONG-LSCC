@@ -9,10 +9,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body class="pagina-profissionais">
@@ -23,10 +20,7 @@
         <aside class="sidebar">
 
             <div class="logo" aria-label="Logo da clínica">
-                <img
-                    src="../assets/imagens/liga-logo.png"
-                    alt="Logo da clínica"
-                >
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
             </div>
 
             <nav aria-label="Menu principal">
@@ -41,13 +35,14 @@
                     <span>Pacientes</span>
                 </a>
 
-                <a
-                    href="../pages/profissional.html"
-                    class="ativo"
-                    aria-current="page"
-                >
+                <a href="../pages/profissional.html" class="ativo" aria-current="page">
                     <i class="fa-solid fa-user-doctor"></i>
                     <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
                 </a>
 
                 <a href="#">
@@ -83,18 +78,11 @@
 
                 <div class="topo-esquerda">
 
-                    <button
-                        type="button"
-                        class="btn-menu"
-                        aria-label="Menu lateral"
-                        title="Menu lateral"
-                    >
+                    <button type="button" class="btn-menu" aria-label="Menu lateral" title="Menu lateral">
                         <i class="fa-solid fa-bars"></i>
                     </button>
 
-                    <button
-                        type="button"
-                        class="btn-voltar">
+                    <button type="button" class="btn-voltar">
                         <a href="../pages/home.html">
                             <i class="fa-solid fa-arrow-left"></i>
                             <span>Voltar</span>
@@ -105,11 +93,7 @@
 
                 <div class="usuario">
 
-                    <button
-                        type="button"
-                        class="btn-notificacao"
-                        aria-label="Notificações"
-                    >
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
                         <i class="fa-regular fa-bell"></i>
                     </button>
 
@@ -121,11 +105,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
 
-                    <button
-                        type="button"
-                        class="btn-configuracoes"
-                        aria-label="Configurações"
-                    >
+                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
                         <i class="fa-solid fa-gear"></i>
                     </button>
 
@@ -159,19 +139,12 @@
                     <label class="campo-pesquisa" for="pesquisa">
                         <i class="fa-solid fa-magnifying-glass"></i>
 
-                        <input
-                            type="search"
-                            id="pesquisa"
-                            placeholder="Pesquise por nome, profissão, conselho, CPF..."
-                            autocomplete="off"
-                        >
+                        <input type="search" id="pesquisa" placeholder="Pesquise por nome, profissão, conselho, CPF..."
+                            autocomplete="off">
                     </label>
 
 
-                    <a
-                        href="../pages/cadastro-profissional.html"
-                        class="btn-novo"
-                    >
+                    <a href="../pages/cadastro-profissional.html" class="btn-novo">
                         <i class="fa-solid fa-plus"></i>
                         <span>Novo Profissional</span>
                     </a>
@@ -189,11 +162,7 @@
                 </div>
 
 
-                <div
-                    class="lista-profissionais"
-                    id="lista-profissionais"
-                    aria-live="polite"
-                >
+                <div class="lista-profissionais" id="lista-profissionais" aria-live="polite">
 
                     <div class="cabecalho-lista">
                         <span>Nome</span>
@@ -213,12 +182,7 @@
     <!-- CAIXA DE CONFIRMAÇÃO DE EXCLUSÃO -->
     <div class="modal-overlay" id="modal-exclusao" hidden>
 
-        <div
-            class="modal-exclusao"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="titulo-exclusao"
-        >
+        <div class="modal-exclusao" role="dialog" aria-modal="true" aria-labelledby="titulo-exclusao">
 
             <div class="icone-exclusao">
                 <i class="fa-solid fa-trash-can"></i>
@@ -240,19 +204,11 @@
 
             <div class="botoes-exclusao">
 
-                <button
-                    type="button"
-                    class="btn-modal-cancelar"
-                    id="cancelar-exclusao"
-                >
+                <button type="button" class="btn-modal-cancelar" id="cancelar-exclusao">
                     Cancelar
                 </button>
 
-                <button
-                    type="button"
-                    class="btn-modal-excluir"
-                    id="confirmar-exclusao"
-                >
+                <button type="button" class="btn-modal-excluir" id="confirmar-exclusao">
                     Excluir Profissional
                 </button>
 
@@ -266,4 +222,5 @@
     <script src="../js/profissional.js"></script>
 
 </body>
+
 </html>

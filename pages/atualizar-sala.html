@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atualizar Sala</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html" class="ativo">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <div class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <button class="btn-voltar" type="button" onclick="location.href='sala.html'">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+
+                <div class="usuario">
+                    <span class="usuario-perfil">Olá, Admin</span>
+                    <button id="btn-trocar-conta" type="button">Trocar conta</button>
+                    <button id="btn-sair" type="button">Sair</button>
+                    <div class="usuario-perfil"><i class="fa-solid fa-circle-user"></i></div>
+                    <button class="btn-configuracoes" type="button" aria-label="Configurações">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="pagina-cadastro">
+
+                <div class="cabecalho-cadastro">
+                    <h1>Atualizar Sala</h1>
+                    <p>Modifique as informações necessárias da sala no sistema.</p>
+                </div>
+
+                <form class="formulario-sala formulario-profissional">
+
+                    <div class="secao-cadastro">
+                        <div class="titulo-secao">
+                            <i class="fa-solid fa-id-badge"></i>
+                            <div>
+                                <h2>Informações da Sala</h2>
+                                <p>Dados principais e localização</p>
+                            </div>
+                        </div>
+
+                        <div class="grade-campos">
+                            <div class="campo-cadastro campo-largo">
+                                <label for="nome" class="obrigatorio">Nome da Sala</label>
+                                <input type="text" id="nome" name="nome" placeholder="Ex: Sala 1" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="tamanho" class="obrigatorio">Metragem (m²)</label>
+                                <input type="number" id="tamanho" name="tamanho" placeholder="Ex: 15" min="1" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="cidade" class="obrigatorio">Cidade</label>
+                                <select id="cidade" name="cidade" required>
+                                    <option value="">Selecione a cidade</option>
+                                    <option value="Sorocaba">Sorocaba</option>
+                                </select>
+                            </div>
+
+                            <div class="campo-cadastro campo-largo">
+                                <label for="materiais" class="obrigatorio">Materiais da Sala</label>
+                                <textarea id="materiais" name="materiais" placeholder="Ex: Macas, mesas, cadeiras..."
+                                    required></textarea>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="estado" class="obrigatorio">Estado</label>
+                                <select id="estado" name="estado" required>
+                                    <option value="">Selecione o estado</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="botoes-cadastro">
+                        <a href="sala.html" class="btn-cancelar">Cancelar</a>
+                        <button type="submit" class="btn-salvar">
+                            <i class="fa-solid fa-check"></i> Atualizar Sala
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/sala.js"></script>
+</body>
+
+</html>
