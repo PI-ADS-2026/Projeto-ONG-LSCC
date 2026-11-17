@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Salas</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estando em pages/, o CSS fica um nível acima. Ajuste se o seu for diferente -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html" class="ativo">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <div class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <button class="btn-voltar" type="button">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+
+                <div class="usuario">
+                    <span class="usuario-perfil">Olá, Admin</span>
+                    <button id="btn-trocar-conta" type="button">Trocar conta</button>
+                    <button id="btn-sair" type="button">Sair</button>
+                    <div class="usuario-perfil"><i class="fa-solid fa-circle-user"></i></div>
+                    <button class="btn-configuracoes" type="button" aria-label="Configurações">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+            </header>
+
+            <section class="cabecalho-pagina">
+                <div class="titulo-pagina">
+                    <div class="icone-titulo"><i class="fa-solid fa-id-badge"></i></div>
+                    <div class="titulo-pagina-texto">
+                        <h1>Salas</h1>
+                        <p>Gerencie as informações das salas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Busca + abas -->
+            <div class="barra-salas">
+                <div class="campo-pesquisa">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" placeholder="Pesquise por nome ou metragem" aria-label="Pesquisar salas">
+                </div>
+
+                <div class="abas-salas">
+                    <button class="aba-sala" type="button">Agenda</button>
+                    <button class="aba-sala" type="button">Reservadas</button>
+                </div>
+            </div>
+
+            <!-- Lista -->
+            <section class="painel-profissionais">
+                <div class="painel-profissionais-topo">
+                    <h2>Lista de salas</h2>
+                    <a href="cadastro-sala.html" class="btn-novo">
+                        <i class="fa-solid fa-plus"></i> Nova sala
+                    </a>
+                </div>
+
+                <div class="lista-profissionais">
+                    <div class="cabecalho-lista">
+                        <span>Nome</span>
+                        <span>Metros²</span>
+                        <span>Ações</span>
+                    </div>
+
+                    <div class="profissional">
+                        <div class="info-profissional">
+                            <span class="avatar-profissional">S1</span>
+                            <span>Sala 1</span>
+                        </div>
+                        <div class="profissao-profissional">5</div>
+                        <div class="acoes-profissional">
+                            <a href="atualizar-sala.html" class="btn-editar">Editar</a>
+                            <button type="button">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div class="profissional">
+                        <div class="info-profissional">
+                            <span class="avatar-profissional">S2</span>
+                            <span>Sala 2</span>
+                        </div>
+                        <div class="profissao-profissional">6</div>
+                        <div class="acoes-profissional">
+                            <button type="button">Editar</button>
+                            <button type="button">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div class="profissional">
+                        <div class="info-profissional">
+                            <span class="avatar-profissional">S3</span>
+                            <span>Sala 3</span>
+                        </div>
+                        <div class="profissao-profissional">8</div>
+                        <div class="acoes-profissional">
+                            <button type="button">Editar</button>
+                            <button type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

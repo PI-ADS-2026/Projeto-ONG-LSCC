@@ -1,4 +1,3 @@
-
 /* =====================================================
    SISTEMA DE GESTÃO CLÍNICA
    CSS PRINCIPAL
@@ -135,11 +134,9 @@ select:focus-visible {
 
     color: var(--rosa-principal);
 
-    background: linear-gradient(
-        180deg,
-        #ffffff,
-        #fffafd
-    );
+    background: linear-gradient(180deg,
+            #ffffff,
+            #fffafd);
 }
 
 .logo img {
@@ -258,12 +255,10 @@ select:focus-visible {
 
     color: var(--branco);
 
-    background: linear-gradient(
-        110deg,
-        #d71959 0%,
-        #ed1760 60%,
-        #f0206b 100%
-    );
+    background: linear-gradient(110deg,
+            #d71959 0%,
+            #ed1760 60%,
+            #f0206b 100%);
 
     box-shadow: 0 3px 12px rgba(196, 20, 79, 0.12);
 }
@@ -396,6 +391,7 @@ select:focus-visible {
     font-size: 25px;
     font-weight: 700;
 }
+
 /* Botões de ação do usuário */
 .usuario #btn-trocar-conta,
 .usuario #btn-sair {
@@ -440,11 +436,9 @@ select:focus-visible {
     border: 1px solid #f8e4ed;
     border-radius: var(--raio);
 
-    background: linear-gradient(
-        110deg,
-        #fff0f6,
-        #fff8fb
-    );
+    background: linear-gradient(110deg,
+            #fff0f6,
+            #fff8fb);
 
     box-shadow: var(--sombra);
 }
@@ -472,11 +466,9 @@ select:focus-visible {
 
     color: var(--branco);
 
-    background: linear-gradient(
-        145deg,
-        #f04482,
-        #d71959
-    );
+    background: linear-gradient(145deg,
+            #f04482,
+            #d71959);
 
     box-shadow: 0 5px 12px rgba(233, 30, 99, 0.17);
 }
@@ -542,7 +534,7 @@ select:focus-visible {
     box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.08);
 }
 
-.campo-pesquisa > i {
+.campo-pesquisa>i {
     flex-shrink: 0;
     color: #8793a8;
     font-size: 16px;
@@ -729,7 +721,7 @@ select:focus-visible {
     font-weight: 600;
 }
 
-.info-paciente > span:last-child {
+.info-paciente>span:last-child {
     overflow-wrap: anywhere;
 }
 
@@ -749,11 +741,9 @@ select:focus-visible {
 
     color: var(--branco);
 
-    background: linear-gradient(
-        145deg,
-        #f18ab0,
-        #e73576
-    );
+    background: linear-gradient(145deg,
+            #f18ab0,
+            #e73576);
 
     box-shadow: 0 2px 6px rgba(233, 30, 99, 0.12);
 
@@ -834,9 +824,7 @@ select:focus-visible {
     display: grid;
 
     grid-template-columns:
-        minmax(180px, 2fr)
-        minmax(150px, 2fr)
-        minmax(180px, 1fr);
+        minmax(180px, 2fr) minmax(150px, 2fr) minmax(180px, 1fr);
 
     align-items: center;
     gap: 15px;
@@ -911,7 +899,7 @@ select:focus-visible {
     font-weight: 600;
 }
 
-.info-profissional > span:last-child {
+.info-profissional>span:last-child {
     overflow-wrap: anywhere;
 }
 
@@ -931,11 +919,9 @@ select:focus-visible {
 
     color: var(--branco);
 
-    background: linear-gradient(
-        145deg,
-        #f18ab0,
-        #e73576
-    );
+    background: linear-gradient(145deg,
+            #f18ab0,
+            #e73576);
 
     box-shadow: 0 2px 6px rgba(233, 30, 99, 0.12);
 
@@ -1191,7 +1177,7 @@ select:focus-visible {
     margin-top: 20px;
 }
 
-.observacoes > label {
+.observacoes>label {
     display: block;
     margin-bottom: 10px;
 
@@ -1423,8 +1409,8 @@ select:focus-visible {
 
 /* Separação de seções */
 
-.formulario-paciente .secao-cadastro + .secao-cadastro,
-.formulario-profissional .secao-cadastro + .secao-cadastro {
+.formulario-paciente .secao-cadastro+.secao-cadastro,
+.formulario-profissional .secao-cadastro+.secao-cadastro {
     padding-top: 24px;
     border-top: 1px solid #f0e7ec;
 }
@@ -1439,7 +1425,7 @@ select:focus-visible {
     margin-bottom: 22px;
 }
 
-.titulo-secao > i {
+.titulo-secao>i {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2652,5 +2638,134 @@ select:focus-visible {
 
     .titulo-secao p {
         font-size: 12px;
+    }
+}
+
+/* =====================================================
+   CADASTRO DE SALA (colar no final do style.css)
+===================================================== */
+
+/* Campos empilhados do topo do formulário */
+.campo-sala {
+    margin-bottom: 20px;
+}
+
+/* Rótulos longos, como "Tamanho da Sala em m²:" */
+.campo-sala label {
+    width: 170px;
+}
+
+/* Select no mesmo padrão dos inputs de .campo */
+.campo select {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #e2c3d1;
+    border-radius: 7px;
+
+    outline: none;
+
+    color: var(--texto);
+    background: var(--branco);
+
+    font-size: 13px;
+    cursor: pointer;
+
+    transition: all var(--transicao);
+}
+
+.campo select:focus {
+    border-color: var(--rosa-principal);
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.08);
+}
+
+@media (max-width: 600px) {
+    .campo-sala label {
+        width: auto;
+    }
+}
+
+/* Formulário de sala ocupa o card inteiro */
+.formulario-sala {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+/* =====================================================
+   LISTA DE SALAS (colar no final do style.css)
+===================================================== */
+
+/* Linha com busca à esquerda e abas à direita */
+.barra-salas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin: 0 25px 20px;
+}
+
+.abas-salas {
+    display: flex;
+    gap: 12px;
+}
+
+.aba-sala {
+    min-height: 44px;
+    padding: 0 30px;
+
+    border: 1px solid #f4c5d7;
+    border-radius: 9px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all var(--transicao);
+}
+
+.aba-sala:hover {
+    border-color: var(--rosa-medio);
+    background: var(--rosa-claro);
+}
+
+/* Aba selecionada (adicione class="aba-sala ativa") */
+.aba-sala.ativa {
+    border-color: var(--rosa-principal);
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+@media (max-width: 800px) {
+    .barra-salas {
+        flex-wrap: wrap;
+        margin: 0 16px 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .barra-salas {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 0 12px 14px;
+    }
+
+    .barra-salas .campo-pesquisa {
+        width: 100%;
+    }
+
+    .abas-salas {
+        width: 100%;
+    }
+
+    .aba-sala {
+        flex: 1;
+        padding: 0 12px;
     }
 }
