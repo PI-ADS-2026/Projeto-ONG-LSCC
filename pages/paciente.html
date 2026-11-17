@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body class="pagina-pacientes">
@@ -42,6 +40,11 @@
                     <span>Profissionais</span>
                 </a>
 
+                <a href="../pages/sala.html" class="ativo">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
                 <a href="#">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
@@ -64,7 +67,7 @@
 
             </nav>
 
-            
+
 
         </aside>
 
@@ -77,18 +80,11 @@
 
                 <div class="topo-esquerda">
 
-                    <button
-                        type="button"
-                        class="btn-menu"
-                        aria-label="Menu lateral"
-                        title="Menu lateral"
-                    >
+                    <button type="button" class="btn-menu" aria-label="Menu lateral" title="Menu lateral">
                         <i class="fa-solid fa-bars"></i>
                     </button>
 
-                    <button
-                        type="button"
-                        class="btn-voltar">
+                    <button type="button" class="btn-voltar">
                         <a href="../pages/home.html">
                             <i class="fa-solid fa-arrow-left"></i>
                             <span>Voltar</span>
@@ -99,11 +95,7 @@
 
                 <div class="usuario">
 
-                    <button
-                        type="button"
-                        class="btn-notificacao"
-                        aria-label="Notificações"
-                    >
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
                         <i class="fa-regular fa-bell"></i>
                     </button>
 
@@ -115,11 +107,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
 
-                    <button
-                        type="button"
-                        class="btn-configuracoes"
-                        aria-label="Configurações"
-                    >
+                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
                         <i class="fa-solid fa-gear"></i>
                     </button>
 
@@ -147,18 +135,11 @@
                     <label class="campo-pesquisa" for="pesquisa">
                         <i class="fa-solid fa-magnifying-glass"></i>
 
-                        <input
-                            type="search"
-                            id="pesquisa"
-                            placeholder="Pesquise por nome, telefone, CPF..."
-                            autocomplete="off"
-                        >
+                        <input type="search" id="pesquisa" placeholder="Pesquise por nome, telefone, CPF..."
+                            autocomplete="off">
                     </label>
 
-                    <a
-                        href="../pages/cadastro-paciente.html"
-                        class="btn-novo"
-                    >
+                    <a href="../pages/cadastro-paciente.html" class="btn-novo">
                         <i class="fa-solid fa-plus"></i>
                         <span>Novo Paciente</span>
                     </a>
@@ -175,11 +156,7 @@
                     <h2>Lista de Pacientes</h2>
                 </div>
 
-                <div
-                    class="lista-pacientes"
-                    id="lista-pacientes"
-                    aria-live="polite"
-                >
+                <div class="lista-pacientes" id="lista-pacientes" aria-live="polite">
 
                     <div class="cabecalho-lista">
                         <span>Nome</span>
@@ -195,38 +172,36 @@
     </div>
 
     <!-- Caixa de confirmação de exclusão -->
-<div class="modal-overlay" id="modal-exclusao" hidden>
-    <div class="modal-exclusao" role="dialog" aria-modal="true"
-         aria-labelledby="titulo-exclusao">
+    <div class="modal-overlay" id="modal-exclusao" hidden>
+        <div class="modal-exclusao" role="dialog" aria-modal="true" aria-labelledby="titulo-exclusao">
 
-        <div class="icone-exclusao">
-            <i class="fa-solid fa-trash-can"></i>
+            <div class="icone-exclusao">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+
+            <h2 id="titulo-exclusao">Excluir paciente?</h2>
+
+            <p>
+                Tem certeza de que deseja excluir
+                <strong id="nome-exclusao">este paciente</strong>?<br>
+                Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="botoes-exclusao">
+                <button type="button" class="btn-modal-cancelar" id="cancelar-exclusao">
+                    Cancelar
+                </button>
+
+                <button type="button" class="btn-modal-excluir" id="confirmar-exclusao">
+                    Excluir paciente
+                </button>
+            </div>
+
         </div>
-
-        <h2 id="titulo-exclusao">Excluir paciente?</h2>
-
-        <p>
-            Tem certeza de que deseja excluir
-            <strong id="nome-exclusao">este paciente</strong>?<br>
-            Essa ação não poderá ser desfeita.
-        </p>
-
-        <div class="botoes-exclusao">
-            <button type="button" class="btn-modal-cancelar"
-                    id="cancelar-exclusao">
-                Cancelar
-            </button>
-
-            <button type="button" class="btn-modal-excluir"
-                    id="confirmar-exclusao">
-                Excluir paciente
-            </button>
-        </div>
-
     </div>
-</div>
 
     <script src="../js/paciente.js"></script>
 
 </body>
+
 </html>

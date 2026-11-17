@@ -7,8 +7,6 @@
     <title>Atualizar Sala</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Estando em pages/, o CSS fica um nível acima. Ajuste se o seu for diferente -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -34,9 +32,14 @@
                     <span>Pacientes</span>
                 </a>
 
-                <a href="../pages/profissional.html" class="ativo">
+                <a href="../pages/profissional.html">
                     <i class="fa-solid fa-user-doctor"></i>
                     <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html" class="ativo">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
                 </a>
 
                 <a href="#">
@@ -67,8 +70,8 @@
 
             <header class="topo">
                 <div class="topo-esquerda">
-                    <button class="btn-voltar" type="button">
-                        <a href="sala.html"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+                    <button class="btn-voltar" type="button" onclick="location.href='sala.html'">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
                     </button>
                 </div>
 
@@ -83,67 +86,75 @@
                 </div>
             </header>
 
-            <section class="cabecalho-pagina">
-                <div class="titulo-pagina">
-                    <div class="icone-titulo"><i class="fa-solid fa-id-badge"></i></div>
-                    <div class="titulo-pagina-texto">
-                        <h1>Atualizar Sala</h1>
-                        <p>Gerencie as informações das salas.</p>
-                    </div>
+            <div class="pagina-cadastro">
+
+                <div class="cabecalho-cadastro">
+                    <h1>Atualizar Sala</h1>
+                    <p>Modifique as informações necessárias da sala no sistema.</p>
                 </div>
-            </section>
 
-            <!-- Card branco do formulário -->
-            <section class="painel-profissionais">
-                <form class="formulario formulario-sala" action="#" method="post">
+                <form class="formulario-sala formulario-profissional">
 
-                    <div class="campo campo-sala">
-                        <label for="nome">Nome:</label>
-                        <input id="nome" name="nome" type="text" value="Sala 1">
-                    </div>
-
-                    <div class="campo campo-sala">
-                        <label for="tamanho">Tamanho da Sala em m²:</label>
-                        <input id="tamanho" name="tamanho" type="number" min="0" value="4">
-                    </div>
-
-                    <div class="campo campo-sala">
-                        <label for="materiais">Materiais da Sala:</label>
-                        <input id="materiais" name="materiais" type="text"
-                            value="Duas poltronas, cadeira, mesa e bacia.">
-                    </div>
-
-                    <div class="linha">
-                        <div class="campo cidade">
-                            <label for="cidade">Cidade:</label>
-                            <select id="cidade" name="cidade">
-                                <option selected>Sorocaba</option>
-                                <option>Campinas</option>
-                                <option>São Paulo</option>
-                            </select>
+                    <div class="secao-cadastro">
+                        <div class="titulo-secao">
+                            <i class="fa-solid fa-id-badge"></i>
+                            <div>
+                                <h2>Informações da Sala</h2>
+                                <p>Dados principais e localização</p>
+                            </div>
                         </div>
 
-                        <div class="campo estado">
-                            <label for="estado">Estado:</label>
-                            <select id="estado" name="estado">
-                                <option selected>São Paulo</option>
-                                <option>Minas Gerais</option>
-                                <option>Rio de Janeiro</option>
-                            </select>
+                        <div class="grade-campos">
+                            <div class="campo-cadastro campo-largo">
+                                <label for="nome" class="obrigatorio">Nome da Sala</label>
+                                <input type="text" id="nome" name="nome" placeholder="Ex: Sala 1" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="tamanho" class="obrigatorio">Metragem (m²)</label>
+                                <input type="number" id="tamanho" name="tamanho" placeholder="Ex: 15" min="1" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="cidade" class="obrigatorio">Cidade</label>
+                                <select id="cidade" name="cidade" required>
+                                    <option value="">Selecione a cidade</option>
+                                    <option value="Sorocaba">Sorocaba</option>
+                                </select>
+                            </div>
+
+                            <div class="campo-cadastro campo-largo">
+                                <label for="materiais" class="obrigatorio">Materiais da Sala</label>
+                                <textarea id="materiais" name="materiais" placeholder="Ex: Macas, mesas, cadeiras..."
+                                    required></textarea>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="estado" class="obrigatorio">Estado</label>
+                                <select id="estado" name="estado" required>
+                                    <option value="">Selecione o estado</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="botoes-formulario">
+                    <div class="botoes-cadastro">
                         <a href="sala.html" class="btn-cancelar">Cancelar</a>
-                        <button class="btn-salvar" type="submit">Atualizar</button>
+                        <button type="submit" class="btn-salvar">
+                            <i class="fa-solid fa-check"></i> Atualizar Sala
+                        </button>
                     </div>
 
                 </form>
-            </section>
+
+            </div>
 
         </div>
+
     </div>
 
+    <script src="../js/sala.js"></script>
 </body>
 
 </html>
