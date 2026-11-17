@@ -76,11 +76,17 @@
                 </div>
 
                 <div class="usuario">
-                    <span class="usuario-perfil">Olá, Admin</span>
-                    <button id="btn-trocar-conta" type="button">Trocar conta</button>
-                    <button id="btn-sair" type="button">Sair</button>
-                    <div class="usuario-perfil"><i class="fa-solid fa-circle-user"></i></div>
-                    <button class="btn-configuracoes" type="button" aria-label="Configurações">
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="usuario-perfil">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span>Olá, Admin</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
                         <i class="fa-solid fa-gear"></i>
                     </button>
                 </div>
@@ -94,29 +100,31 @@
                         <p>Gerencie as informações das salas.</p>
                     </div>
                 </div>
+
+                <!-- Classe .acoes unifica a busca e o botão à direita exatamente como em Profissionais -->
+                <div class="acoes">
+                    <div class="campo-pesquisa">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="pesquisa-sala" placeholder="Pesquise por nome ou metragem"
+                            aria-label="Pesquisar salas">
+                    </div>
+
+                    <a href="cadastro-sala.html" class="btn-novo">
+                        <i class="fa-solid fa-plus"></i> Nova sala
+                    </a>
+                </div>
             </section>
-
-            <!-- Busca + abas -->
-            <div class="barra-salas">
-                <div class="campo-pesquisa">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" id="pesquisa-sala" placeholder="Pesquise por nome ou metragem"
-                        aria-label="Pesquisar salas">
-                </div>
-
-                <div class="abas-salas">
-                    <button class="aba-sala" type="button">Agenda</button>
-                    <button class="aba-sala" type="button">Reservadas</button>
-                </div>
-            </div>
 
             <!-- Lista -->
             <section class="painel-profissionais">
                 <div class="painel-profissionais-topo">
                     <h2>Lista de salas</h2>
-                    <a href="cadastro-sala.html" class="btn-novo">
-                        <i class="fa-solid fa-plus"></i> Nova sala
-                    </a>
+
+                    <!-- Abas de Salas -->
+                    <div class="abas-salas">
+                        <button class="aba-sala" type="button">Agenda</button>
+                        <button class="aba-sala" type="button">Reservadas</button>
+                    </div>
                 </div>
 
                 <div class="lista-profissionais" id="lista-salas">
