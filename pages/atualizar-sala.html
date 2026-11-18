@@ -76,11 +76,17 @@
                 </div>
 
                 <div class="usuario">
-                    <span class="usuario-perfil">Olá, Admin</span>
-                    <button id="btn-trocar-conta" type="button">Trocar conta</button>
-                    <button id="btn-sair" type="button">Sair</button>
-                    <div class="usuario-perfil"><i class="fa-solid fa-circle-user"></i></div>
-                    <button class="btn-configuracoes" type="button" aria-label="Configurações">
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="usuario-perfil">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span>Olá, Admin</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
                         <i class="fa-solid fa-gear"></i>
                     </button>
                 </div>
@@ -97,7 +103,7 @@
 
                     <div class="secao-cadastro">
                         <div class="titulo-secao">
-                            <i class="fa-solid fa-id-badge"></i>
+                            <i class="fa-solid fa-door-open"></i>
                             <div>
                                 <h2>Informações da Sala</h2>
                                 <p>Dados principais e localização</p>
@@ -105,7 +111,7 @@
                         </div>
 
                         <div class="grade-campos">
-                            <div class="campo-cadastro campo-largo">
+                            <div class="campo-cadastro">
                                 <label for="nome" class="obrigatorio">Nome da Sala</label>
                                 <input type="text" id="nome" name="nome" placeholder="Ex: Sala 1" required>
                             </div>
@@ -123,18 +129,18 @@
                                 </select>
                             </div>
 
-                            <div class="campo-cadastro campo-largo">
-                                <label for="materiais" class="obrigatorio">Materiais da Sala</label>
-                                <textarea id="materiais" name="materiais" placeholder="Ex: Macas, mesas, cadeiras..."
-                                    required></textarea>
-                            </div>
-
                             <div class="campo-cadastro">
                                 <label for="estado" class="obrigatorio">Estado</label>
                                 <select id="estado" name="estado" required>
                                     <option value="">Selecione o estado</option>
                                     <option value="São Paulo">São Paulo</option>
                                 </select>
+                            </div>
+
+                            <div class="campo-cadastro campo-largo">
+                                <label for="materiais" class="obrigatorio">Materiais da Sala</label>
+                                <textarea id="materiais" name="materiais" placeholder="Ex: Macas, mesas, cadeiras..."
+                                    required></textarea>
                             </div>
                         </div>
                     </div>
