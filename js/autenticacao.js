@@ -104,3 +104,34 @@ function obterUsuarioLogado() {
 function sairDaConta() {
     localStorage.removeItem(CHAVE_SESSAO);
 }
+// Redefine a senha de um usuário cadastrado pelo e-mail.
+function redefinirSenhaPorEmail(email, novaSenha) {
+    const usuarios = obterUsuarios();
+    const emailNormalizado = email.toLowerCase();
+
+    const indiceUsuario = usuarios.findIndex(
+        usuario => usuario.email === emailNormalizado
+    );
+
+    if (indiceUsuario === -1) {
+        return {
+            sucesso: false,
+            mensagem: 'Nenhuma conta encontrada com este e-mail.'
+        };
+    }
+
+    usuarios[indiceUsuario] = {
+        ...usuarios[indiceUsuario],
+        senha: novaSenha
+    };
+
+    localStorage.setItem(
+        CHAVE_USUARIOS,
+        JSON.stringify(usuarios)
+    );
+
+    return {
+        sucesso: true,
+        mensagem: 'Senha redefinida com sucesso! Faça login novamente.'
+    };
+}
