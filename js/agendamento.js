@@ -52,7 +52,14 @@
 
     function obterAgendamentos() {
         try {
-            return JSON.parse(localStorage.getItem("agendamentos")) || [];
+            const agendamentos =
+                JSON.parse(localStorage.getItem("agendamentos")) || [];
+
+            return agendamentos.map(agendamento => ({
+                ...agendamento,
+                status: agendamento.status || "Agendada"
+            }));
+
         } catch (erro) {
             console.error("Erro ao carregar agendamentos:", erro);
             return [];

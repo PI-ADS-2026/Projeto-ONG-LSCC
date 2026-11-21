@@ -104,7 +104,9 @@
 
             data: agendamento.data,
             horario: agendamento.horario,
-            observacoes: agendamento.observacoes
+            observacoes: agendamento.observacoes,
+
+            status: "Agendada"
         };
 
         agendamentos.push(novoAgendamento);
