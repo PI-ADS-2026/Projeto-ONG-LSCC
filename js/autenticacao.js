@@ -9,11 +9,29 @@ function obterUsuarios() {
 }
 
 
-// Cadastra um novo usuário.
-function cadastrarUsuario(nome, cpf, email, senha) {
+// Valida telefone opcional: vazio é válido; se preenchido, exige pelo menos 10 dígitos.
+function validarTelefoneOpcional(telefone) {
+    const texto = (telefone || '').trim();
+    const digitos = texto.replace(/\D/g, '');
+
+    if (digitos !== '' && digitos.length < 10) {
+        return {
+            valido: false,
+            mensagem: 'Informe um telefone com DDD válido (mínimo 10 dígitos).'
+        };
+    }
+
+    return {
+        valido: true,
+        valor: texto
+    };
+}
+
+
+// Cadastra um novo usuário (telefone opcional).
+function cadastrarUsuario(nome, cpf, email, senha, telefone = '') {
     const usuarios = obterUsuarios();
 
-    // Verifica se já existe uma conta com esse e-mail.
     const emailExistente = usuarios.some(
         usuario => usuario.email.toLowerCase() === email.toLowerCase()
     );
@@ -25,7 +43,6 @@ function cadastrarUsuario(nome, cpf, email, senha) {
         };
     }
 
-    // Verifica se já existe uma conta com esse CPF.
     const cpfExistente = usuarios.some(
         usuario => usuario.cpf === cpf
     );
@@ -37,12 +54,21 @@ function cadastrarUsuario(nome, cpf, email, senha) {
         };
     }
 
+    const validacaoTelefone = validarTelefoneOpcional(telefone);
+    if (!validacaoTelefone.valido) {
+        return {
+            sucesso: false,
+            mensagem: validacaoTelefone.mensagem
+        };
+    }
+
     const novoUsuario = {
         id: crypto.randomUUID(),
         nome,
         cpf,
         email: email.toLowerCase(),
-        senha
+        senha,
+        telefone: validacaoTelefone.valor
     };
 
     usuarios.push(novoUsuario);
@@ -76,7 +102,6 @@ function fazerLogin(email, senha) {
         };
     }
 
-    // Guarda os dados do usuário conectado.
     localStorage.setItem(
         CHAVE_SESSAO,
         JSON.stringify({
@@ -93,9 +118,166 @@ function fazerLogin(email, senha) {
 }
 
 
-// Recupera os dados do usuário conectado.
+// Recupera os dados da sessão do usuário conectado.
 function obterUsuarioLogado() {
     return JSON.parse(localStorage.getItem(CHAVE_SESSAO));
+}
+
+
+// Busca o registro completo do usuário logado na lista de usuários.
+function obterDadosCompletosUsuarioLogado() {
+    const sessao = obterUsuarioLogado();
+    if (!sessao) return null;
+
+    const usuarios = obterUsuarios();
+    return usuarios.find(u => u.id === sessao.id) || null;
+}
+
+
+// Atualiza os dados cadastrais da conta do usuário autenticado (US-005).
+function atualizarDadosConta(novosDados) {
+    const sessao = obterUsuarioLogado();
+    if (!sessao) {
+        return {
+            sucesso: false,
+            mensagem: 'Sessão expirada. Faça login novamente.'
+        };
+    }
+
+    const nome = (novosDados.nome || '').trim();
+    const cpf = (novosDados.cpf || '').trim();
+    const email = (novosDados.email || '').trim().toLowerCase();
+
+    if (!nome || !cpf || !email) {
+        return {
+            sucesso: false,
+            mensagem: 'Preencha nome, CPF e e-mail.'
+        };
+    }
+
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValido) {
+        return {
+            sucesso: false,
+            mensagem: 'Informe um e-mail válido.'
+        };
+    }
+
+    const validacaoTelefone = validarTelefoneOpcional(novosDados.telefone);
+    if (!validacaoTelefone.valido) {
+        return {
+            sucesso: false,
+            mensagem: validacaoTelefone.mensagem
+        };
+    }
+
+    const usuarios = obterUsuarios();
+    const indice = usuarios.findIndex(u => u.id === sessao.id);
+
+    if (indice === -1) {
+        return {
+            sucesso: false,
+            mensagem: 'Usuário não encontrado.'
+        };
+    }
+
+    const emailEmUso = usuarios.some(
+        u => u.id !== sessao.id && u.email.toLowerCase() === email
+    );
+    if (emailEmUso) {
+        return {
+            sucesso: false,
+            mensagem: 'Este e-mail já está em uso por outra conta.'
+        };
+    }
+
+    const cpfEmUso = usuarios.some(
+        u => u.id !== sessao.id && u.cpf === cpf
+    );
+    if (cpfEmUso) {
+        return {
+            sucesso: false,
+            mensagem: 'Este CPF já está cadastrado em outra conta.'
+        };
+    }
+
+    const usuarioAtual = usuarios[indice];
+
+    usuarios[indice] = {
+        ...usuarioAtual,
+        nome,
+        cpf,
+        email,
+        telefone: validacaoTelefone.valor
+    };
+
+    localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
+
+    localStorage.setItem(
+        CHAVE_SESSAO,
+        JSON.stringify({
+            id: usuarioAtual.id,
+            nome,
+            email
+        })
+    );
+
+    return {
+        sucesso: true,
+        mensagem: 'Dados da conta atualizados com sucesso!'
+    };
+}
+
+
+// Redefine a senha de um usuário cadastrado a partir do e-mail.
+function redefinirSenhaPorEmail(email, novaSenha, confirmarSenha) {
+    const emailLimpo = (email || '').trim().toLowerCase();
+    const senhaNova = (novaSenha || '').trim();
+
+    if (!emailLimpo || !senhaNova) {
+        return {
+            sucesso: false,
+            mensagem: 'Preencha o e-mail e a nova senha.'
+        };
+    }
+
+    if (confirmarSenha !== undefined && senhaNova !== String(confirmarSenha).trim()) {
+        return {
+            sucesso: false,
+            mensagem: 'As senhas não coincidem!'
+        };
+    }
+
+    if (senhaNova.length < 4) {
+        return {
+            sucesso: false,
+            mensagem: 'A nova senha deve ter pelo menos 4 caracteres.'
+        };
+    }
+
+    const usuarios = obterUsuarios();
+    const indice = usuarios.findIndex(
+        u => (u.email || '').toLowerCase() === emailLimpo
+    );
+
+    if (indice === -1) {
+        return {
+            sucesso: false,
+            mensagem: 'Nenhuma conta encontrada com este e-mail.'
+        };
+    }
+
+    usuarios[indice] = {
+        ...usuarios[indice],
+        senha: senhaNova
+    };
+
+    localStorage.setItem(CHAVE_USUARIOS, JSON.stringify(usuarios));
+
+    return {
+        sucesso: true,
+        mensagem: 'Senha redefinida com sucesso!'
+    };
 }
 
 
@@ -114,7 +296,7 @@ function atualizarRotacaoSeta(iconeSeta, aberto) {
 
 
 // Configura um par botão + menu suspenso sem duplicar eventos.
-function configurarDropdown(botao, menu, iconeSeta, aoFecharExtra) {
+function configurarDropdown(botao, menu, iconeSeta) {
     if (!botao || !menu) return;
 
     function fechar() {
@@ -122,9 +304,6 @@ function configurarDropdown(botao, menu, iconeSeta, aoFecharExtra) {
         botao.setAttribute('aria-expanded', 'false');
         if (iconeSeta) {
             atualizarRotacaoSeta(iconeSeta, false);
-        }
-        if (typeof aoFecharExtra === 'function') {
-            aoFecharExtra();
         }
     }
 
@@ -134,7 +313,6 @@ function configurarDropdown(botao, menu, iconeSeta, aoFecharExtra) {
         botao.addEventListener('click', function (event) {
             event.stopPropagation();
 
-            // Fecha outros menus abertos antes de alternar este.
             document.querySelectorAll('.topo .menu-suspenso.aberto').forEach(menuAberto => {
                 if (menuAberto !== menu) {
                     menuAberto.classList.remove('aberto');
