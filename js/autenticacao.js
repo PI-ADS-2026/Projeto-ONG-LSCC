@@ -9,6 +9,36 @@ function obterUsuarios() {
 }
 
 
+// Valida o CPF matematicamente.
+function validarCPF(cpf) {
+    cpf = (cpf || '').replace(/[^\d]+/g, '');
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+    let resto;
+
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+}
+
+
 // Valida telefone opcional: vazio é válido; se preenchido, exige pelo menos 10 dígitos.
 function validarTelefoneOpcional(telefone) {
     const texto = (telefone || '').trim();
@@ -28,8 +58,15 @@ function validarTelefoneOpcional(telefone) {
 }
 
 
-// Cadastra um novo usuário (telefone opcional).
+// Cadastra um novo usuário (com validação de CPF e telefone opcional).
 function cadastrarUsuario(nome, cpf, email, senha, telefone = '') {
+    if (!validarCPF(cpf)) {
+        return {
+            sucesso: false,
+            mensagem: 'CPF inválido! Por favor, digite um CPF real.'
+        };
+    }
+
     const usuarios = obterUsuarios();
 
     const emailExistente = usuarios.some(
@@ -152,6 +189,13 @@ function atualizarDadosConta(novosDados) {
         return {
             sucesso: false,
             mensagem: 'Preencha nome, CPF e e-mail.'
+        };
+    }
+
+    if (!validarCPF(cpf)) {
+        return {
+            sucesso: false,
+            mensagem: 'CPF inválido! Por favor, digite um CPF real.'
         };
     }
 
@@ -407,6 +451,10 @@ function inicializarTopoAutenticado() {
     }
 }
 
+
+// ==========================================
+// CONFIGURAÇÕES GLOBAIS AO CARREGAR A PÁGINA
+// ==========================================
 document.addEventListener('DOMContentLoaded', function () {
     const temTopoLogado =
         document.getElementById('nome-usuario') ||
@@ -416,5 +464,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (temTopoLogado) {
         inicializarTopoAutenticado();
+    }
+
+    // 1. Máscara automática de CPF (aplica em qualquer input com id="cpf")
+    const inputCpf = document.getElementById('cpf');
+    if (inputCpf) {
+        inputCpf.addEventListener('input', function (e) {
+            let valor = e.target.value.replace(/\D/g, '');
+
+            if (valor.length <= 11) {
+                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+                valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            }
+
+            e.target.value = valor;
+        });
+    }
+
+    // 2. Intercepta o envio do formulário de cadastro automaticamente
+    const formCadastro = document.getElementById('form-cadastro');
+    if (formCadastro) {
+        formCadastro.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value.trim();
+            const cpf = document.getElementById('cpf').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone') ? document.getElementById('telefone').value.trim() : '';
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem!');
+                document.getElementById('confirmar-senha').focus();
+                return;
+            }
+
+            // Chama a função centralizada que já valida o CPF e salva no localStorage
+            const resultado = cadastrarUsuario(nome, cpf, email, senha, telefone);
+
+            if (!resultado.sucesso) {
+                alert(resultado.mensagem);
+                document.getElementById('cpf').focus();
+                return;
+            }
+
+            alert(resultado.mensagem);
+            window.location.href = '../pages/entrar.html';
+        });
     }
 });
