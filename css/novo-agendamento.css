@@ -1,0 +1,340 @@
+
+/* =====================================================
+   NOVO AGENDAMENTO
+===================================================== */
+
+.novo-agendamento-conteudo {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* Cabeçalho */
+
+.novo-agendamento-cabecalho {
+    margin-bottom: 25px;
+}
+
+.novo-agendamento-cabecalho h1 {
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.novo-agendamento-cabecalho p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* Paciente selecionado */
+
+.painel-paciente-selecionado {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 22px;
+    padding: 20px;
+
+    border: 1px solid #f3bfd2;
+    border-radius: 12px;
+
+    background: var(--rosa-suave);
+}
+
+.painel-selecao-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: var(--rosa-principal);
+    background: var(--branco);
+
+    font-size: 19px;
+}
+
+.painel-selecao-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.painel-selecao-info span {
+    display: block;
+    margin-bottom: 5px;
+
+    color: var(--texto-secundario);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.painel-selecao-info h2 {
+    margin-bottom: 4px;
+
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.painel-selecao-info p {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.alterar-paciente {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #f3bfd2;
+    border-radius: 8px;
+
+    color: var(--rosa-principal);
+    background: var(--branco);
+
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: all var(--transicao);
+}
+
+.alterar-paciente:hover {
+    color: var(--branco);
+    border-color: var(--rosa-principal);
+    background: var(--rosa-principal);
+}
+
+/* Painel do formulário */
+
+.painel-formulario-agendamento {
+    padding: 25px;
+
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Título do formulário */
+
+.painel-formulario-titulo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+.formulario-titulo-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 18px;
+}
+
+.painel-formulario-titulo h2 {
+    margin-bottom: 5px;
+
+    color: var(--texto);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.painel-formulario-titulo p {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* Grade dos campos */
+
+.formulario-agendamento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.campo-agendamento {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.campo-agendamento label {
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.campo-agendamento input,
+.campo-agendamento select,
+.campo-agendamento textarea {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    outline: none;
+
+    color: var(--texto);
+    background: #fafbfe;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: border-color var(--transicao);
+}
+
+.campo-agendamento input,
+.campo-agendamento select {
+    min-height: 44px;
+}
+
+.campo-agendamento textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.campo-agendamento input:focus,
+.campo-agendamento select:focus,
+.campo-agendamento textarea:focus {
+    border-color: var(--rosa-medio);
+    background: var(--branco);
+}
+
+.campo-agendamento input:disabled,
+.campo-agendamento select:disabled {
+    color: #a0a9b8;
+    background: #f0f1f5;
+    cursor: not-allowed;
+}
+
+.campo-agendamento input::placeholder,
+.campo-agendamento textarea::placeholder {
+    color: #a0a9b8;
+}
+
+.campo-observacoes {
+    grid-column: 1 / -1;
+}
+
+/* Ações */
+
+.acoes-agendamento {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+.btn-cancelar-agendamento,
+.btn-continuar-agendamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 43px;
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-cancelar-agendamento {
+    border: 1px solid var(--borda);
+    color: var(--texto-secundario);
+    background: var(--branco);
+}
+
+.btn-cancelar-agendamento:hover {
+    border-color: var(--rosa-medio);
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.btn-continuar-agendamento {
+    border: 1px solid var(--rosa-principal);
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+.btn-continuar-agendamento:hover {
+    border-color: var(--rosa-escuro);
+    background: var(--rosa-escuro);
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+    .novo-agendamento-conteudo {
+        padding: 24px 18px;
+    }
+
+    .painel-formulario-agendamento {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .painel-paciente-selecionado {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .painel-selecao-info {
+        flex-basis: calc(100% - 70px);
+    }
+
+    .alterar-paciente {
+        margin-left: 64px;
+    }
+
+    .formulario-agendamento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-observacoes {
+        grid-column: auto;
+    }
+
+    .acoes-agendamento {
+        flex-direction: column-reverse;
+    }
+
+    .btn-cancelar-agendamento,
+    .btn-continuar-agendamento {
+        width: 100%;
+    }
+}
