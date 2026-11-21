@@ -44,6 +44,56 @@ if (idEdicao) {
     }
 }
 
+// --- 1. MÁSCARA AUTOMÁTICA NO CAMPO DE CPF ---
+const inputCpf = document.getElementById('cpf');
+
+if (inputCpf) {
+    inputCpf.addEventListener('input', function (e) {
+        let valor = e.target.value;
+
+        // Remove tudo que não for número
+        valor = valor.replace(/\D/g, "");
+
+        // Aplica os pontos e o traço conforme o usuário digita
+        if (valor.length <= 11) {
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+        }
+
+        e.target.value = valor;
+    });
+}
+
+// --- 2. FUNÇÃO DE VALIDAÇÃO MATEMÁTICA DO CPF ---
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, "");
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+    let resto;
+
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+}
+
 // Salva um paciente novo ou atualiza um existente.
 function salvarPaciente() {
     const dados = {};
@@ -60,6 +110,14 @@ function salvarPaciente() {
         alert('Digite o nome do paciente.');
         document.getElementById('nome').focus();
         return null;
+    }
+
+    // --- 3. VALIDAÇÃO DO CPF ANTES DE SALVAR ---
+    // Se o campo CPF foi preenchido, valida os dígitos matemáticos
+    if (dados.cpf !== '' && !validarCPF(dados.cpf)) {
+        alert('CPF inválido! Por favor, digite um CPF real para continuar.');
+        document.getElementById('cpf').focus();
+        return null; // Interrompe o salvamento
     }
 
     const pacientes = obterPacientes();
