@@ -155,13 +155,13 @@
 
                             <div>
                                 <h2 id="mes-atual">Novembro 2026</h2>
-                                <p>Calendário mensal</p>
+                                <p id="descricao-visualizacao">Calendário mensal</p>
                             </div>
                         </div>
 
                         <div class="calendario-navegacao">
                             <button type="button" id="mes-anterior"
-                                aria-label="Mês anterior">
+                                aria-label="Período anterior">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
 
@@ -170,10 +170,43 @@
                             </button>
 
                             <button type="button" id="mes-proximo"
-                                aria-label="Próximo mês">
+                                aria-label="Próximo período">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>
                         </div>
+
+                    </div>
+
+                    <!-- VISUALIZAÇÕES DO CALENDÁRIO -->
+
+                    <div class="calendario-visualizacoes">
+
+                        <button type="button"
+                            class="btn-visualizacao ativo"
+                            id="visualizacao-mes"
+                            data-visualizacao="mes"
+                            aria-pressed="true">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Mês
+                        </button>
+
+                        <button type="button"
+                            class="btn-visualizacao"
+                            id="visualizacao-semana"
+                            data-visualizacao="semana"
+                            aria-pressed="false">
+                            <i class="fa-solid fa-calendar-week"></i>
+                            Semana
+                        </button>
+
+                        <button type="button"
+                            class="btn-visualizacao"
+                            id="visualizacao-dia"
+                            data-visualizacao="dia"
+                            aria-pressed="false">
+                            <i class="fa-regular fa-calendar"></i>
+                            Dia
+                        </button>
 
                     </div>
 
@@ -191,7 +224,7 @@
 
                     <div class="calendario-grade">
 
-                        <div class="dias-semana">
+                        <div class="dias-semana" id="dias-semana">
                             <span>Seg</span>
                             <span>Ter</span>
                             <span>Qua</span>
@@ -203,7 +236,7 @@
 
                         <div class="dias-calendario" id="dias-calendario">
 
-                            <!-- O JavaScript preencherá os dias do mês. -->
+                            <!-- O JavaScript preencherá os dias do calendário. -->
 
                         </div>
 

@@ -1,7 +1,7 @@
 
 /* =====================================================
    AGENDAMENTOS
-   Calendário mensal
+   Calendário mensal, semanal e diário
 ===================================================== */
 
 /* Conteúdo */
@@ -98,7 +98,7 @@
     font-size: 12px;
 }
 
-/* Navegação entre meses */
+/* Navegação entre períodos */
 
 .calendario-navegacao {
     display: flex;
@@ -124,6 +124,7 @@
     font-size: 13px;
     font-weight: 600;
 
+    cursor: pointer;
     transition: all var(--transicao);
 }
 
@@ -137,6 +138,60 @@
     color: var(--rosa-principal);
     border-color: #f3bfd2;
     background: var(--rosa-suave);
+}
+
+/* Visualizações: mês, semana e dia */
+
+.calendario-visualizacoes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: fit-content;
+    margin-bottom: 20px;
+    padding: 5px;
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    background: #f8f9fc;
+}
+
+.btn-visualizacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 36px;
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 7px;
+
+    color: var(--texto-secundario);
+    background: transparent;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-visualizacao:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.btn-visualizacao.ativo {
+    color: var(--branco);
+    background: var(--rosa-principal);
+    box-shadow: 0 2px 6px rgba(233, 30, 99, 0.18);
+}
+
+.btn-visualizacao i {
+    font-size: 13px;
 }
 
 /* Legenda */
@@ -275,25 +330,35 @@
     color: #b9c0cd;
 }
 
-/* Agendamentos dentro do dia */
+/* Consultas dentro do dia */
 
-.evento-agendamento {
+.consulta-calendario {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
     width: 100%;
-    padding: 6px 8px;
+    margin-top: 8px;
+    padding: 7px;
 
-    overflow: hidden;
-
+    background: var(--rosa-claro);
     border-left: 3px solid var(--rosa-principal);
-    border-radius: 5px;
+    border-radius: 6px;
 
+    font-size: 11px;
+    overflow: hidden;
+}
+
+.consulta-calendario span:first-child {
     color: var(--rosa-escuro);
-    background: var(--rosa-suave);
+    font-weight: 700;
+}
 
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1.4;
-
+.consulta-calendario span:last-child {
+    color: var(--texto);
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Rodapé */
@@ -357,39 +422,51 @@
         justify-content: flex-end;
     }
 
+    .calendario-visualizacoes {
+        width: 100%;
+    }
+
+    .btn-visualizacao {
+        flex: 1;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+
     .calendario-legenda {
         gap: 12px;
     }
 
 }
+
 /* ==========================================
-   CONSULTAS NO CALENDÁRIO
+   CONSULTAS - VISUALIZAÇÃO DIÁRIA
 ========================================== */
 
-.consulta-calendario {
+.consulta-detalhada {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    align-items: flex-start;
+    gap: 7px;
 
-    margin-top: 8px;
-    padding: 7px;
+    padding: 14px 16px;
+    margin: 10px 0;
 
-    background: var(--rosa-claro);
-    border-left: 3px solid var(--rosa-principal);
-    border-radius: 6px;
+    border-left: 4px solid var(--rosa-principal);
+    border-radius: 8px;
 
-    font-size: 11px;
-    overflow: hidden;
+    background: var(--rosa-suave);
 }
 
-.consulta-calendario span:first-child {
-    color: var(--rosa-escuro);
-    font-weight: 700;
+.consulta-detalhada .consulta-horario {
+    color: var(--rosa-principal);
+    font-size: 14px;
 }
 
-.consulta-calendario span:last-child {
+.consulta-detalhada .consulta-paciente,
+.consulta-detalhada .consulta-profissional,
+.consulta-detalhada .consulta-profissao,
+.consulta-detalhada .consulta-observacoes {
     color: var(--texto);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1.5;
 }
