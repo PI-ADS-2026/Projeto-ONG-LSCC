@@ -6,11 +6,10 @@
 
 /* Conteúdo */
 
-.consultas-conteudo {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 30px;
+/* Ajuste de alinhamento com as demais páginas */
+
+.consultas-conteudo .cabecalho-pagina {
+    margin: 24px 25px 22px;
 }
 
 /* Cabeçalho da página */

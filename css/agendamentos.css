@@ -6,46 +6,18 @@
 
 /* Conteúdo */
 
-.agendamentos-conteudo {
-    width: 100%;
-    max-width: 1500px;
+/* Ajuste de alinhamento com as demais páginas */
 
-    margin: 0 auto;
-    padding: 32px;
-}
-
-/* Cabeçalho da página */
-
-.agendamentos-cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    margin-bottom: 25px;
-}
-
-.agendamentos-cabecalho h1 {
-    margin-bottom: 8px;
-
-    color: var(--texto);
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.agendamentos-cabecalho p {
-    color: var(--texto-secundario);
-    font-size: 14px;
+.agendamentos-conteudo .cabecalho-pagina {
+    margin: 24px 25px 22px;
 }
 
 /* Painel do calendário */
 
 .painel-calendario {
     padding: 25px;
-
     border: 1px solid var(--borda);
     border-radius: 14px;
-
     background: var(--branco);
     box-shadow: var(--sombra);
 }
@@ -57,7 +29,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-
     margin-bottom: 22px;
 }
 
@@ -71,22 +42,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 48px;
     height: 48px;
     flex-shrink: 0;
-
     border-radius: 12px;
-
     color: var(--rosa-principal);
     background: var(--rosa-suave);
-
     font-size: 20px;
 }
 
 .calendario-titulo h2 {
     margin-bottom: 5px;
-
     color: var(--texto);
     font-size: 21px;
     font-weight: 700;
@@ -110,20 +76,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     min-width: 38px;
     height: 38px;
     padding: 0 12px;
-
     border: 1px solid var(--borda);
     border-radius: 8px;
-
     color: var(--texto);
     background: var(--branco);
-
     font-size: 13px;
     font-weight: 600;
-
     cursor: pointer;
     transition: all var(--transicao);
 }
@@ -146,14 +107,11 @@
     display: flex;
     align-items: center;
     gap: 5px;
-
     width: fit-content;
     margin-bottom: 20px;
     padding: 5px;
-
     border: 1px solid var(--borda);
     border-radius: 9px;
-
     background: #f8f9fc;
 }
 
@@ -162,19 +120,14 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     min-height: 36px;
     padding: 0 16px;
-
     border: none;
     border-radius: 7px;
-
     color: var(--texto-secundario);
     background: transparent;
-
     font-size: 12px;
     font-weight: 600;
-
     cursor: pointer;
     transition: all var(--transicao);
 }
@@ -201,9 +154,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-
     padding: 16px 0;
-
     border-top: 1px solid var(--borda);
     border-bottom: 1px solid var(--borda);
 }
@@ -212,17 +163,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
     color: var(--texto-secundario);
     font-size: 12px;
 }
 
 .legenda-ponto {
     display: inline-block;
-
     width: 9px;
     height: 9px;
-
     border-radius: 50%;
 }
 
@@ -250,15 +198,12 @@
 
 .dias-semana {
     min-width: 650px;
-
     border-bottom: 1px solid var(--borda);
 }
 
 .dias-semana span {
     padding: 14px 8px;
-
     color: var(--texto-secundario);
-
     font-size: 12px;
     font-weight: 700;
     text-align: center;
@@ -276,15 +221,11 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-
     min-height: 115px;
     padding: 12px;
-
     border-right: 1px solid var(--borda);
     border-bottom: 1px solid var(--borda);
-
     background: var(--branco);
-
     transition: background var(--transicao);
 }
 
@@ -302,12 +243,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 30px;
     height: 30px;
-
     border-radius: 50%;
-
     color: var(--texto);
     font-size: 13px;
     font-weight: 600;
@@ -336,15 +274,12 @@
     display: flex;
     flex-direction: column;
     gap: 3px;
-
     width: 100%;
     margin-top: 8px;
     padding: 7px;
-
     background: var(--rosa-claro);
     border-left: 3px solid var(--rosa-principal);
     border-radius: 6px;
-
     font-size: 11px;
     overflow: hidden;
 }
@@ -367,15 +302,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
     margin-top: 18px;
     padding: 14px 16px;
-
     border-radius: 9px;
-
     color: var(--texto-secundario);
     background: #f8f9fc;
-
     font-size: 12px;
 }
 
@@ -384,34 +315,47 @@
     font-size: 15px;
 }
 
+/* Consultas - visualização diária */
+
+.consulta-detalhada {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    border-left: 4px solid var(--rosa-principal);
+    border-radius: 8px;
+    background: var(--rosa-suave);
+}
+
+.consulta-detalhada .consulta-horario {
+    color: var(--rosa-principal);
+    font-size: 14px;
+}
+
+.consulta-detalhada .consulta-paciente,
+.consulta-detalhada .consulta-profissional,
+.consulta-detalhada .consulta-profissao,
+.consulta-detalhada .consulta-observacoes {
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
 /* Responsividade */
 
 @media (max-width: 900px) {
-
     .agendamentos-conteudo {
         padding: 24px 18px;
-    }
-
-    .agendamentos-cabecalho {
-        align-items: flex-start;
     }
 
     .painel-calendario {
         padding: 18px;
     }
-
 }
 
 @media (max-width: 600px) {
-
-    .agendamentos-cabecalho {
-        flex-direction: column;
-    }
-
-    .agendamentos-cabecalho .btn-novo {
-        width: 100%;
-    }
-
     .calendario-topo {
         align-items: flex-start;
         flex-direction: column;
@@ -435,38 +379,4 @@
     .calendario-legenda {
         gap: 12px;
     }
-
-}
-
-/* ==========================================
-   CONSULTAS - VISUALIZAÇÃO DIÁRIA
-========================================== */
-
-.consulta-detalhada {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
-
-    padding: 14px 16px;
-    margin: 10px 0;
-
-    border-left: 4px solid var(--rosa-principal);
-    border-radius: 8px;
-
-    background: var(--rosa-suave);
-}
-
-.consulta-detalhada .consulta-horario {
-    color: var(--rosa-principal);
-    font-size: 14px;
-}
-
-.consulta-detalhada .consulta-paciente,
-.consulta-detalhada .consulta-profissional,
-.consulta-detalhada .consulta-profissao,
-.consulta-detalhada .consulta-observacoes {
-    color: var(--texto);
-    font-size: 12px;
-    line-height: 1.5;
 }
