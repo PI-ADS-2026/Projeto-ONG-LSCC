@@ -362,3 +362,34 @@
     }
 
 }
+/* ==========================================
+   CONSULTAS NO CALENDÁRIO
+========================================== */
+
+.consulta-calendario {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin-top: 8px;
+    padding: 7px;
+
+    background: var(--rosa-claro);
+    border-left: 3px solid var(--rosa-principal);
+    border-radius: 6px;
+
+    font-size: 11px;
+    overflow: hidden;
+}
+
+.consulta-calendario span:first-child {
+    color: var(--rosa-escuro);
+    font-weight: 700;
+}
+
+.consulta-calendario span:last-child {
+    color: var(--texto);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

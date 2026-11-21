@@ -16,6 +16,14 @@
     const botaoMesHoje = document.getElementById("mes-hoje");
 
     // ==========================================
+    // ARMAZENAMENTO
+    // ==========================================
+
+    function obterAgendamentos() {
+        return JSON.parse(localStorage.getItem("agendamentos")) || [];
+    }
+
+    // ==========================================
     // DATA ATUAL
     // ==========================================
 
@@ -97,6 +105,30 @@
             }
 
             dia.appendChild(numeroDia);
+
+            // Busca os agendamentos deste dia.
+            const dataFormatada =
+                `${dataDia.getFullYear()}-${String(dataDia.getMonth() + 1).padStart(2, "0")}-${String(dataDia.getDate()).padStart(2, "0")}`;
+
+            const agendamentosDoDia = obterAgendamentos()
+                .filter(agendamento => agendamento.data === dataFormatada)
+                .sort((a, b) => a.horario.localeCompare(b.horario));
+
+            // Exibe cada consulta no calendário.
+            agendamentosDoDia.forEach(agendamento => {
+                const consulta = document.createElement("div");
+                consulta.className = "consulta-calendario";
+
+                const horario = document.createElement("span");
+                horario.textContent = agendamento.horario;
+
+                const paciente = document.createElement("span");
+                paciente.textContent = agendamento.pacienteNome;
+
+                consulta.append(horario, paciente);
+                dia.appendChild(consulta);
+            });
+
             diasCalendario.appendChild(dia);
         }
     }
