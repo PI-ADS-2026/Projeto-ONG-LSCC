@@ -420,7 +420,182 @@ select:focus-visible {
 .usuario #btn-sair:hover {
     background: rgba(255, 255, 255, 0.25);
 }
+/* Botões de ação do usuário */
+.usuario #btn-trocar-conta,
+.usuario #btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 
+    padding: 9px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+
+    color: var(--branco);
+    background: rgba(255, 255, 255, 0.12);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background var(--transicao);
+}
+
+.usuario #btn-trocar-conta:hover,
+.usuario #btn-sair:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Wrapper dos menus dropdown no cabeçalho */
+.topo .menu-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.topo .usuario-perfil {
+    border: none;
+    background: transparent;
+    color: var(--branco);
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 8px;
+}
+
+.topo .usuario-perfil:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* Caixa suspensa (usada tanto na setinha do perfil quanto na engrenagem) */
+.topo .menu-suspenso {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 9999;
+
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 195px;
+    padding: 6px;
+
+    color: var(--texto);
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(23, 39, 71, 0.18);
+}
+
+.topo .menu-suspenso.aberto {
+    display: flex;
+}
+
+.topo .menu-suspenso-titulo {
+    padding: 6px 10px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--texto-secundario);
+}
+
+.topo .menu-suspenso button,
+.topo .menu-suspenso a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    padding: 9px 11px;
+
+    border: none;
+    border-radius: 7px;
+
+    color: var(--texto);
+    background: transparent;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: background var(--transicao), color var(--transicao);
+}
+
+.topo .menu-suspenso button i,
+.topo .menu-suspenso a i {
+    width: 16px;
+    color: var(--rosa-principal);
+}
+
+.topo .menu-suspenso button:hover,
+.topo .menu-suspenso a:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.topo .menu-suspenso .divisor-menu {
+    height: 1px;
+    margin: 4px 6px;
+    background: var(--borda);
+}
+
+.topo .menu-suspenso button,
+.topo .menu-suspenso a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    width: 100%;
+    min-width: 170px;
+    padding: 10px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    color: var(--texto);
+    background: transparent;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: background var(--transicao), color var(--transicao);
+}
+
+.topo .menu-suspenso button span,
+.topo .menu-suspenso a span {
+    display: inline-block;
+    color: var(--texto);
+}
+
+.topo .menu-suspenso button i,
+.topo .menu-suspenso a i {
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    color: var(--rosa-principal);
+}
+
+.topo .menu-suspenso button:hover,
+.topo .menu-suspenso a:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.topo .menu-suspenso button:hover span,
+.topo .menu-suspenso a:hover span {
+    color: var(--rosa-principal);
+}
 
 /* =====================================================
 5. CABEÇALHO DAS PÁGINAS

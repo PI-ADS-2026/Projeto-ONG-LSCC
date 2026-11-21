@@ -70,20 +70,50 @@
                 </div>
 
                 <div class="usuario">
-                    <span id="nome-usuario">Olá, usuário</span>
-
-                    <button type="button" id="btn-trocar-conta">
-                        <i class="fa-solid fa-users"></i>
-                        Trocar conta
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
                     </button>
 
-                    <button type="button" id="btn-sair">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        Sair
-                    </button>
+                    <!-- Menu da setinha / perfil (Trocar conta e Sair) -->
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
 
-                    <i class="fa-solid fa-circle-user"></i>
-                    <i class="fa-solid fa-gear"></i>
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Menu da engrenagem (Configurações / Atalhos) -->
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <button type="button" id="btn-atualizar-resumo" role="menuitem">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span>Atualizar resumo</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -211,17 +241,6 @@
     <script src="../js/autenticacao.js"></script>
 
     <script>
-        // Verifica se existe um usuário conectado.
-        const usuario = obterUsuarioLogado();
-
-        // Se não houver usuário conectado, volta para a tela de login.
-        if (!usuario) {
-            window.location.href = '../pages/entrar.html';
-        } else {
-            // Exibe o nome do usuário na Home.
-            document.getElementById('nome-usuario').textContent =
-                `Olá, ${usuario.nome}`;
-        }
         // Exibe a data atual.
         const hoje = new Date();
 
@@ -231,7 +250,6 @@
                 month: 'long',
                 year: 'numeric'
             });
-
 
         // Atualiza a quantidade de pacientes cadastrados.
         function atualizarTotalPacientes() {
@@ -243,7 +261,6 @@
                 pacientes.length;
         }
 
-
         // Atualiza a quantidade de profissionais cadastrados.
         function atualizarTotalProfissionais() {
             const profissionais = JSON.parse(
@@ -254,7 +271,6 @@
                 profissionais.length;
         }
 
-
         // Atualiza os dois contadores.
         function atualizarContadores() {
             atualizarTotalPacientes();
@@ -263,24 +279,33 @@
 
         atualizarContadores();
 
+        // Ação extra dentro do menu da engrenagem.
+        const btnAtualizarResumo = document.getElementById('btn-atualizar-resumo');
+        if (btnAtualizarResumo) {
+            btnAtualizarResumo.addEventListener('click', function () {
+                atualizarContadores();
+                const menuConfig = document.getElementById('menu-config');
+                if (menuConfig) menuConfig.classList.remove('aberto');
+            });
+        }
 
         // Atualiza os números quando a Home é aberta ou recebe foco novamente.
         window.addEventListener('pageshow', atualizarContadores);
         window.addEventListener('storage', atualizarContadores);
-
-        // Encerra a sessão e volta para a página inicial.
-        document.getElementById('btn-sair').addEventListener('click', function () {
-            sairDaConta();
-            window.location.href = '../pages/index.html';
-        });
-
-        // Encerra a sessão e volta para o login.
-        document.getElementById('btn-trocar-conta').addEventListener('click', function () {
-            sairDaConta();
-            window.location.href = '../pages/entrar.html';
-        });
-
     </script>
+
+    <div class="menu-suspenso" id="menu-conta" role="menu">
+    <span class="menu-suspenso-titulo">Conta</span>
+    <button type="button" id="btn-trocar-conta" role="menuitem">
+        <i class="fa-solid fa-users"></i>
+        <span>Trocar conta</span>
+    </button>
+    <div class="divisor-menu"></div>
+    <button type="button" id="btn-sair" role="menuitem">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Sair</span>
+    </button>
+</div>
 
 </body>
 
