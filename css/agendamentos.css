@@ -7,9 +7,12 @@
 /* Conteúdo */
 
 /* Ajuste de alinhamento com as demais páginas */
+.agendamentos-conteudo {
+    padding: 24px 25px;
+}
 
 .agendamentos-conteudo .cabecalho-pagina {
-    margin: 24px 25px 22px;
+    margin: 0 0 22px;
 }
 
 /* Painel do calendário */

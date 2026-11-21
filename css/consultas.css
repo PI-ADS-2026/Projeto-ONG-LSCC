@@ -8,8 +8,12 @@
 
 /* Ajuste de alinhamento com as demais páginas */
 
+.consultas-conteudo {
+    padding: 24px 25px;
+}
+
 .consultas-conteudo .cabecalho-pagina {
-    margin: 24px 25px 22px;
+    margin: 0 0 22px;
 }
 
 /* Cabeçalho da página */
