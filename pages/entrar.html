@@ -15,7 +15,7 @@
 
     <main class="card-acesso card-entrar">
 
-        <a href="../pages/index.html" class="voltar-login">
+        <a href="index.html" class="voltar-login">
             <i class="fa-solid fa-arrow-left"></i> Voltar
         </a>
 
@@ -77,27 +77,27 @@
     </main>
 
     <script>
-
         const form = document.getElementById('form-login');
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            const email = document.getElementById('email').value.trim();
-            const senha = document.getElementById('senha').value;
+                const email = document.getElementById('email').value.trim();
+                const senha = document.getElementById('senha').value;
 
-            const resultado = fazerLogin(email, senha);
+                const resultado = fazerLogin(email, senha);
 
-            if (!resultado.sucesso) {
-                alert(resultado.mensagem);
-                return;
-            }
+                if (!resultado.sucesso) {
+                    alert(resultado.mensagem);
+                    return;
+                }
 
-            window.location.href = '../pages/home.html';
-        });
-
-    
-</script>
+                // Como entrar.html já está dentro de /pages, basta colocar o nome do arquivo:
+                window.location.href = 'home.html';
+            });
+        }
+    </script>
 
 </body>
 </html>
