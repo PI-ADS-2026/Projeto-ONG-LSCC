@@ -285,3 +285,37 @@
         flex-direction: column;
     }
 }
+/* ==========================================
+   STATUS DA CONSULTA
+========================================== */
+
+.status-historico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-agendada {
+    color:  #b45309;
+    background: #dbeafe;
+}
+
+.status-concluida {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.status-cancelada {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.status-nao-compareceu {
+    color: #8b65b5;
+    background: #fef3c7;
+}

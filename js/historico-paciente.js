@@ -97,6 +97,19 @@
         horario.textContent = agendamento.horario || "Sem horário";
 
         topo.append(data, horario);
+        // Status da consulta.
+        const status = document.createElement("span");
+        const statusConsulta = agendamento.status || "Agendada";
+
+        status.className = `status-historico status-${statusConsulta
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, "-")}`;
+
+        status.textContent = statusConsulta;
+
+        topo.appendChild(status);
 
         // Detalhes da consulta.
         const detalhes = document.createElement("div");

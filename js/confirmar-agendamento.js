@@ -16,6 +16,7 @@
 
     const confirmacaoData = document.getElementById("confirmacao-data");
     const confirmacaoHorario = document.getElementById("confirmacao-horario");
+    const confirmacaoSala = document.getElementById("confirmacao-sala");
 
     const confirmacaoObservacoes = document.getElementById("confirmacao-observacoes");
 
@@ -85,6 +86,9 @@
     confirmacaoObservacoes.textContent =
         agendamento.observacoes || "Nenhuma observação";
 
+    confirmacaoSala.textContent =
+    agendamento.salaNome || "Não informada";    
+
     // ==========================================
     // CONFIRMAR AGENDAMENTO
     // ==========================================
@@ -101,6 +105,8 @@
             profissionalId: agendamento.profissionalId,
             profissionalNome: agendamento.profissionalNome,
             profissao: agendamento.profissao,
+            salaId: agendamento.salaId,
+            salaNome: agendamento.salaNome,
 
             data: agendamento.data,
             horario: agendamento.horario,

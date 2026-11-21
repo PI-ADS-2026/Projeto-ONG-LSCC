@@ -17,6 +17,7 @@
     const campoData = document.getElementById("data-consulta");
     const campoHorario = document.getElementById("horario-consulta");
     const campoObservacoes = document.getElementById("observacoes");
+    const campoSala = document.getElementById("sala");
 
     // ==========================================
     // ARMAZENAMENTO
@@ -32,6 +33,15 @@
     function obterProfissionais() {
         return JSON.parse(localStorage.getItem("profissionais")) || [];
     }
+
+    function obterSalas() {
+    try {
+        return JSON.parse(localStorage.getItem("salas")) || [];
+    } catch (erro) {
+        console.error("Erro ao carregar salas:", erro);
+        return [];
+    }
+}
 
     // ==========================================
     // PACIENTE SELECIONADO
@@ -94,6 +104,35 @@
     campoProfissao.addEventListener("change", atualizarProfissionais);
 
     // ==========================================
+    // SALAS
+    // ==========================================
+
+    function atualizarSalas() {
+        campoSala.innerHTML = '<option value="">Selecione uma sala</option>';
+
+        const salas = obterSalas();
+
+        if (salas.length === 0) {
+            campoSala.innerHTML =
+                '<option value="">Nenhuma sala cadastrada</option>';
+            campoSala.disabled = true;
+            return;
+        }
+
+        salas.forEach(sala => {
+            const opcao = document.createElement("option");
+
+            opcao.value = String(sala.id);
+            opcao.textContent = sala.nome;
+
+            campoSala.appendChild(opcao);
+        });
+
+        campoSala.disabled = false;
+    }
+
+    atualizarSalas();
+    // ==========================================
     // DATA MÍNIMA
     // ==========================================
 
@@ -116,9 +155,16 @@
         const profissional = obterProfissionais().find(
             profissional => String(profissional.id) === profissionalId
         );
+        const sala = obterSalas().find(
+            sala => String(sala.id) === campoSala.value
+        );
 
         if (!profissional) {
             alert("Selecione um profissional válido.");
+            return;
+        }
+        if (!sala) {
+            alert("Selecione uma sala.");
             return;
         }
 
@@ -133,7 +179,9 @@
 
             data: campoData.value,
             horario: campoHorario.value,
-            observacoes: campoObservacoes.value.trim()
+            observacoes: campoObservacoes.value.trim(),
+            salaId: sala.id,
+            salaNome: sala.nome
         };
 
         sessionStorage.setItem(
