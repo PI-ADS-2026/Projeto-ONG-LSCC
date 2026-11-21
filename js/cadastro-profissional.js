@@ -1,4 +1,3 @@
-
 const formulario = document.getElementById('formulario');
 
 // Todos os campos existentes no HTML.
@@ -36,7 +35,6 @@ function obterProfissionais() {
     return JSON.parse(localStorage.getItem('profissionais')) || [];
 }
 
-
 // Se for edição, preenche os campos com os dados existentes.
 if (idEdicao !== null) {
 
@@ -62,6 +60,56 @@ if (idEdicao !== null) {
         idEdicao = null;
 
     }
+}
+
+// --- 1. MÁSCARA AUTOMÁTICA NO CAMPO DE CPF ---
+const inputCpf = document.getElementById('cpf');
+
+if (inputCpf) {
+    inputCpf.addEventListener('input', function (e) {
+        let valor = e.target.value;
+
+        // Remove tudo que não for número
+        valor = valor.replace(/\D/g, "");
+
+        // Aplica os pontos e o traço conforme o usuário digita
+        if (valor.length <= 11) {
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+            valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+        }
+
+        e.target.value = valor;
+    });
+}
+
+// --- 2. FUNÇÃO DE VALIDAÇÃO MATEMÁTICA DO CPF ---
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, "");
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+    let resto;
+
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
 }
 
 
@@ -98,6 +146,22 @@ function salvarProfissional() {
         alert('Digite o CPF do profissional.');
         document.getElementById('cpf').focus();
 
+        return null;
+    }
+
+
+    // --- 3. VALIDAÇÃO DE TAMANHO E MATEMÁTICA DO CPF ---
+    const apenasNumerosCpf = dados.cpf.replace(/\D/g, '');
+
+    if (apenasNumerosCpf.length !== 11) {
+        alert('O CPF deve conter exatamente 11 dígitos.');
+        document.getElementById('cpf').focus();
+        return null;
+    }
+
+    if (!validarCPF(dados.cpf)) {
+        alert('CPF inválido! Por favor, digite um CPF real para continuar.');
+        document.getElementById('cpf').focus();
         return null;
     }
 
@@ -176,7 +240,7 @@ function salvarProfissional() {
     if (cpfExistente) {
 
         alert('Já existe um profissional cadastrado com este CPF.');
-        document.getElementById('cpf').focus();
+        document.getElementById('cpf'.focus());
 
         return null;
     }
