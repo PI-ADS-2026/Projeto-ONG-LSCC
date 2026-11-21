@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/agendamentos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="tela">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="../pages/agendamentos.html" class="ativo">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <button type="button" class="btn-voltar" onclick="history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+
+                <div class="usuario">
+
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil"
+                            id="btn-menu-conta" aria-expanded="false"
+                            aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+
+                            <div class="divisor-menu"></div>
+
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes"
+                            id="btn-menu-config" aria-label="Configurações"
+                            aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <section class="agendamentos-conteudo">
+
+                <div class="agendamentos-cabecalho">
+                    <div>
+                        <h1>Agenda de consultas</h1>
+                        <p>Visualize e organize os agendamentos da clínica.</p>
+                    </div>
+
+                    <a href="../pages/selecionar-paciente.html" class="btn-novo">
+                        <i class="fa-solid fa-plus"></i>
+                        Novo agendamento
+                    </a>
+                </div>
+
+                <section class="painel-calendario">
+
+                    <div class="calendario-topo">
+
+                        <div class="calendario-titulo">
+                            <div class="calendario-icone">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </div>
+
+                            <div>
+                                <h2 id="mes-atual">Novembro 2026</h2>
+                                <p>Calendário mensal</p>
+                            </div>
+                        </div>
+
+                        <div class="calendario-navegacao">
+                            <button type="button" id="mes-anterior"
+                                aria-label="Mês anterior">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <button type="button" id="mes-hoje">
+                                Hoje
+                            </button>
+
+                            <button type="button" id="mes-proximo"
+                                aria-label="Próximo mês">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="calendario-legenda">
+                        <span>
+                            <i class="legenda-ponto legenda-agendado"></i>
+                            Consulta agendada
+                        </span>
+
+                        <span>
+                            <i class="legenda-ponto legenda-hoje"></i>
+                            Dia atual
+                        </span>
+                    </div>
+
+                    <div class="calendario-grade">
+
+                        <div class="dias-semana">
+                            <span>Seg</span>
+                            <span>Ter</span>
+                            <span>Qua</span>
+                            <span>Qui</span>
+                            <span>Sex</span>
+                            <span>Sáb</span>
+                            <span>Dom</span>
+                        </div>
+
+                        <div class="dias-calendario" id="dias-calendario">
+
+                            <!-- O JavaScript preencherá os dias do mês. -->
+
+                        </div>
+
+                    </div>
+
+                    <div class="calendario-rodape">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Selecione um dia para visualizar os detalhes das consultas.</span>
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/autenticacao.js"></script>
+
+</body>
+
+</html>
