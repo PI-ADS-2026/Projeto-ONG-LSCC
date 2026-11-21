@@ -1,0 +1,287 @@
+
+/* =====================================================
+   HISTÓRICO DO PACIENTE
+===================================================== */
+
+/* CONTEÚDO */
+
+.painel-historico {
+    width: 100%;
+    max-width: 1500px;
+    padding: 28px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* INFORMAÇÕES DO PACIENTE */
+
+.historico-paciente-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.historico-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    color: var(--rosa-principal);
+    background: var(--rosa-claro);
+
+    font-size: 23px;
+}
+
+.historico-paciente-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.historico-paciente-dados h2 {
+    margin: 0;
+    color: var(--texto);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.historico-paciente-dados p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.historico-contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 85px;
+    margin-left: auto;
+    padding: 12px 18px;
+
+    border-radius: 10px;
+    background: var(--rosa-suave);
+}
+
+.historico-contador strong {
+    color: var(--rosa-principal);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.historico-contador span {
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+/* CABEÇALHO DA LISTA */
+
+.historico-lista-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin: 26px 0 18px;
+}
+
+.historico-lista-topo h2 {
+    margin: 0;
+    color: var(--texto);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.historico-lista-topo span {
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+/* LISTA DE CONSULTAS */
+
+.lista-historico {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* CARD DA CONSULTA */
+
+.card-consulta-historico {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    padding: 20px;
+
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--rosa-principal);
+    border-radius: 10px;
+
+    background: var(--branco);
+
+    transition: box-shadow var(--transicao);
+}
+
+.card-consulta-historico:hover {
+    box-shadow: var(--sombra);
+}
+
+/* DATA E HORÁRIO */
+
+.consulta-historico-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.consulta-historico-data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.consulta-historico-data i {
+    color: var(--rosa-principal);
+    font-size: 15px;
+}
+
+.consulta-historico-horario {
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* DETALHES */
+
+.consulta-historico-detalhes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 24px;
+}
+
+.detalhe-consulta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detalhe-consulta span {
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+.detalhe-consulta strong {
+    color: var(--texto);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.consulta-historico-observacoes {
+    padding-top: 12px;
+    border-top: 1px solid var(--borda);
+}
+
+.consulta-historico-observacoes span {
+    display: block;
+    margin-bottom: 6px;
+
+    color: var(--texto-secundario);
+    font-size: 11px;
+}
+
+.consulta-historico-observacoes p {
+    margin: 0;
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ESTADO VAZIO */
+
+.historico-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 220px;
+    padding: 30px;
+
+    border: 1px dashed var(--borda);
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.historico-vazio i {
+    color: var(--rosa-medio);
+    font-size: 35px;
+}
+
+.historico-vazio h3 {
+    margin: 0;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.historico-vazio p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+    .painel-historico {
+        padding: 18px;
+    }
+
+    .historico-paciente-info {
+        flex-wrap: wrap;
+    }
+
+    .historico-contador {
+        margin-left: 0;
+    }
+
+    .consulta-historico-detalhes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .historico-lista-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .consulta-historico-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
