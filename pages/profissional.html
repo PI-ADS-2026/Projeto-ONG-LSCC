@@ -4,27 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Profissionais</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body class="pagina-profissionais">
-
+<body>
     <div class="tela">
 
-        <!-- SIDEBAR -->
+        <!-- MENU LATERAL -->
         <aside class="sidebar">
 
-            <div class="logo" aria-label="Logo da clínica">
+            <div class="logo">
                 <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
             </div>
 
-            <nav aria-label="Menu principal">
-
+            <nav>
                 <a href="../pages/home.html">
                     <i class="fa-solid fa-house"></i>
                     <span>Home</span>
@@ -35,7 +31,7 @@
                     <span>Pacientes</span>
                 </a>
 
-                <a href="../pages/profissional.html" class="ativo" aria-current="page">
+                <a href="../pages/profissional.html" class="ativo">
                     <i class="fa-solid fa-user-doctor"></i>
                     <span>Profissionais</span>
                 </a>
@@ -64,120 +60,123 @@
                     <i class="fa-solid fa-chart-column"></i>
                     <span>Relatórios</span>
                 </a>
-
             </nav>
 
         </aside>
 
-
         <!-- CONTEÚDO PRINCIPAL -->
-        <main class="conteudo">
+        <div class="conteudo">
 
-            <!-- CABEÇALHO SUPERIOR -->
+            <!-- BARRA SUPERIOR -->
             <header class="topo">
 
                 <div class="topo-esquerda">
-
-                    <button type="button" class="btn-menu" aria-label="Menu lateral" title="Menu lateral">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-
                     <button type="button" class="btn-voltar">
-                        <a href="../pages/home.html">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            <span>Voltar</span>
-                        </a>
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
                     </button>
-
                 </div>
 
                 <div class="usuario">
-
                     <button type="button" class="btn-notificacao" aria-label="Notificações">
                         <i class="fa-regular fa-bell"></i>
                     </button>
 
-                    <div class="usuario-perfil">
-                        <i class="fa-solid fa-circle-user"></i>
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
 
-                        <span>Olá, Admin</span>
-
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
-                        <i class="fa-solid fa-gear"></i>
-                    </button>
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
 
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <a href="../pages/home.html" role="menuitem">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Ir para Home</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </header>
 
-
-            <!-- TÍTULO E AÇÕES DA PÁGINA -->
+            <!-- CABEÇALHO DA PÁGINA -->
             <section class="cabecalho-pagina">
 
                 <div class="titulo-pagina">
-
                     <div class="icone-titulo">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-user-doctor"></i>
                     </div>
 
                     <div class="titulo-pagina-texto">
                         <h1>Profissionais</h1>
-
-                        <p>
-                            Gerencie os profissionais cadastrados no sistema.
-                        </p>
+                        <p>Gerencie os profissionais cadastrados no sistema.</p>
                     </div>
-
                 </div>
 
-
                 <div class="acoes">
-
-                    <label class="campo-pesquisa" for="pesquisa">
+                    <div class="campo-pesquisa">
                         <i class="fa-solid fa-magnifying-glass"></i>
-
-                        <input type="search" id="pesquisa" placeholder="Pesquise por nome, profissão, conselho, CPF..."
-                            autocomplete="off">
-                    </label>
-
+                        <input
+                            type="search"
+                            id="pesquisa"
+                            placeholder="Pesquise por nome, profissão, conselho, CPF..."
+                            aria-label="Pesquisar profissionais"
+                        >
+                    </div>
 
                     <a href="../pages/cadastro-profissional.html" class="btn-novo">
                         <i class="fa-solid fa-plus"></i>
                         <span>Novo Profissional</span>
                     </a>
-
                 </div>
 
             </section>
 
-
-            <!-- LISTA DE PROFISSIONAIS -->
+            <!-- PAINEL DA LISTA -->
             <section class="painel-profissionais">
 
                 <div class="painel-profissionais-topo">
                     <h2>Lista de Profissionais</h2>
                 </div>
 
-
-                <div class="lista-profissionais" id="lista-profissionais" aria-live="polite">
-
+                <div class="lista-profissionais" id="lista-profissionais">
                     <div class="cabecalho-lista">
                         <span>Nome</span>
                         <span>Profissão</span>
                         <span>Ações</span>
                     </div>
-
                 </div>
 
             </section>
 
-        </main>
+        </div>
 
     </div>
-
 
     <!-- CAIXA DE CONFIRMAÇÃO DE EXCLUSÃO -->
     <div class="modal-overlay" id="modal-exclusao" hidden>
@@ -188,22 +187,16 @@
                 <i class="fa-solid fa-trash-can"></i>
             </div>
 
-            <h2 id="titulo-exclusao">
-                Excluir profissional?
-            </h2>
+            <h2 id="titulo-exclusao">Excluir profissional?</h2>
 
             <p>
                 Tem certeza de que deseja excluir
                 <strong id="nome-exclusao">este profissional</strong>?
-
                 <br>
-
                 Essa ação não poderá ser desfeita.
             </p>
 
-
             <div class="botoes-exclusao">
-
                 <button type="button" class="btn-modal-cancelar" id="cancelar-exclusao">
                     Cancelar
                 </button>
@@ -211,14 +204,13 @@
                 <button type="button" class="btn-modal-excluir" id="confirmar-exclusao">
                     Excluir Profissional
                 </button>
-
             </div>
 
         </div>
 
     </div>
 
-
+    <script src="../js/autenticacao.js"></script>
     <script src="../js/profissional.js"></script>
 
 </body>
