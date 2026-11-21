@@ -125,6 +125,13 @@
             agendamento.profissao || "Não informada"
         );
 
+        const sala = criarDetalhe(
+            "Sala",
+            agendamento.salaNome || "Não informada"
+        );
+
+        detalhes.append(profissional, profissao, sala);
+
         detalhes.append(profissional, profissao);
 
         card.append(topo, detalhes);

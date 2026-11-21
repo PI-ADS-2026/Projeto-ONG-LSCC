@@ -194,14 +194,17 @@
         agendamentosDoDia.forEach(agendamento => {
             const consulta = document.createElement("div");
             consulta.className = "consulta-calendario";
-
+            
             const horario = document.createElement("span");
             horario.textContent = agendamento.horario || "Sem horário";
 
             const paciente = document.createElement("span");
             paciente.textContent = agendamento.pacienteNome || "Paciente";
 
-            consulta.append(horario, paciente);
+            const sala = document.createElement("span");
+            sala.textContent = `Sala: ${agendamento.salaNome || "Não informada"}`;
+
+            consulta.append(horario, paciente, sala);
             dia.appendChild(consulta);
         });
 
@@ -388,11 +391,16 @@
                 profissao.className = "consulta-profissao";
                 profissao.textContent = `Área: ${agendamento.profissao || "Não informada"}`;
 
+                const sala = document.createElement("span");
+                sala.className = "consulta-sala";
+                sala.textContent = `Sala: ${agendamento.salaNome || "Não informada"}`;
+
                 consulta.append(
                     horario,
                     paciente,
                     profissional,
-                    profissao
+                    profissao,
+                    sala
                 );
 
                 if (agendamento.observacoes) {

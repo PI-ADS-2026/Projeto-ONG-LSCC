@@ -205,6 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
             criarDetalhe(
                 "fa-solid fa-stethoscope",
                 consulta.profissao || "Profissão não informada"
+            ),
+            criarDetalhe(
+                "fa-solid fa-door-open",
+                `Sala: ${consulta.salaNome || "Não informada"}`
             )
         );
 
