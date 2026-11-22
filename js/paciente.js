@@ -1,3 +1,4 @@
+
 const lista = document.getElementById('lista-pacientes');
 const pesquisa = document.getElementById('pesquisa');
 
@@ -90,6 +91,11 @@ function renderizar() {
         acoes.className = 'acoes-paciente';
 
         acoes.append(
+            criarBotao('Histórico', () => {
+                window.location.href =
+                    '../pages/historico-paciente.html?id=' + encodeURIComponent(p.id);
+            }),
+
             criarBotao('Editar', () => {
                 window.location.href =
                     '../pages/cadastro-paciente.html?id=' + p.id;

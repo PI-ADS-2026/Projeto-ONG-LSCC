@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Agendamento - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/confirmar-agendamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="../pages/agendamentos.html" class="ativo">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+                 <a href="../pages/consultas.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <button type="button" class="btn-voltar" onclick="history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+
+                <div class="usuario">
+
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil"
+                            id="btn-menu-conta" aria-expanded="false"
+                            aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+
+                            <div class="divisor-menu"></div>
+
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes"
+                            id="btn-menu-config" aria-label="Configurações"
+                            aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <section class="confirmar-agendamento-conteudo">
+
+                <div class="confirmar-agendamento-cabecalho">
+                    <div>
+                        <h1>Confirmar agendamento</h1>
+                        <p>Confira todas as informações antes de finalizar.</p>
+                    </div>
+                </div>
+
+                <section class="painel-confirmacao">
+
+                    <div class="confirmacao-topo">
+                        <div class="confirmacao-icone">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <div>
+                            <h2>Resumo da consulta</h2>
+                            <p>Revise os dados do agendamento.</p>
+                        </div>
+                    </div>
+
+                    <!-- Paciente -->
+
+                    <div class="confirmacao-secao">
+
+                        <div class="confirmacao-secao-titulo">
+                            <i class="fa-solid fa-user"></i>
+                            <h3>Dados do paciente</h3>
+                        </div>
+
+                        <div class="confirmacao-dados">
+                            <div class="confirmacao-campo">
+                                <span>Nome do paciente</span>
+                                <strong id="confirmacao-paciente">Nome do paciente</strong>
+                            </div>
+
+                            <div class="confirmacao-campo">
+                                <span>CPF</span>
+                                <strong id="confirmacao-cpf">CPF do paciente</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Profissional -->
+
+                    <div class="confirmacao-secao">
+
+                        <div class="confirmacao-secao-titulo">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <h3>Dados do profissional</h3>
+                        </div>
+
+                        <div class="confirmacao-dados">
+                            <div class="confirmacao-campo">
+                                <span>Profissão</span>
+                                <strong id="confirmacao-profissao">Profissão</strong>
+                            </div>
+
+                            <div class="confirmacao-campo">
+                                <span>Profissional responsável</span>
+                                <strong id="confirmacao-profissional">Nome do profissional</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Data e horário -->
+
+                    <div class="confirmacao-secao">
+
+                        <div class="confirmacao-secao-titulo">
+                            <i class="fa-regular fa-clock"></i>
+                            <h3>Data e horário</h3>
+                        </div>
+
+                        <div class="confirmacao-dados">
+                            <div class="confirmacao-campo">
+                                <span>Data da consulta</span>
+                                <strong id="confirmacao-data">Data da consulta</strong>
+                            </div>
+
+                            <div class="confirmacao-campo">
+                                <span>Horário</span>
+                                <strong id="confirmacao-horario">Horário da consulta</strong>
+                            </div>
+                            <div class="confirmacao-campo">
+                                <span>Sala</span>
+                                <strong id="confirmacao-sala">Sala selecionada</strong>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                    <!-- Observações -->
+
+                    <div class="confirmacao-secao confirmacao-observacoes">
+
+                        <div class="confirmacao-secao-titulo">
+                            <i class="fa-regular fa-note-sticky"></i>
+                            <h3>Observações</h3>
+                        </div>
+
+                        <p id="confirmacao-observacoes">
+                            Nenhuma observação adicionada.
+                        </p>
+
+                    </div>
+
+                    <div class="aviso-confirmacao">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>Verifique se todas as informações estão corretas antes de confirmar o agendamento.</p>
+                    </div>
+
+                </section>
+
+                <div class="acoes-confirmacao">
+
+                    <a href="../pages/novo-agendamento.html" class="btn-editar-confirmacao">
+                        <i class="fa-solid fa-pen"></i>
+                        Voltar e editar
+                    </a>
+
+                    <button type="button" id="btn-confirmar-agendamento"
+                        class="btn-finalizar-agendamento">
+                        <i class="fa-solid fa-check"></i>
+                        Confirmar agendamento
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/autenticacao.js"></script>
+    <script src="../js/confirmar-agendamento.js"></script>
+
+</body>
+</html>

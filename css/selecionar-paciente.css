@@ -1,0 +1,342 @@
+
+/* =====================================================
+   SELECIONAR PACIENTE
+===================================================== */
+
+.selecionar-paciente-conteudo {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* Cabeçalho */
+
+.selecionar-paciente-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.selecionar-paciente-cabecalho h1 {
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.selecionar-paciente-cabecalho p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* Botão cadastrar */
+
+.btn-cadastrar-paciente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 42px;
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 9px;
+
+    color: var(--branco);
+    background: var(--rosa-principal);
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: background var(--transicao);
+}
+
+.btn-cadastrar-paciente:hover {
+    background: var(--rosa-escuro);
+}
+
+/* Painel */
+
+.painel-pacientes-agendamento {
+    padding: 25px;
+
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Cabeçalho do painel */
+
+.pacientes-agendamento-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.pacientes-agendamento-topo h2 {
+    margin-bottom: 6px;
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.pacientes-agendamento-topo p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.contador-pacientes {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Pesquisa */
+
+.pesquisa-pacientes-agendamento {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 500px;
+    height: 45px;
+
+    margin-bottom: 22px;
+    padding: 0 15px;
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    background: #fafbfe;
+
+    transition: border-color var(--transicao);
+}
+
+.pesquisa-pacientes-agendamento:focus-within {
+    border-color: var(--rosa-medio);
+}
+
+.pesquisa-pacientes-agendamento i {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.pesquisa-pacientes-agendamento input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    color: var(--texto);
+    background: transparent;
+
+    font-size: 13px;
+}
+
+.pesquisa-pacientes-agendamento input::placeholder {
+    color: #a0a9b8;
+}
+
+/* Lista de pacientes */
+
+.lista-pacientes-agendamento {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Cartão de paciente - será utilizado pelo JavaScript */
+
+.paciente-agendamento-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    padding: 17px 20px;
+
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    background: var(--branco);
+
+    transition: all var(--transicao);
+}
+
+.paciente-agendamento-card:hover {
+    border-color: var(--rosa-medio);
+    background: #fffafd;
+}
+
+.paciente-agendamento-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.paciente-agendamento-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 17px;
+}
+
+.paciente-agendamento-dados {
+    min-width: 0;
+}
+
+.paciente-agendamento-dados h3 {
+    margin-bottom: 5px;
+
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.paciente-agendamento-dados p {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.btn-selecionar-paciente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 36px;
+    padding: 0 14px;
+
+    border: 1px solid #f3bfd2;
+    border-radius: 8px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-selecionar-paciente:hover {
+    color: var(--branco);
+    border-color: var(--rosa-principal);
+    background: var(--rosa-principal);
+}
+
+/* Estado vazio */
+
+.estado-vazio-pacientes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 20px;
+
+    text-align: center;
+}
+
+.estado-vazio-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 24px;
+}
+
+.estado-vazio-pacientes h3 {
+    margin-bottom: 8px;
+
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.estado-vazio-pacientes p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+    .selecionar-paciente-conteudo {
+        padding: 24px 18px;
+    }
+
+    .painel-pacientes-agendamento {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .selecionar-paciente-cabecalho {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .btn-cadastrar-paciente {
+        width: 100%;
+    }
+
+    .pacientes-agendamento-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .pesquisa-pacientes-agendamento {
+        max-width: none;
+    }
+
+    .paciente-agendamento-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-selecionar-paciente {
+        width: 100%;
+    }
+}
