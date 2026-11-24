@@ -147,16 +147,23 @@
     // ENVIO DO FORMULÁRIO
     // ==========================================
 
+    function obterAgendamentosExistentes() {
+        return JSON.parse(localStorage.getItem("agendamentos")) || [];
+    }
+
     formulario.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const profissionalId = campoProfissional.value;
+        const salaId = campoSala.value;
+        const dataSelecionada = campoData.value;
+        const horarioSelecionado = campoHorario.value;
 
         const profissional = obterProfissionais().find(
-            profissional => String(profissional.id) === profissionalId
+            p => String(p.id) === profissionalId
         );
         const sala = obterSalas().find(
-            sala => String(sala.id) === campoSala.value
+            s => String(s.id) === salaId
         );
 
         if (!profissional) {
@@ -167,6 +174,55 @@
             alert("Selecione uma sala.");
             return;
         }
+        if (!dataSelecionada || !horarioSelecionado) {
+            alert("Preencha a data e o horário da consulta.");
+            return;
+        }
+
+        // ==========================================
+        // VALIDAÇÃO DE CONFLITOS DE AGENDAMENTO
+        // ==========================================
+        const agendamentos = obterAgendamentosExistentes();
+
+        // 1. O mesmo paciente já tem consulta no mesmo dia e horário?
+        const conflitoPaciente = agendamentos.find(a => 
+            String(a.pacienteId) === String(paciente.id) &&
+            a.data === dataSelecionada &&
+            a.horario === horarioSelecionado &&
+            a.status !== "Cancelada"
+        );
+
+        if (conflitoPaciente) {
+            alert("Este paciente já possui uma consulta agendada para este mesmo dia e horário!");
+            return;
+        }
+
+        // 2. O mesmo médico já está ocupado no mesmo dia e horário?
+        const conflitoProfissional = agendamentos.find(a => 
+            String(a.profissionalId) === String(profissionalId) &&
+            a.data === dataSelecionada &&
+            a.horario === horarioSelecionado &&
+            a.status !== "Cancelada"
+        );
+
+        if (conflitoProfissional) {
+            alert("Este profissional já possui um agendamento neste mesmo dia e horário!");
+            return;
+        }
+
+        // 3. A sala já está ocupada no mesmo dia e horário?
+        const conflitoSala = agendamentos.find(a => 
+            String(a.salaId) === String(salaId) &&
+            a.data === dataSelecionada &&
+            a.horario === horarioSelecionado &&
+            a.status !== "Cancelada"
+        );
+
+        if (conflitoSala) {
+            alert("Esta sala já está ocupada por outro agendamento neste mesmo dia e horário!");
+            return;
+        }
+        // ==========================================
 
         const dadosAgendamento = {
             pacienteId: paciente.id,

@@ -96,6 +96,24 @@
     botaoConfirmar.addEventListener("click", () => {
         const agendamentos = obterAgendamentos();
 
+        // Dupla checagem de conflitos no momento de salvar
+        const conflito = agendamentos.find(a => 
+            a.data === agendamento.data &&
+            a.horario === agendamento.horario &&
+            a.status !== "Cancelada" &&
+            (
+                String(a.pacienteId) === String(agendamento.pacienteId) ||
+                String(a.profissionalId) === String(agendamento.profissionalId) ||
+                String(a.salaId) === String(agendamento.salaId)
+            )
+        );
+
+        if (conflito) {
+            alert("Não foi possível concluir: já existe um conflito de horário para este paciente, profissional ou sala!");
+            window.location.href = "../pages/novo-agendamento.html";
+            return;
+        }
+
         const novoAgendamento = {
             id: Date.now(),
             pacienteId: agendamento.pacienteId,
