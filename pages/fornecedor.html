@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fornecedores</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="../pages/fornecedor.html" class="ativo">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo">
+
+            <header class="topo">
+
+                <button type="button" class="btn-voltar">
+                    <a href="../pages/home.html">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </a>
+                </button>
+
+                <div class="usuario">
+                    <span>Olá, Admin</span>
+                    <button type="button" id="btn-trocar-conta">Trocar conta</button>
+                    <button type="button" id="btn-sair">Sair</button>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO DA PÁGINA -->
+            <section class="cabecalho-pagina">
+
+                <div class="titulo-pagina">
+                    <div class="icone-titulo">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+
+                    <div class="titulo-pagina-texto">
+                        <h1>Fornecedores</h1>
+                        <p>Gerencie os fornecedores cadastrados no sistema.</p>
+                    </div>
+                </div>
+
+                <div class="acoes">
+                    <div class="campo-pesquisa">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="pesquisa" placeholder="Pesquise por nome">
+                    </div>
+
+                    <a href="../pages/cadastro-fornecedor.html" class="btn-novo">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Novo Fornecedor</span>
+                    </a>
+                </div>
+
+            </section>
+
+
+            <!-- LISTA DE FORNECEDORES -->
+            <section class="painel-pacientes">
+
+                <div class="painel-pacientes-topo">
+                    <h2>Lista de Fornecedores</h2>
+                </div>
+
+                <div class="lista-pacientes" id="lista-fornecedores">
+                    <div class="cabecalho-lista">
+                        <span>Nome</span>
+                        <span>Ações</span>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL DE EXCLUSÃO -->
+    <div class="modal-overlay" id="modal-exclusao" hidden>
+
+        <div class="modal-exclusao">
+            <div class="icone-exclusao">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+
+            <h2>Excluir fornecedor</h2>
+
+            <p>
+                Tem certeza que deseja excluir <strong id="nome-exclusao"></strong>?
+                Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="botoes-exclusao">
+                <button type="button" class="btn-modal-cancelar" id="cancelar-exclusao">
+                    Cancelar
+                </button>
+
+                <button type="button" class="btn-modal-excluir" id="confirmar-exclusao">
+                    Excluir
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/fornecedor.js"></script>
+
+</body>
+
+</html>
