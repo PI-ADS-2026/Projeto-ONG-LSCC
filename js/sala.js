@@ -251,8 +251,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
+            const nomeDigitado = nome.value.trim();
+            const nomeNormalizado = nomeDigitado.toLowerCase();
+
             const dados = {
-                nome: nome.value.trim(),
+                nome: nomeDigitado,
                 tamanho: Number(tamanho.value),
                 materiais: materiais.value.trim(),
                 cidade: cidade.value,
@@ -273,6 +276,18 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!Number.isFinite(dados.tamanho) || dados.tamanho <= 0) {
                 alert("Informe uma metragem válida.");
                 tamanho.focus();
+                return;
+            }
+
+            // VERIFICAÇÃO DE DUPLICIDADE (Ignorando maiúsculas/minúsculas)
+            const salaDuplicada = salas.find(sala => 
+                String(sala.nome || "").trim().toLowerCase() === nomeNormalizado &&
+                (!salaEditada || String(sala.id) !== String(salaEditada.id))
+            );
+
+            if (salaDuplicada) {
+                alert("Já existe uma sala cadastrada com esse nome!");
+                nome.focus();
                 return;
             }
 
@@ -312,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 salas = salasAnteriores;
             }
         });
-    }
+    } // <--- CHAVE QUE FALTAVA PARA FECHAR O "if (formulario)"
 
     // ==========================================
     // INICIALIZAÇÃO

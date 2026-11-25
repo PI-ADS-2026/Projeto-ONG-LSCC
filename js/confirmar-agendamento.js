@@ -96,6 +96,26 @@
     botaoConfirmar.addEventListener("click", () => {
         const agendamentos = obterAgendamentos();
 
+        // Dupla checagem de conflitos no momento de salvar
+        const conflito = agendamentos.find(a => 
+            a.data === agendamento.data &&
+            a.horario === agendamento.horario &&
+            a.status !== "Cancelada" &&
+            (
+                String(a.pacienteId) === String(agendamento.pacienteId) ||
+                String(a.profissionalId) === String(agendamento.profissionalId) ||
+                String(a.salaId) === String(agendamento.salaId)
+            )
+        );
+
+        if (conflito) {
+            mostrarNotificacao("Não foi possível concluir: já existe um conflito de horário!", "erro");
+            setTimeout(() => {
+                window.location.href = "../pages/novo-agendamento.html";
+            }, 1500);
+            return;
+        }
+
         const novoAgendamento = {
             id: Date.now(),
             pacienteId: agendamento.pacienteId,
@@ -125,9 +145,11 @@
         sessionStorage.removeItem(CHAVE_RASCUNHO);
         sessionStorage.removeItem("pacienteAgendamentoId");
 
-        alert("Agendamento confirmado com sucesso!");
+        // Mostra a notificação bonita de sucesso e espera 1.5 segundo antes de mudar de página
+        mostrarNotificacao("Agendamento confirmado com sucesso!", "sucesso");
 
-        window.location.href = "../pages/agendamentos.html";
+        setTimeout(() => {
+            window.location.href = "../pages/agendamentos.html";
+        }, 1500);
     });
-
 })();
