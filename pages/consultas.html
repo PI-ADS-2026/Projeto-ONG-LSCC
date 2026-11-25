@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/consultas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="tela">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="../pages/agendamentos.html">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="../pages/consultas.html" class="ativo">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="../pages/fornecedor.html">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo">
+
+            <!-- CABEÇALHO -->
+            <header class="topo">
+
+                <div class="topo-esquerda">
+                    <a href="../pages/home.html" class="btn-voltar">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </a>
+                </div>
+
+                <div class="usuario">
+
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil"
+                            id="btn-menu-conta" aria-expanded="false"
+                            aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+
+                            <div class="divisor-menu"></div>
+
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes"
+                            id="btn-menu-config" aria-label="Configurações"
+                            aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+
+                            <a href="../pages/home.html" role="menuitem">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Ir para Home</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <!-- CONSULTAS -->
+            <section class="consultas-conteudo">
+
+                <!-- CABEÇALHO DA PÁGINA -->
+                <section class="cabecalho-pagina">
+                    <div class="titulo-pagina">
+                        <div class="icone-titulo">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+
+                        <div class="titulo-pagina-texto">
+                            <h1>Gerenciamento de consultas</h1>
+                            <p>Acompanhe e gerencie os atendimentos da clínica.</p>
+                        </div>
+                    </div>
+
+                    <div class="acoes">
+                        <a href="../pages/selecionar-paciente.html" class="btn-novo">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Novo agendamento</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- INDICADORES -->
+                <section class="consultas-indicadores">
+
+                    <div class="indicador-consulta">
+                        <div class="indicador-icone indicador-total">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div>
+                            <span>Total de consultas</span>
+                            <strong id="total-consultas">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="indicador-consulta">
+                        <div class="indicador-icone indicador-agendadas">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <span>Agendadas</span>
+                            <strong id="total-agendadas">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="indicador-consulta">
+                        <div class="indicador-icone indicador-concluidas">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <span>Concluídas</span>
+                            <strong id="total-concluidas">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="indicador-consulta">
+                        <div class="indicador-icone indicador-canceladas">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <div>
+                            <span>Canceladas</span>
+                            <strong id="total-canceladas">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="indicador-consulta">
+                        <div class="indicador-icone indicador-ausentes">
+                            <i class="fa-solid fa-user-xmark"></i>
+                        </div>
+                        <div>
+                            <span>Não compareceu</span>
+                            <strong id="total-ausentes">0</strong>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- PAINEL DE CONSULTAS -->
+                <section class="painel-consultas">
+
+                    <div class="consultas-painel-topo">
+                        <div>
+                            <h2>Lista de consultas</h2>
+                            <p>Visualize os atendimentos e atualize seus status.</p>
+                        </div>
+                    </div>
+
+                    <!-- PESQUISA -->
+                    <div class="consultas-filtros">
+
+                        <div class="campo-pesquisa-consultas">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input
+                                type="search"
+                                id="pesquisa-consultas"
+                                placeholder="Pesquisar por paciente ou profissional..."
+                            >
+                        </div>
+
+                    </div>
+
+                    <!-- FILTROS DE STATUS -->
+                    <div class="consultas-abas" role="group" aria-label="Filtrar consultas">
+
+                        <button type="button"
+                            class="aba-consulta ativo"
+                            data-status="todos">
+                            Todas
+                        </button>
+
+                        <button type="button"
+                            class="aba-consulta"
+                            data-status="Agendada">
+                            Agendadas
+                        </button>
+
+                        <button type="button"
+                            class="aba-consulta"
+                            data-status="Concluída">
+                            Concluídas
+                        </button>
+
+                        <button type="button"
+                            class="aba-consulta"
+                            data-status="Cancelada">
+                            Canceladas
+                        </button>
+
+                        <button type="button"
+                            class="aba-consulta"
+                            data-status="Não compareceu">
+                            Não compareceu
+                        </button>
+
+                    </div>
+
+                    <!-- LISTA -->
+                    <div class="lista-consultas" id="lista-consultas">
+
+                        <!-- O JavaScript preencherá a lista. -->
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/autenticacao.js"></script>
+    <script src="../js/consultas.js"></script>
+
+</body>
+
+</html>

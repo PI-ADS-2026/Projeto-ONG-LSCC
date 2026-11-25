@@ -420,7 +420,182 @@ select:focus-visible {
 .usuario #btn-sair:hover {
     background: rgba(255, 255, 255, 0.25);
 }
+/* Botões de ação do usuário */
+.usuario #btn-trocar-conta,
+.usuario #btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 
+    padding: 9px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+
+    color: var(--branco);
+    background: rgba(255, 255, 255, 0.12);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background var(--transicao);
+}
+
+.usuario #btn-trocar-conta:hover,
+.usuario #btn-sair:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Wrapper dos menus dropdown no cabeçalho */
+.topo .menu-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.topo .usuario-perfil {
+    border: none;
+    background: transparent;
+    color: var(--branco);
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 8px;
+}
+
+.topo .usuario-perfil:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* Caixa suspensa (usada tanto na setinha do perfil quanto na engrenagem) */
+.topo .menu-suspenso {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 9999;
+
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 195px;
+    padding: 6px;
+
+    color: var(--texto);
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(23, 39, 71, 0.18);
+}
+
+.topo .menu-suspenso.aberto {
+    display: flex;
+}
+
+.topo .menu-suspenso-titulo {
+    padding: 6px 10px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--texto-secundario);
+}
+
+.topo .menu-suspenso button,
+.topo .menu-suspenso a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    padding: 9px 11px;
+
+    border: none;
+    border-radius: 7px;
+
+    color: var(--texto);
+    background: transparent;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: background var(--transicao), color var(--transicao);
+}
+
+.topo .menu-suspenso button i,
+.topo .menu-suspenso a i {
+    width: 16px;
+    color: var(--rosa-principal);
+}
+
+.topo .menu-suspenso button:hover,
+.topo .menu-suspenso a:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.topo .menu-suspenso .divisor-menu {
+    height: 1px;
+    margin: 4px 6px;
+    background: var(--borda);
+}
+
+.topo .menu-suspenso button,
+.topo .menu-suspenso a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    width: 100%;
+    min-width: 170px;
+    padding: 10px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    color: var(--texto);
+    background: transparent;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: background var(--transicao), color var(--transicao);
+}
+
+.topo .menu-suspenso button span,
+.topo .menu-suspenso a span {
+    display: inline-block;
+    color: var(--texto);
+}
+
+.topo .menu-suspenso button i,
+.topo .menu-suspenso a i {
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    color: var(--rosa-principal);
+}
+
+.topo .menu-suspenso button:hover,
+.topo .menu-suspenso a:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.topo .menu-suspenso button:hover span,
+.topo .menu-suspenso a:hover span {
+    color: var(--rosa-principal);
+}
 
 /* =====================================================
 5. CABEÇALHO DAS PÁGINAS
@@ -2062,4 +2237,173 @@ select:focus-visible {
     border-color: var(--rosa-principal);
     color: var(--branco);
     background: var(--rosa-principal);
+}
+
+/* =====================================================
+   MODO ESCURO (BASE)
+===================================================== */
+
+body.modo-escuro {
+    --fundo: #12151e;
+    --branco: #1b2030;
+    --texto: #eef2f8;
+    --texto-secundario: #a4b0c6;
+    --borda: #2b3248;
+    --rosa-claro: #3b1929;
+    --rosa-suave: #241622;
+    --sombra: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.modo-escuro .sidebar .logo {
+    background: linear-gradient(180deg, #1b2030, #161b29);
+}
+
+body.modo-escuro .cabecalho-pagina {
+    background: linear-gradient(110deg, #241622, #1e1929);
+    border-color: #3a2436;
+}
+
+body.modo-escuro .lista-pacientes .cabecalho-lista,
+body.modo-escuro .lista-profissionais .cabecalho-lista {
+    background: #261926;
+    color: var(--texto);
+}
+
+body.modo-escuro .paciente:hover,
+body.modo-escuro .lista-profissionais .profissional:hover {
+    background: #21283b;
+}
+
+body.modo-escuro .campo-pesquisa,
+body.modo-escuro .campo-cadastro input,
+body.modo-escuro .campo-cadastro select,
+body.modo-escuro .campo-cadastro textarea,
+body.modo-escuro .campo input,
+body.modo-escuro .campo-clinico input,
+body.modo-escuro .caixa-observacao,
+body.modo-escuro .data-atual,
+body.modo-escuro .select-status-consulta,
+body.modo-escuro .campo-pesquisa-consultas input {
+    background: #151926;
+    color: var(--texto);
+    border-color: #2f3852;
+}
+
+body.modo-escuro .card-agendamentos {
+    background: linear-gradient(145deg, #1b2030, #251724);
+    border-color: #3d2436;
+}
+
+body.modo-escuro .card-estoque {
+    background: linear-gradient(145deg, #1b2030, #261f18);
+    border-color: #3d3124;
+}
+
+body.modo-escuro .alerta-rosa {
+    background: #261723;
+}
+
+body.modo-escuro .alerta-laranja {
+    background: #262018;
+}
+
+body.modo-escuro .alerta-texto strong {
+    color: var(--texto);
+}
+
+body.modo-escuro .calendario-visualizacoes,
+body.modo-escuro .calendario-rodape,
+body.modo-escuro .dia-calendario.outro-mes,
+body.modo-escuro .confirmacao-observacoes p {
+    background: #161b29;
+}
+
+body.modo-escuro .topo .menu-suspenso button span,
+body.modo-escuro .topo .menu-suspenso a span {
+    color: var(--texto);
+}
+
+body.modo-escuro .consultas-cabecalho p,
+body.modo-escuro .consultas-painel-topo p,
+body.modo-escuro .indicador-consulta span,
+body.modo-escuro .consulta-identificacao,
+body.modo-escuro .detalhe-consulta-lista,
+body.modo-escuro .consulta-observacoes,
+body.modo-escuro .label-status-consulta,
+body.modo-escuro .consultas-vazio {
+    color: var(--texto-secundario);
+}
+
+/* Campos de Novo Agendamento no modo escuro */
+body.modo-escuro .campo-agendamento input,
+body.modo-escuro .campo-agendamento select,
+body.modo-escuro .campo-agendamento textarea {
+    background: #151926;
+    color: var(--texto);
+    border-color: #2f3852;
+    color-scheme: dark;
+}
+
+body.modo-escuro .campo-agendamento input:focus,
+body.modo-escuro .campo-agendamento select:focus,
+body.modo-escuro .campo-agendamento textarea:focus {
+    background: #191e2e;
+    border-color: var(--rosa-medio);
+}
+
+body.modo-escuro .campo-agendamento input:disabled,
+body.modo-escuro .campo-agendamento select:disabled {
+    background: #121520;
+    color: #7d89a3;
+    border-color: #252c40;
+}
+
+body.modo-escuro .campo-agendamento input::placeholder,
+body.modo-escuro .campo-agendamento textarea::placeholder {
+    color: #8895b0;
+    opacity: 1;
+}
+
+body.modo-escuro .campo-agendamento select option {
+    background: #151926;
+    color: var(--texto);
+}
+body.modo-escuro .campo-cadastro label:not(.obrigatorio) {
+    color: #c81752;
+}
+body.modo-escuro .campo-agendamento label {
+    color: #c81752;
+}
+body.modo-escuro .pesquisa-pacientes-agendamento {
+    background: #151926 !important;
+    border-color: #2f3852;
+}
+
+body.modo-escuro .pesquisa-pacientes-agendamento input {
+    color: #eef2f8;
+}
+
+body.modo-escuro .pesquisa-pacientes-agendamento input::placeholder {
+    color: #8895b0;
+    opacity: 1;
+}
+
+body.modo-escuro .paciente-agendamento-card:hover {
+    background: #21283b !important;
+    border-color: #f38ab0;
+}
+body.modo-escuro .alterar-conta input,
+body.modo-escuro .alterar-conta select,
+body.modo-escuro .alterar-conta textarea,
+body.modo-escuro form input[type="text"],
+body.modo-escuro form input[type="email"],
+body.modo-escuro form input[type="tel"] {
+    background: #151926 !important;
+    color: var(--texto) !important;
+    border-color: #2f3852 !important;
+}
+
+body.modo-escuro .alterar-conta label,
+body.modo-escuro form label {
+    color: #c81752;
 }

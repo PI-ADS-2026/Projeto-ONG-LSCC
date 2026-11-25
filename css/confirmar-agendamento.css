@@ -1,0 +1,275 @@
+
+/* =====================================================
+   CONFIRMAR AGENDAMENTO
+===================================================== */
+
+.confirmar-agendamento-conteudo {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* Cabeçalho */
+
+.confirmar-agendamento-cabecalho {
+    margin-bottom: 25px;
+}
+
+.confirmar-agendamento-cabecalho h1 {
+    margin-bottom: 8px;
+
+    color: var(--texto);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.confirmar-agendamento-cabecalho p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* Painel principal */
+
+.painel-confirmacao {
+    padding: 25px;
+
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Topo do resumo */
+
+.confirmacao-topo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 25px;
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+.confirmacao-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+
+    font-size: 20px;
+}
+
+.confirmacao-topo h2 {
+    margin-bottom: 5px;
+
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.confirmacao-topo p {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* Seções */
+
+.confirmacao-secao {
+    margin-bottom: 25px;
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+.confirmacao-secao-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.confirmacao-secao-titulo i {
+    color: var(--rosa-principal);
+    font-size: 15px;
+}
+
+.confirmacao-secao-titulo h3 {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Dados */
+
+.confirmacao-dados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.confirmacao-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.confirmacao-campo span {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.confirmacao-campo strong {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* Observações */
+
+.confirmacao-observacoes {
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.confirmacao-observacoes p {
+    min-height: 55px;
+    padding: 14px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    color: var(--texto-secundario);
+    background: #fafbfe;
+
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Aviso */
+
+.aviso-confirmacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 9px;
+
+    color: var(--texto-secundario);
+    background: var(--rosa-suave);
+}
+
+.aviso-confirmacao i {
+    margin-top: 2px;
+
+    color: var(--rosa-principal);
+    font-size: 15px;
+}
+
+.aviso-confirmacao p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Ações */
+
+.acoes-confirmacao {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+.btn-editar-confirmacao,
+.btn-finalizar-agendamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 43px;
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-editar-confirmacao {
+    border: 1px solid var(--borda);
+
+    color: var(--texto-secundario);
+    background: var(--branco);
+}
+
+.btn-editar-confirmacao:hover {
+    border-color: var(--rosa-medio);
+
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.btn-finalizar-agendamento {
+    border: 1px solid var(--rosa-principal);
+
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+.btn-finalizar-agendamento:hover {
+    border-color: var(--rosa-escuro);
+    background: var(--rosa-escuro);
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+    .confirmar-agendamento-conteudo {
+        padding: 24px 18px;
+    }
+
+    .painel-confirmacao {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .confirmacao-dados {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .acoes-confirmacao {
+        flex-direction: column-reverse;
+    }
+
+    .btn-editar-confirmacao,
+    .btn-finalizar-agendamento {
+        width: 100%;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar senha | Clínica</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/autenticacao.js" defer></script>
+
+    <style>
+        .input-icone:focus-within,
+        .input-icone input:focus,
+        .input-icone input:focus-visible {
+            border-color: #e8c4d3;
+            box-shadow: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="pagina-login">
+
+    <main class="card-acesso card-entrar">
+
+        <a href="../pages/entrar.html" class="voltar-login">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+        </a>
+
+        <div class="logo-login">
+            <img src="../assets/imagens/liga-logo.png"
+                 alt="Logo da Liga Sorocabana de Combate ao Câncer">
+        </div>
+
+        <h1>Recuperar senha</h1>
+        <p class="descricao-login">
+            Informe o e-mail cadastrado e defina sua nova senha de acesso.
+        </p>
+
+        <form class="form-login" id="form-recuperar-senha">
+
+            <div class="campo-login">
+                <label for="email">E-mail</label>
+
+                <div class="input-icone">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@gmail.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="campo-login">
+                <label for="nova-senha">Nova senha</label>
+
+                <div class="input-icone">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                        type="password"
+                        id="nova-senha"
+                        name="nova-senha"
+                        placeholder="Digite a nova senha"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="campo-login">
+                <label for="confirmar-nova-senha">Confirmar nova senha</label>
+
+                <div class="input-icone">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                        type="password"
+                        id="confirmar-nova-senha"
+                        name="confirmar-nova-senha"
+                        placeholder="Digite a nova senha novamente"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+            </div>
+
+            <button type="submit" class="btn-entrar">
+                Redefinir senha
+            </button>
+
+        </form>
+
+        <p class="rodape-login">Sistema de gerenciamento da clínica</p>
+
+    </main>
+
+    <script>
+        const formRecuperarSenha = document.getElementById('form-recuperar-senha');
+
+        formRecuperarSenha.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const novaSenha = document.getElementById('nova-senha').value;
+            const confirmarNovaSenha = document.getElementById('confirmar-nova-senha').value;
+
+            if (novaSenha !== confirmarNovaSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            const resultado = redefinirSenhaPorEmail(email, novaSenha);
+
+            if (!resultado.sucesso) {
+                alert(resultado.mensagem);
+                return;
+            }
+
+            alert(resultado.mensagem);
+            window.location.href = '../pages/entrar.html';
+        });
+    </script>
+
+</body>
+</html>

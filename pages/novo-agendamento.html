@@ -1,0 +1,295 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Agendamento - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/novo-agendamento.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- O script de notificação precisa estar aqui no head -->
+    <script src="../js/notificacao.js"></script>
+  </head>
+
+  <body>
+    <div class="tela">
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica" />
+        </div>
+
+        <nav>
+          <a href="../pages/home.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+
+          <a href="../pages/paciente.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Pacientes</span>
+          </a>
+
+          <a href="../pages/profissional.html">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Profissionais</span>
+          </a>
+
+          <a href="../pages/sala.html">
+            <i class="fa-solid fa-door-open"></i>
+            <span>Salas</span>
+          </a>
+
+          <a href="../pages/agendamentos.html" class="ativo">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Agendamentos</span>
+          </a>
+          <a href="../pages/consultas.html">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Consultas</span>
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-box"></i>
+            <span>Estoque</span>
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-truck"></i>
+            <span>Fornecedores</span>
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Relatórios</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="conteudo">
+        <header class="topo">
+          <div class="topo-esquerda">
+            <button type="button" class="btn-voltar" onclick="history.back()">
+              <i class="fa-solid fa-arrow-left"></i>
+              Voltar
+            </button>
+          </div>
+
+          <div class="usuario">
+            <button
+              type="button"
+              class="btn-notificacao"
+              aria-label="Notificações"
+            >
+              <i class="fa-regular fa-bell"></i>
+            </button>
+
+            <div class="menu-dropdown-wrapper">
+              <button
+                type="button"
+                class="usuario-perfil"
+                id="btn-menu-conta"
+                aria-expanded="false"
+                aria-controls="menu-conta"
+              >
+                <i class="fa-solid fa-circle-user"></i>
+                <span id="nome-usuario">Olá, usuário</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+
+              <div class="menu-suspenso" id="menu-conta" role="menu">
+                <span class="menu-suspenso-titulo">Conta</span>
+
+                <button type="button" id="btn-trocar-conta" role="menuitem">
+                  <i class="fa-solid fa-users"></i>
+                  <span>Trocar conta</span>
+                </button>
+
+                <div class="divisor-menu"></div>
+
+                <button type="button" id="btn-sair" role="menuitem">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <span>Sair</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="menu-dropdown-wrapper">
+              <button
+                type="button"
+                class="btn-configuracoes"
+                id="btn-menu-config"
+                aria-label="Configurações"
+                aria-expanded="false"
+                aria-controls="menu-config"
+              >
+                <i class="fa-solid fa-gear"></i>
+              </button>
+
+              <div class="menu-suspenso" id="menu-config" role="menu">
+                <span class="menu-suspenso-titulo">Configurações</span>
+
+                <a href="../pages/alterar-conta.html" role="menuitem">
+                  <i class="fa-solid fa-user-pen"></i>
+                  <span>Alterar dados da conta</span>
+                </a>
+
+                <a href="../pages/cadastro-acesso.html" role="menuitem">
+                  <i class="fa-solid fa-user-plus"></i>
+                  <span>Novo acesso</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section class="novo-agendamento-conteudo">
+          <div class="novo-agendamento-cabecalho">
+            <div>
+              <h1>Novo agendamento</h1>
+              <p>Preencha as informações para agendar uma consulta.</p>
+            </div>
+          </div>
+
+          <!-- Paciente selecionado -->
+
+          <section class="painel-paciente-selecionado">
+            <div class="painel-selecao-icone">
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="painel-selecao-info">
+              <span>Paciente selecionado</span>
+              <h2 id="nome-paciente-selecionado">Nome do paciente</h2>
+              <p id="cpf-paciente-selecionado">CPF do paciente</p>
+            </div>
+
+            <a
+              href="../pages/selecionar-paciente.html"
+              class="alterar-paciente"
+            >
+              <i class="fa-solid fa-pen"></i>
+              Alterar
+            </a>
+          </section>
+
+          <!-- Formulário -->
+
+          <form id="form-novo-agendamento">
+            <section class="painel-formulario-agendamento">
+              <div class="painel-formulario-titulo">
+                <div class="formulario-titulo-icone">
+                  <i class="fa-solid fa-stethoscope"></i>
+                </div>
+
+                <div>
+                  <h2>Informações da consulta</h2>
+                  <p>
+                    Selecione o profissional e defina quando será a consulta.
+                  </p>
+                </div>
+              </div>
+
+              <div class="formulario-agendamento-grid">
+                <div class="campo-agendamento">
+                  <label for="profissao">Profissão</label>
+
+                  <select id="profissao" name="profissao" required>
+                    <option value="">Selecione a profissão</option>
+                    <option value="Médico">Médico(a)</option>
+                    <option value="Enfermeiro">Enfermeiro(a)</option>
+                    <option value="Psicólogo">Psicólogo(a)</option>
+                    <option value="Fisioterapeuta">Fisioterapeuta</option>
+                    <option value="Nutricionista">Nutricionista</option>
+                    <option value="Farmacêutico">Farmacêutico(a)</option>
+                    <option value="Assistente Social">Assistente social</option>
+                    <option value="Terapeuta Ocupacional">
+                      Terapeuta ocupacional
+                    </option>
+                    <option value="Técnico de Enfermagem">
+                      Técnico(a) de enfermagem
+                    </option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+
+                <div class="campo-agendamento">
+                  <label for="profissional">Profissional</label>
+
+                  <select
+                    id="profissional"
+                    name="profissional"
+                    required
+                    disabled
+                  >
+                    <option value="">Selecione primeiro a profissão</option>
+                  </select>
+                </div>
+
+                <div class="campo-agendamento">
+                  <label for="sala">Sala</label>
+
+                  <select id="sala" name="sala" required>
+                    <option value="">Selecione uma sala</option>
+                  </select>
+                </div>
+
+                <div class="campo-agendamento">
+                  <label for="data-consulta">Data da consulta</label>
+
+                  <input
+                    type="date"
+                    id="data-consulta"
+                    name="data-consulta"
+                    required
+                  />
+                </div>
+
+                <div class="campo-agendamento">
+                  <label for="horario-consulta">Horário da consulta</label>
+
+                  <input
+                    type="time"
+                    id="horario-consulta"
+                    name="horario-consulta"
+                    required
+                  />
+                </div>
+
+                <div class="campo-agendamento campo-observacoes">
+                  <label for="observacoes">Observações</label>
+
+                  <textarea
+                    id="observacoes"
+                    name="observacoes"
+                    rows="4"
+                    placeholder="Adicione informações importantes sobre a consulta (opcional)..."
+                  ></textarea>
+                </div>
+              </div>
+            </section>
+
+            <div class="acoes-agendamento">
+              <a
+                href="../pages/selecionar-paciente.html"
+                class="btn-cancelar-agendamento"
+              >
+                Cancelar
+              </a>
+
+              <button type="submit" class="btn-continuar-agendamento">
+                Continuar
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/autenticacao.js"></script>
+    <script src="../js/novo-agendamento.js"></script>
+  </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salas Reservadas</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/salas-reservadas.css" />
+
+  <script src="../js/notificacao.js"></script>
+</head>
+
+<body>
+  <div class="tela">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica" />
+      </div>
+
+      <nav>
+        <a href="../pages/home.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="../pages/paciente.html">
+          <i class="fa-solid fa-user"></i>
+          <span>Pacientes</span>
+        </a>
+
+        <a href="../pages/profissional.html">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Profissionais</span>
+        </a>
+
+        <a href="../pages/sala.html" class="ativo">
+          <i class="fa-solid fa-door-open"></i>
+          <span>Salas</span>
+        </a>
+
+        <a href="../pages/agendamentos.html">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Agendamentos</span>
+        </a>
+
+        <a href="../pages/consultas.html">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span>Consultas</span>
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-box"></i>
+          <span>Estoque</span>
+        </a>
+
+        <a href="../pages/fornecedor.html">
+          <i class="fa-solid fa-truck"></i>
+          <span>Fornecedores</span>
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Relatórios</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+      <header class="topo">
+        <div class="topo-esquerda">
+          <a href="sala.html" class="btn-voltar">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Voltar</span>
+          </a>
+        </div>
+
+        <div class="usuario">
+          <button
+            type="button"
+            class="btn-notificacao"
+            aria-label="Notificações"
+          >
+            <i class="fa-regular fa-bell"></i>
+          </button>
+
+          <div class="menu-dropdown-wrapper">
+            <button
+              type="button"
+              class="usuario-perfil"
+              id="btn-menu-conta"
+              aria-expanded="false"
+              aria-controls="menu-conta"
+            >
+              <i class="fa-solid fa-circle-user"></i>
+              <span id="nome-usuario">Olá, usuário</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="menu-suspenso" id="menu-conta" role="menu">
+              <span class="menu-suspenso-titulo">Conta</span>
+              <button type="button" id="btn-trocar-conta" role="menuitem">
+                <i class="fa-solid fa-users"></i>
+                <span>Trocar conta</span>
+              </button>
+              <div class="divisor-menu"></div>
+              <button type="button" id="btn-sair" role="menuitem">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-dropdown-wrapper">
+            <button
+              type="button"
+              class="btn-configuracoes"
+              id="btn-menu-config"
+              aria-label="Configurações"
+              aria-expanded="false"
+              aria-controls="menu-config"
+            >
+              <i class="fa-solid fa-gear"></i>
+            </button>
+
+            <div class="menu-suspenso" id="menu-config" role="menu">
+              <span class="menu-suspenso-titulo">Configurações</span>
+              <a href="../pages/alterar-conta.html" role="menuitem">
+                <i class="fa-solid fa-user-pen"></i>
+                <span>Alterar dados da conta</span>
+              </a>
+              <a href="../pages/cadastro-acesso.html" role="menuitem">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Novo acesso</span>
+              </a>
+              <a href="../pages/home.html" role="menuitem">
+                <i class="fa-solid fa-house"></i>
+                <span>Ir para Home</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="pagina-cadastro">
+        <div class="cabecalho-cadastro">
+          <h1>Salas Reservadas</h1>
+          <p>Lista completa de todas as reservas e compromissos vinculados às salas.</p>
+        </div>
+
+        <div class="container-reservadas">
+          <table class="tabela-reservadas">
+            <thead>
+              <tr>
+                <th>Sala</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Profissional</th>
+                <th>Paciente</th>
+              </tr>
+            </thead>
+            <tbody id="lista-reservadas-corpo">
+              <!-- Preenchido via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/autenticacao.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const corpo = document.getElementById("lista-reservadas-corpo");
+      const agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
+      const ativas = agendamentos.filter(a => a.status !== "Cancelada");
+
+      if (ativas.length === 0) {
+        corpo.innerHTML = `
+          <tr>
+            <td colspan="5" class="estado-vazio">
+              <i class="fa-solid fa-calendar-xmark"></i>
+              <p>Nenhuma reserva encontrada no sistema.</p>
+            </td>
+          </tr>`;
+        return;
+      }
+
+      corpo.innerHTML = "";
+      ativas.forEach(a => {
+        const tr = document.createElement("tr");
+        const dataFormatada = a.data ? a.data.split('-').reverse().join('/') : '-';
+        
+        tr.innerHTML = `
+          <td><span class="badge-sala"><i class="fa-solid fa-door-open"></i> ${a.salaNome || "Sala"}</span></td>
+          <td><strong>${dataFormatada}</strong></td>
+          <td><span class="badge-horario"><i class="fa-regular fa-clock"></i> ${a.horario}</span></td>
+          <td>${a.profissionalNome || "Não informado"}</td>
+          <td>${a.pacienteNome || "Não informado"}</td>
+        `;
+        corpo.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return true;
         } catch (erro) {
             console.error("Erro ao salvar salas:", erro);
-            alert("Não foi possível salvar as salas.");
+            if (typeof mostrarNotificacao === "function") {
+                mostrarNotificacao("Não foi possível salvar as salas.", "erro");
+            }
             return false;
         }
     }
@@ -201,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (salvarSalas()) {
                 listarSalas(pesquisaSala ? pesquisaSala.value : "");
                 fecharModal();
+                if (typeof mostrarNotificacao === "function") {
+                    mostrarNotificacao("Sala excluída com sucesso!", "sucesso");
+                }
             } else {
                 salas = salasAnteriores;
             }
@@ -234,8 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (!salaEditada) {
-                alert("Sala não encontrada.");
-                window.location.href = "sala.html";
+                mostrarNotificacao("Sala não encontrada.", "erro");
+                setTimeout(() => {
+                    window.location.href = "sala.html";
+                }, 1500);
                 return;
             }
 
@@ -251,8 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
+            const nomeDigitado = nome.value.trim();
+            const nomeNormalizado = nomeDigitado.toLowerCase();
+
             const dados = {
-                nome: nome.value.trim(),
+                nome: nomeDigitado,
                 tamanho: Number(tamanho.value),
                 materiais: materiais.value.trim(),
                 cidade: cidade.value,
@@ -266,13 +276,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 !dados.cidade ||
                 !dados.estado
             ) {
-                alert("Preencha todos os campos.");
+                mostrarNotificacao("Preencha todos os campos obrigatórios.", "aviso");
                 return;
             }
 
             if (!Number.isFinite(dados.tamanho) || dados.tamanho <= 0) {
-                alert("Informe uma metragem válida.");
+                mostrarNotificacao("Informe uma metragem válida.", "aviso");
                 tamanho.focus();
+                return;
+            }
+
+            // VERIFICAÇÃO DE DUPLICIDADE (Ignorando maiúsculas/minúsculas)
+            const salaDuplicada = salas.find(sala => 
+                String(sala.nome || "").trim().toLowerCase() === nomeNormalizado &&
+                (!salaEditada || String(sala.id) !== String(salaEditada.id))
+            );
+
+            if (salaDuplicada) {
+                mostrarNotificacao(`Ops! Já existe uma sala cadastrada com o nome "${nomeDigitado}".`, "aviso");
+                nome.focus();
                 return;
             }
 
@@ -300,13 +322,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (salvarSalas()) {
 
-                alert(
+                mostrarNotificacao(
                     salaEditada
                         ? "Sala atualizada com sucesso!"
-                        : "Sala cadastrada com sucesso!"
+                        : "Sala cadastrada com sucesso!",
+                    "sucesso"
                 );
 
-                window.location.href = "sala.html";
+                setTimeout(() => {
+                    window.location.href = "sala.html";
+                }, 1500);
 
             } else {
                 salas = salasAnteriores;

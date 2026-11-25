@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Paciente - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/selecionar-paciente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="../pages/agendamentos.html" class="ativo">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+                 <a href="../pages/consultas.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <button type="button" class="btn-voltar" onclick="history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+
+                <div class="usuario">
+
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil"
+                            id="btn-menu-conta" aria-expanded="false"
+                            aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+
+                            <div class="divisor-menu"></div>
+
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes"
+                            id="btn-menu-config" aria-label="Configurações"
+                            aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <section class="selecionar-paciente-conteudo">
+
+                <div class="selecionar-paciente-cabecalho">
+                    <div>
+                        <h1>Selecione o paciente</h1>
+                        <p>Escolha o paciente para o qual deseja agendar uma consulta.</p>
+                    </div>
+
+                    <a href="../pages/cadastro-paciente.html" class="btn-cadastrar-paciente">
+                        <i class="fa-solid fa-plus"></i>
+                        Cadastrar paciente
+                    </a>
+                </div>
+
+                <section class="painel-pacientes-agendamento">
+
+                    <div class="pacientes-agendamento-topo">
+                        <div>
+                            <h2>Pacientes cadastrados</h2>
+                            <p>Selecione um paciente para continuar.</p>
+                        </div>
+
+                        <span class="contador-pacientes" id="contador-pacientes">
+                            0 pacientes
+                        </span>
+                    </div>
+
+                    <div class="pesquisa-pacientes-agendamento">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="pesquisa-paciente-agendamento"
+                            placeholder="Pesquisar por nome ou CPF..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="lista-pacientes-agendamento" id="lista-pacientes-agendamento">
+
+                        <!-- Os pacientes cadastrados serão inseridos pelo JavaScript. -->
+                        <div class="estado-vazio-pacientes" id="estado-vazio-pacientes">
+                            <div class="estado-vazio-icone">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <h3>Nenhum paciente encontrado</h3>
+                            <p>Os pacientes cadastrados aparecerão aqui.</p>
+                        </div>
+
+                    </div>
+
+                    
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+   <script src="../js/autenticacao.js"></script>
+    <script src="../js/selecionar-paciente-agendamento.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+
+/* =====================================================
+   AGENDAMENTOS
+   Calendário mensal, semanal e diário
+===================================================== */
+
+/* Conteúdo */
+
+/* Ajuste de alinhamento com as demais páginas */
+.agendamentos-conteudo {
+    padding: 24px 25px;
+}
+
+.agendamentos-conteudo .cabecalho-pagina {
+    margin: 0 0 22px;
+}
+
+/* Painel do calendário */
+
+.painel-calendario {
+    padding: 25px;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+/* Topo do calendário */
+
+.calendario-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.calendario-titulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.calendario-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+    font-size: 20px;
+}
+
+.calendario-titulo h2 {
+    margin-bottom: 5px;
+    color: var(--texto);
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.calendario-titulo p {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+/* Navegação entre períodos */
+
+.calendario-navegacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendario-navegacao button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    color: var(--texto);
+    background: var(--branco);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.calendario-navegacao button:hover {
+    border-color: var(--rosa-medio);
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.calendario-navegacao #mes-hoje {
+    color: var(--rosa-principal);
+    border-color: #f3bfd2;
+    background: var(--rosa-suave);
+}
+
+/* Visualizações: mês, semana e dia */
+
+.calendario-visualizacoes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+    background: #f8f9fc;
+}
+
+.btn-visualizacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 7px;
+    color: var(--texto-secundario);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-visualizacao:hover {
+    color: var(--rosa-principal);
+    background: var(--rosa-suave);
+}
+
+.btn-visualizacao.ativo {
+    color: var(--branco);
+    background: var(--rosa-principal);
+    box-shadow: 0 2px 6px rgba(233, 30, 99, 0.18);
+}
+
+.btn-visualizacao i {
+    font-size: 13px;
+}
+
+/* Legenda */
+
+.calendario-legenda {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+}
+
+.calendario-legenda span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.legenda-ponto {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.legenda-agendado {
+    background: var(--rosa-principal);
+}
+
+.legenda-hoje {
+    background: #4683bd;
+}
+
+/* Grade do calendário */
+
+.calendario-grade {
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.dias-semana,
+.dias-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.dias-semana {
+    min-width: 650px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.dias-semana span {
+    padding: 14px 8px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Células dos dias */
+
+.dias-calendario {
+    min-width: 650px;
+}
+
+.dia-calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 115px;
+    padding: 12px;
+    border-right: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+    background: var(--branco);
+    transition: background var(--transicao);
+}
+
+.dia-calendario:hover {
+    background: #fffafd;
+}
+
+.dia-calendario:nth-child(7n) {
+    border-right: none;
+}
+
+/* Número do dia */
+
+.numero-dia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Dia atual */
+
+.dia-calendario.hoje .numero-dia {
+    color: var(--branco);
+    background: var(--rosa-principal);
+}
+
+/* Dias de outros meses */
+
+.dia-calendario.outro-mes {
+    background: #fafbfe;
+}
+
+.dia-calendario.outro-mes .numero-dia {
+    color: #b9c0cd;
+}
+
+/* Consultas dentro do dia */
+
+.consulta-calendario {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    background: var(--rosa-claro);
+    border-left: 3px solid var(--rosa-principal);
+    border-radius: 6px;
+    font-size: 11px;
+    overflow: hidden;
+}
+
+.consulta-calendario span:first-child {
+    color: var(--rosa-escuro);
+    font-weight: 700;
+}
+
+.consulta-calendario span:last-child {
+    color: var(--texto);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Rodapé */
+
+.calendario-rodape {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 9px;
+    color: var(--texto-secundario);
+    background: #f8f9fc;
+    font-size: 12px;
+}
+
+.calendario-rodape i {
+    color: var(--rosa-principal);
+    font-size: 15px;
+}
+
+/* Consultas - visualização diária */
+
+.consulta-detalhada {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    border-left: 4px solid var(--rosa-principal);
+    border-radius: 8px;
+    background: var(--rosa-suave);
+}
+
+.consulta-detalhada .consulta-horario {
+    color: var(--rosa-principal);
+    font-size: 14px;
+}
+
+.consulta-detalhada .consulta-paciente,
+.consulta-detalhada .consulta-profissional,
+.consulta-detalhada .consulta-profissao,
+.consulta-detalhada .consulta-observacoes {
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+    .agendamentos-conteudo {
+        padding: 24px 18px;
+    }
+
+    .painel-calendario {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .calendario-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendario-navegacao {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .calendario-visualizacoes {
+        width: 100%;
+    }
+
+    .btn-visualizacao {
+        flex: 1;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+
+    .calendario-legenda {
+        gap: 12px;
+    }
+}

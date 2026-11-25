@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Fornecedores</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
+            </div>
+
+            <nav>
+                <a href="../pages/home.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../pages/paciente.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Pacientes</span>
+                </a>
+
+                <a href="../pages/profissional.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                <a href="../pages/sala.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Salas</span>
+                </a>
+
+                <a href="../pages/agendamentos.html">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Agendamentos</span>
+                </a>
+
+                <a href="../pages/consultas.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="../pages/fornecedor.html" class="ativo">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo">
+
+            <header class="topo">
+                <div class="topo-esquerda">
+                    <a href="../pages/fornecedor.html" class="btn-voltar">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </a>
+                </div>
+
+                <div class="usuario">
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <a href="../pages/home.html" role="menuitem">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Ir para Home</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="pagina-cadastro">
+
+                <div class="cabecalho-cadastro">
+                    <h1 id="titulo-cadastro">Cadastro de Fornecedores</h1>
+                    <p>Gerencie as informações de fornecedores.</p>
+                </div>
+
+                <form class="formulario-profissional" id="formulario">
+
+                    <!-- DADOS DO FORNECEDOR -->
+                    <section class="secao-cadastro">
+
+                        <div class="titulo-secao">
+                            <i class="fa-solid fa-truck"></i>
+
+                            <div>
+                                <h2>Dados do fornecedor</h2>
+                                <p>Informações de identificação, contato e endereço.</p>
+                            </div>
+                        </div>
+
+                        <div class="grade-campos">
+
+                            <div class="campo-cadastro campo-largo">
+                                <label class="obrigatorio" for="nome">Nome do Fornecedor *</label>
+                                <input type="text" id="nome" placeholder="Ex.: Amigas Artesãs" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label class="obrigatorio" for="cnpj">CNPJ *</label>
+                                <input type="text" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00" required>
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label class="obrigatorio" for="telefone">Telefone *</label>
+                                <input type="tel" id="telefone" maxlength="15" placeholder="(00) 00000-0000" required>
+                            </div>
+
+                            <div class="campo-cadastro campo-largo">
+                                <label class="obrigatorio" for="email">E-mail *</label>
+                                <input type="email" id="email" placeholder="fornecedor@email.com" required>
+                            </div>
+
+                            <div class="campo-cadastro campo-largo">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" id="endereco" placeholder="Rua, Avenida...">
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="numero">Nº</label>
+                                <input type="text" id="numero" placeholder="1234">
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" maxlength="9" placeholder="00000-000">
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade">
+                            </div>
+
+                            <div class="campo-cadastro">
+                                <label for="estado">Estado</label>
+                                <input type="text" id="estado" maxlength="2" placeholder="SP">
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- BOTÕES -->
+                    <div class="botoes-cadastro">
+
+                        <a href="../pages/fornecedor.html" class="btn-cancelar">
+                            Cancelar
+                        </a>
+
+                        <button type="submit" class="btn-salvar" id="btn-salvar">
+                            <i class="fa-solid fa-check"></i>
+                            Cadastrar
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/autenticacao.js"></script>
+    <script src="../js/cadastro-fornecedor.js"></script>
+
+</body>
+
+</html>

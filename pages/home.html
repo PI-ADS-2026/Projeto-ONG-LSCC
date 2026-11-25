@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
 
 <body>
@@ -16,7 +15,7 @@
 
         <aside class="sidebar">
             <div class="logo">
-                <img src="../assets/imagens/liga-logo.png">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
             </div>
 
             <nav>
@@ -40,9 +39,14 @@
                     <span>Salas</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/agendamentos.html">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
+                </a>
+
+                <a href="../pages/consultas.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
                 </a>
 
                 <a href="#">
@@ -50,7 +54,7 @@
                     <span>Estoque</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/fornecedor.html">
                     <i class="fa-solid fa-truck"></i>
                     <span>Fornecedores</span>
                 </a>
@@ -70,20 +74,52 @@
                 </div>
 
                 <div class="usuario">
-                    <span id="nome-usuario">Olá, usuário</span>
-
-                    <button type="button" id="btn-trocar-conta">
-                        <i class="fa-solid fa-users"></i>
-                        Trocar conta
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
                     </button>
 
-                    <button type="button" id="btn-sair">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        Sair
-                    </button>
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
 
-                    <i class="fa-solid fa-circle-user"></i>
-                    <i class="fa-solid fa-gear"></i>
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <button type="button" id="btn-atualizar-resumo" role="menuitem">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span>Atualizar resumo</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -108,10 +144,10 @@
                             <i class="fa-solid fa-calendar-days"></i>
                         </div>
 
-                        <p class="card-titulo">Agendamentos de hoje</p>
-                        <h2 id="total-agendamentos">10</h2>
+                        <p class="card-titulo">Agendamentos cadastrados</p>
+                        <h2 id="total-agendamentos">0</h2>
 
-                        <a href="#" class="card-link">
+                        <a href="../pages/agendamentos.html" class="card-link">
                             Ver agenda
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -151,7 +187,7 @@
                         </div>
 
                         <p class="card-titulo">Profissionais cadastrados</p>
-                        <h2 id="total-profissional">6</h2>
+                        <h2 id="total-profissional">0</h2>
 
                         <a href="../pages/profissional.html" class="card-link">
                             Ver profissionais
@@ -211,18 +247,6 @@
     <script src="../js/autenticacao.js"></script>
 
     <script>
-        // Verifica se existe um usuário conectado.
-        const usuario = obterUsuarioLogado();
-
-        // Se não houver usuário conectado, volta para a tela de login.
-        if (!usuario) {
-            window.location.href = '../pages/entrar.html';
-        } else {
-            // Exibe o nome do usuário na Home.
-            document.getElementById('nome-usuario').textContent =
-                `Olá, ${usuario.nome}`;
-        }
-        // Exibe a data atual.
         const hoje = new Date();
 
         document.getElementById('data-atual').textContent =
@@ -232,54 +256,40 @@
                 year: 'numeric'
             });
 
-
-        // Atualiza a quantidade de pacientes cadastrados.
         function atualizarTotalPacientes() {
-            const pacientes = JSON.parse(
-                localStorage.getItem('pacientes')
-            ) || [];
-
-            document.getElementById('total-pacientes').textContent =
-                pacientes.length;
+            const pacientes = JSON.parse(localStorage.getItem('pacientes')) || [];
+            document.getElementById('total-pacientes').textContent = pacientes.length;
         }
 
-
-        // Atualiza a quantidade de profissionais cadastrados.
         function atualizarTotalProfissionais() {
-            const profissionais = JSON.parse(
-                localStorage.getItem('profissionais')
-            ) || [];
-
-            document.getElementById('total-profissional').textContent =
-                profissionais.length;
+            const profissionais = JSON.parse(localStorage.getItem('profissionais')) || [];
+            document.getElementById('total-profissional').textContent = profissionais.length;
         }
 
+        function atualizarTotalAgendamentos() {
+            const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+            document.getElementById('total-agendamentos').textContent = agendamentos.length;
+        }
 
-        // Atualiza os dois contadores.
         function atualizarContadores() {
             atualizarTotalPacientes();
             atualizarTotalProfissionais();
+            atualizarTotalAgendamentos();
         }
 
         atualizarContadores();
 
+        const btnAtualizarResumo = document.getElementById('btn-atualizar-resumo');
+        if (btnAtualizarResumo) {
+            btnAtualizarResumo.addEventListener('click', function () {
+                atualizarContadores();
+                const menuConfig = document.getElementById('menu-config');
+                if (menuConfig) menuConfig.classList.remove('aberto');
+            });
+        }
 
-        // Atualiza os números quando a Home é aberta ou recebe foco novamente.
         window.addEventListener('pageshow', atualizarContadores);
         window.addEventListener('storage', atualizarContadores);
-
-        // Encerra a sessão e volta para a página inicial.
-        document.getElementById('btn-sair').addEventListener('click', function () {
-            sairDaConta();
-            window.location.href = '../pages/index.html';
-        });
-
-        // Encerra a sessão e volta para o login.
-        document.getElementById('btn-trocar-conta').addEventListener('click', function () {
-            sairDaConta();
-            window.location.href = '../pages/entrar.html';
-        });
-
     </script>
 
 </body>
