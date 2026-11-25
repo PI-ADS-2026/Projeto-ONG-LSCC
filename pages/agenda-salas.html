@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda de Salas</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="../js/notificacao.js"></script>
+</head>
+
+<body>
+  <div class="tela">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica" />
+      </div>
+
+      <nav>
+        <a href="../pages/home.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="../pages/paciente.html">
+          <i class="fa-solid fa-user"></i>
+          <span>Pacientes</span>
+        </a>
+
+        <a href="../pages/profissional.html">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Profissionais</span>
+        </a>
+
+        <a href="../pages/sala.html" class="ativo">
+          <i class="fa-solid fa-door-open"></i>
+          <span>Salas</span>
+        </a>
+
+        <a href="../pages/agendamentos.html">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Agendamentos</span>
+        </a>
+
+        <a href="../pages/consultas.html">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span>Consultas</span>
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-box"></i>
+          <span>Estoque</span>
+        </a>
+
+        <a href="../pages/fornecedor.html">
+          <i class="fa-solid fa-truck"></i>
+          <span>Fornecedores</span>
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Relatórios</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+      <header class="topo">
+        <div class="topo-esquerda">
+          <a href="sala.html" class="btn-voltar">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Voltar</span>
+          </a>
+        </div>
+
+        <div class="usuario">
+          <button
+            type="button"
+            class="btn-notificacao"
+            aria-label="Notificações"
+          >
+            <i class="fa-regular fa-bell"></i>
+          </button>
+
+          <div class="menu-dropdown-wrapper">
+            <button
+              type="button"
+              class="usuario-perfil"
+              id="btn-menu-conta"
+              aria-expanded="false"
+              aria-controls="menu-conta"
+            >
+              <i class="fa-solid fa-circle-user"></i>
+              <span id="nome-usuario">Olá, usuário</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="menu-suspenso" id="menu-conta" role="menu">
+              <span class="menu-suspenso-titulo">Conta</span>
+              <button type="button" id="btn-trocar-conta" role="menuitem">
+                <i class="fa-solid fa-users"></i>
+                <span>Trocar conta</span>
+              </button>
+              <div class="divisor-menu"></div>
+              <button type="button" id="btn-sair" role="menuitem">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu-dropdown-wrapper">
+            <button
+              type="button"
+              class="btn-configuracoes"
+              id="btn-menu-config"
+              aria-label="Configurações"
+              aria-expanded="false"
+              aria-controls="menu-config"
+            >
+              <i class="fa-solid fa-gear"></i>
+            </button>
+
+            <div class="menu-suspenso" id="menu-config" role="menu">
+              <span class="menu-suspenso-titulo">Configurações</span>
+              <a href="../pages/alterar-conta.html" role="menuitem">
+                <i class="fa-solid fa-user-pen"></i>
+                <span>Alterar dados da conta</span>
+              </a>
+              <a href="../pages/cadastro-acesso.html" role="menuitem">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Novo acesso</span>
+              </a>
+              <a href="../pages/home.html" role="menuitem">
+                <i class="fa-solid fa-house"></i>
+                <span>Ir para Home</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="pagina-cadastro">
+        <div class="cabecalho-cadastro" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+          <div>
+            <h1>Agenda de Salas</h1>
+            <p>Visualize a ocupação das salas por data.</p>
+          </div>
+          <div>
+            <label for="filtro-data" style="font-weight: 600; margin-right: 8px; font-size: 14px;">Filtrar Data:</label>
+            <input type="date" id="filtro-data" style="padding: 8px 12px; border-radius: 6px; border: 1px solid var(--borda-input, #444); background: var(--fundo-input, #1e1e2f); color: inherit;" />
+          </div>
+        </div>
+
+        <div class="formulario-sala formulario-profissional" style="margin-top: 20px; padding: 24px;">
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--borda-tabela, #333);">
+                  <th style="padding: 12px;">Sala</th>
+                  <th style="padding: 12px;">Horário</th>
+                  <th style="padding: 12px;">Paciente</th>
+                  <th style="padding: 12px;">Profissional</th>
+                  <th style="padding: 12px;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="lista-agenda-corpo">
+                <!-- Preenchido via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/autenticacao.js"></script>
+  <script src="../js/agenda-salas.js"></script>
+</body>
+
+</html>
