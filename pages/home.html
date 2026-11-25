@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
 
 <body>
@@ -16,7 +15,7 @@
 
         <aside class="sidebar">
             <div class="logo">
-                <img src="../assets/imagens/liga-logo.png">
+                <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica">
             </div>
 
             <nav>
@@ -44,6 +43,7 @@
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
                 </a>
+
                 <a href="../pages/consultas.html">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <span>Consultas</span>
@@ -78,7 +78,6 @@
                         <i class="fa-regular fa-bell"></i>
                     </button>
 
-                    <!-- Menu da setinha / perfil (Trocar conta e Sair) -->
                     <div class="menu-dropdown-wrapper">
                         <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
                             <i class="fa-solid fa-circle-user"></i>
@@ -100,7 +99,6 @@
                         </div>
                     </div>
 
-                    <!-- Menu da engrenagem (Configurações / Atalhos) -->
                     <div class="menu-dropdown-wrapper">
                         <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
                             <i class="fa-solid fa-gear"></i>
@@ -146,10 +144,10 @@
                             <i class="fa-solid fa-calendar-days"></i>
                         </div>
 
-                        <p class="card-titulo">Agendamentos de hoje</p>
-                        <h2 id="total-agendamentos">10</h2>
+                        <p class="card-titulo">Agendamentos cadastrados</p>
+                        <h2 id="total-agendamentos">0</h2>
 
-                        <a href="#" class="card-link">
+                        <a href="../pages/agendamentos.html" class="card-link">
                             Ver agenda
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -189,7 +187,7 @@
                         </div>
 
                         <p class="card-titulo">Profissionais cadastrados</p>
-                        <h2 id="total-profissional">6</h2>
+                        <h2 id="total-profissional">0</h2>
 
                         <a href="../pages/profissional.html" class="card-link">
                             Ver profissionais
@@ -249,7 +247,6 @@
     <script src="../js/autenticacao.js"></script>
 
     <script>
-        // Exibe a data atual.
         const hoje = new Date();
 
         document.getElementById('data-atual').textContent =
@@ -259,35 +256,29 @@
                 year: 'numeric'
             });
 
-        // Atualiza a quantidade de pacientes cadastrados.
         function atualizarTotalPacientes() {
-            const pacientes = JSON.parse(
-                localStorage.getItem('pacientes')
-            ) || [];
-
-            document.getElementById('total-pacientes').textContent =
-                pacientes.length;
+            const pacientes = JSON.parse(localStorage.getItem('pacientes')) || [];
+            document.getElementById('total-pacientes').textContent = pacientes.length;
         }
 
-        // Atualiza a quantidade de profissionais cadastrados.
         function atualizarTotalProfissionais() {
-            const profissionais = JSON.parse(
-                localStorage.getItem('profissionais')
-            ) || [];
-
-            document.getElementById('total-profissional').textContent =
-                profissionais.length;
+            const profissionais = JSON.parse(localStorage.getItem('profissionais')) || [];
+            document.getElementById('total-profissional').textContent = profissionais.length;
         }
 
-        // Atualiza os dois contadores.
+        function atualizarTotalAgendamentos() {
+            const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+            document.getElementById('total-agendamentos').textContent = agendamentos.length;
+        }
+
         function atualizarContadores() {
             atualizarTotalPacientes();
             atualizarTotalProfissionais();
+            atualizarTotalAgendamentos();
         }
 
         atualizarContadores();
 
-        // Ação extra dentro do menu da engrenagem.
         const btnAtualizarResumo = document.getElementById('btn-atualizar-resumo');
         if (btnAtualizarResumo) {
             btnAtualizarResumo.addEventListener('click', function () {
@@ -297,7 +288,6 @@
             });
         }
 
-        // Atualiza os números quando a Home é aberta ou recebe foco novamente.
         window.addEventListener('pageshow', atualizarContadores);
         window.addEventListener('storage', atualizarContadores);
     </script>
