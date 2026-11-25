@@ -6,6 +6,8 @@
 
 ---
 
+🌐 **Acesse o site:** [Projeto-ONG](https://pi-ads-2026.github.io/Projeto-ONG-LSCC/pages/index.html)
+
 ## 📌 Sobre o Projeto
 
 O **Sistema de Organização da Liga Sorocabana de Combate ao Câncer** é um projeto acadêmico desenvolvido com o objetivo de informatizar e otimizar os processos administrativos da instituição.
