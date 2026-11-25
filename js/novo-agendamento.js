@@ -162,15 +162,15 @@
     const sala = obterSalas().find((s) => String(s.id) === salaId);
 
     if (!profissional) {
-      alert("Selecione um profissional válido.");
+      mostrarNotificacao("Selecione um profissional válido.", "aviso");
       return;
     }
     if (!sala) {
-      alert("Selecione uma sala.");
+      mostrarNotificacao("Selecione uma sala.", "aviso");
       return;
     }
     if (!dataSelecionada || !horarioSelecionado) {
-      alert("Preencha a data e o horário da consulta.");
+      mostrarNotificacao("Preencha a data e o horário da consulta.", "aviso");
       return;
     }
 
@@ -190,8 +190,8 @@
 
     if (conflitoPaciente) {
       mostrarNotificacao(
-        "Este paciente já possui uma consulta agendada para este mesmo dia e horário!",
-        "erro",
+        `Ops! ${paciente.nome} já tem uma consulta marcada para este mesmo dia e horário.`,
+        "aviso",
       );
       return;
     }
@@ -207,8 +207,8 @@
 
     if (conflitoProfissional) {
       mostrarNotificacao(
-        "Este profissional já possui um agendamento neste mesmo dia e horário!",
-        "erro",
+        `${profissional.nome} já possui um atendimento agendado neste horário. Por favor, verifique a agenda.`,
+        "aviso",
       );
       return;
     }
@@ -224,8 +224,8 @@
 
     if (conflitoSala) {
       mostrarNotificacao(
-        "Esta sala já está ocupada por outro agendamento neste mesmo dia e horário!",
-        "erro",
+        `A sala "${sala.nome}" já está ocupada neste horário. Escolha outra sala ou altere o horário.`,
+        "aviso",
       );
       return;
     }

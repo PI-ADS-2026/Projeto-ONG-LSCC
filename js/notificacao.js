@@ -75,7 +75,7 @@
     }
 
     // Função global para exibir a notificação
-    window.mostrarNotificacao = function(mensagem, tipo = "erro", duracao = 4000) {
+    window.mostrarNotificacao = function(mensagem, tipo = "erro", duracao = 6000) {
         const container = obterContainer();
         const toast = document.createElement("div");
         
