@@ -109,8 +109,10 @@
         );
 
         if (conflito) {
-            alert("Não foi possível concluir: já existe um conflito de horário para este paciente, profissional ou sala!");
-            window.location.href = "../pages/novo-agendamento.html";
+            mostrarNotificacao("Não foi possível concluir: já existe um conflito de horário!", "erro");
+            setTimeout(() => {
+                window.location.href = "../pages/novo-agendamento.html";
+            }, 1500);
             return;
         }
 
@@ -143,9 +145,11 @@
         sessionStorage.removeItem(CHAVE_RASCUNHO);
         sessionStorage.removeItem("pacienteAgendamentoId");
 
-        alert("Agendamento confirmado com sucesso!");
+        // Mostra a notificação bonita de sucesso e espera 1.5 segundo antes de mudar de página
+        mostrarNotificacao("Agendamento confirmado com sucesso!", "sucesso");
 
-        window.location.href = "../pages/agendamentos.html";
+        setTimeout(() => {
+            window.location.href = "../pages/agendamentos.html";
+        }, 1500);
     });
-
 })();
