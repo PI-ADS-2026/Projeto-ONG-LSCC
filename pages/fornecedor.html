@@ -43,9 +43,14 @@
                     <span>Salas</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/agendamentos.html">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
+                </a>
+
+                <a href="../pages/consultas.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Consultas</span>
                 </a>
 
                 <a href="#">
@@ -72,19 +77,60 @@
 
             <header class="topo">
 
-                <button type="button" class="btn-voltar">
-                    <a href="../pages/home.html">
+                <div class="topo-esquerda">
+                    <a href="../pages/home.html" class="btn-voltar">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Voltar</span>
                     </a>
-                </button>
+                </div>
 
                 <div class="usuario">
-                    <span>Olá, Admin</span>
-                    <button type="button" id="btn-trocar-conta">Trocar conta</button>
-                    <button type="button" id="btn-sair">Sair</button>
-                    <i class="fa-solid fa-circle-user"></i>
-                    <i class="fa-solid fa-gear"></i>
+                    <button type="button" class="btn-notificacao" aria-label="Notificações">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <a href="../pages/home.html" role="menuitem">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Ir para Home</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </header>
@@ -168,6 +214,7 @@
 
     </div>
 
+    <script src="../js/autenticacao.js"></script>
     <script src="../js/fornecedor.js"></script>
 
 </body>

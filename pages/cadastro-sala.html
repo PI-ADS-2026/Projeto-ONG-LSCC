@@ -46,6 +46,7 @@
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
                 </a>
+
                 <a href="../pages/consultas.html">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <span>Consultas</span>
@@ -74,9 +75,10 @@
 
             <header class="topo">
                 <div class="topo-esquerda">
-                    <button class="btn-voltar" type="button" onclick="location.href='sala.html'">
-                        <i class="fa-solid fa-arrow-left"></i> Voltar
-                    </button>
+                    <a href="../pages/home.html" class="btn-voltar">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </a>
                 </div>
 
                 <div class="usuario">
@@ -84,15 +86,48 @@
                         <i class="fa-regular fa-bell"></i>
                     </button>
 
-                    <div class="usuario-perfil">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span>Olá, Admin</span>
-                        <i class="fa-solid fa-chevron-down"></i>
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="usuario-perfil" id="btn-menu-conta" aria-expanded="false" aria-controls="menu-conta">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span id="nome-usuario">Olá, usuário</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-conta" role="menu">
+                            <span class="menu-suspenso-titulo">Conta</span>
+                            <button type="button" id="btn-trocar-conta" role="menuitem">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Trocar conta</span>
+                            </button>
+                            <div class="divisor-menu"></div>
+                            <button type="button" id="btn-sair" role="menuitem">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>Sair</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
-                        <i class="fa-solid fa-gear"></i>
-                    </button>
+                    <div class="menu-dropdown-wrapper">
+                        <button type="button" class="btn-configuracoes" id="btn-menu-config" aria-label="Configurações" aria-expanded="false" aria-controls="menu-config">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+
+                        <div class="menu-suspenso" id="menu-config" role="menu">
+                            <span class="menu-suspenso-titulo">Configurações</span>
+                            <a href="../pages/alterar-conta.html" role="menuitem">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <span>Alterar dados da conta</span>
+                            </a>
+                            <a href="../pages/cadastro-acesso.html" role="menuitem">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>Novo acesso</span>
+                            </a>
+                            <a href="../pages/home.html" role="menuitem">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Ir para Home</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -164,6 +199,7 @@
 
     </div>
 
+    <script src="../js/autenticacao.js"></script>
     <script src="../js/sala.js"></script>
 </body>
 

@@ -2238,3 +2238,98 @@ select:focus-visible {
     color: var(--branco);
     background: var(--rosa-principal);
 }
+
+/* =====================================================
+   MODO ESCURO (BASE)
+===================================================== */
+
+body.modo-escuro {
+    --fundo: #12151e;
+    --branco: #1b2030;
+    --texto: #eef2f8;
+    --texto-secundario: #a4b0c6;
+    --borda: #2b3248;
+    --rosa-claro: #3b1929;
+    --rosa-suave: #241622;
+    --sombra: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.modo-escuro .sidebar .logo {
+    background: linear-gradient(180deg, #1b2030, #161b29);
+}
+
+body.modo-escuro .cabecalho-pagina {
+    background: linear-gradient(110deg, #241622, #1e1929);
+    border-color: #3a2436;
+}
+
+body.modo-escuro .lista-pacientes .cabecalho-lista,
+body.modo-escuro .lista-profissionais .cabecalho-lista {
+    background: #261926;
+    color: var(--texto);
+}
+
+body.modo-escuro .paciente:hover,
+body.modo-escuro .lista-profissionais .profissional:hover {
+    background: #21283b;
+}
+
+body.modo-escuro .campo-pesquisa,
+body.modo-escuro .campo-cadastro input,
+body.modo-escuro .campo-cadastro select,
+body.modo-escuro .campo-cadastro textarea,
+body.modo-escuro .campo input,
+body.modo-escuro .campo-clinico input,
+body.modo-escuro .caixa-observacao,
+body.modo-escuro .data-atual,
+body.modo-escuro .select-status-consulta,
+body.modo-escuro .campo-pesquisa-consultas input {
+    background: #151926;
+    color: var(--texto);
+    border-color: #2f3852;
+}
+
+body.modo-escuro .card-agendamentos {
+    background: linear-gradient(145deg, #1b2030, #251724);
+    border-color: #3d2436;
+}
+
+body.modo-escuro .card-estoque {
+    background: linear-gradient(145deg, #1b2030, #261f18);
+    border-color: #3d3124;
+}
+
+body.modo-escuro .alerta-rosa {
+    background: #261723;
+}
+
+body.modo-escuro .alerta-laranja {
+    background: #262018;
+}
+
+body.modo-escuro .alerta-texto strong {
+    color: var(--texto);
+}
+
+body.modo-escuro .calendario-visualizacoes,
+body.modo-escuro .calendario-rodape,
+body.modo-escuro .dia-calendario.outro-mes,
+body.modo-escuro .confirmacao-observacoes p {
+    background: #161b29;
+}
+
+body.modo-escuro .topo .menu-suspenso button span,
+body.modo-escuro .topo .menu-suspenso a span {
+    color: var(--texto);
+}
+
+body.modo-escuro .consultas-cabecalho p,
+body.modo-escuro .consultas-painel-topo p,
+body.modo-escuro .indicador-consulta span,
+body.modo-escuro .consulta-identificacao,
+body.modo-escuro .detalhe-consulta-lista,
+body.modo-escuro .consulta-observacoes,
+body.modo-escuro .label-status-consulta,
+body.modo-escuro .consultas-vazio {
+    color: var(--texto-secundario);
+}
