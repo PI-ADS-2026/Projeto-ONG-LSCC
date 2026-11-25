@@ -1,0 +1,92 @@
+/* Estilos da página Salas Reservadas */
+
+.container-reservadas {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.tabela-reservadas {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: inherit;
+}
+
+.tabela-reservadas th {
+  padding: 14px 16px;
+  background-color: #f8f9fa;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tabela-reservadas td {
+  padding: 16px;
+  color: #1f2937;
+  font-size: 14px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.tabela-reservadas tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.tabela-reservadas tbody tr:hover td {
+  background-color: #fafafa;
+}
+
+.tabela-reservadas tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badges de destaque */
+.badge-sala {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fdf2f8;
+  color: #db2777;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.badge-horario {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Estado vazio (quando não há reservas) */
+.estado-vazio {
+  text-align: center;
+  padding: 48px 20px;
+  color: #6b7280;
+}
+
+.estado-vazio i {
+  font-size: 38px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.estado-vazio p {
+  font-size: 15px;
+  margin: 0;
+}

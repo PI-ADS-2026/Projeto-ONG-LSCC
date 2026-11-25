@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda de Salas - Clínica</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="../js/notificacao.js"></script>
+  </head>
+
+  <body>
+    <div class="tela">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="../assets/imagens/liga-logo.png" alt="Logo da clínica" />
+        </div>
+        <nav>
+          <a href="../pages/home.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+          <a href="../pages/paciente.html"><i class="fa-solid fa-user"></i><span>Pacientes</span></a>
+          <a href="../pages/profissional.html"><i class="fa-solid fa-user-doctor"></i><span>Profissionais</span></a>
+          <a href="../pages/sala.html" class="ativo"><i class="fa-solid fa-door-open"></i><span>Salas</span></a>
+          <a href="../pages/agendamentos.html"><i class="fa-solid fa-calendar-days"></i><span>Agendamentos</span></a>
+          <a href="../pages/consultas.html"><i class="fa-solid fa-clipboard-list"></i><span>Consultas</span></a>
+          <a href="#"><i class="fa-solid fa-box"></i><span>Estoque</span></a>
+          <a href="../pages/fornecedor.html"><i class="fa-solid fa-truck"></i><span>Fornecedores</span></a>
+          <a href="#"><i class="fa-solid fa-chart-column"></i><span>Relatórios</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main class="conteudo">
+        <header class="topo">
+          <div class="topo-esquerda">
+            <button class="btn-voltar" type="button" onclick="location.href='sala.html'">
+              <i class="fa-solid fa-arrow-left"></i> Voltar
+            </button>
+          </div>
+          <div class="usuario">
+            <button type="button" class="btn-notificacao" aria-label="Notificações"><i class="fa-regular fa-bell"></i></button>
+            <div class="usuario-perfil">
+              <i class="fa-solid fa-circle-user"></i>
+              <span>Olá, Admin</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="pagina-cadastro" style="max-width: 100%;">
+          <div class="cabecalho-cadastro" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h1>Agenda de Salas</h1>
+              <p>Visualize a ocupação das salas por data.</p>
+            </div>
+            <div>
+              <label for="filtro-data" style="font-weight: 600; margin-right: 8px;">Filtrar Data:</label>
+              <input type="date" id="filtro-data" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc;" />
+            </div>
+          </div>
+
+          <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-top: 20px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;" id="tabela-agenda-salas">
+              <thead>
+                <tr style="border-bottom: 2px solid #eee; color: #555;">
+                  <th style="padding: 12px;">Sala</th>
+                  <th style="padding: 12px;">Horário</th>
+                  <th style="padding: 12px;">Paciente</th>
+                  <th style="padding: 12px;">Profissional</th>
+                  <th style="padding: 12px;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="lista-agenda-corpo">
+    
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/agenda-salas.js"></script>
+  </body>
+</html>
