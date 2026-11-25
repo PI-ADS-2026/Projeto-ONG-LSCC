@@ -1,6 +1,7 @@
 // Chaves utilizadas no localStorage.
 const CHAVE_USUARIOS = 'usuarios';
 const CHAVE_SESSAO = 'usuarioLogado';
+const CHAVE_TEMA = 'tema_clinica';
 
 
 // Recupera os usuários cadastrados.
@@ -453,9 +454,61 @@ function inicializarTopoAutenticado() {
 
 
 // ==========================================
+// TEMA (MODO CLARO / MODO ESCURO)
+// ==========================================
+function sincronizarBotaoTema() {
+    const escuroAtivo = document.body.classList.contains('modo-escuro');
+    const textoTema = document.getElementById('texto-modo-escuro');
+    if (textoTema) {
+        textoTema.textContent = escuroAtivo ? 'Modo claro' : 'Modo escuro';
+    }
+}
+
+function aplicarTemaSalvo() {
+    const tema = localStorage.getItem(CHAVE_TEMA);
+    document.body.classList.toggle('modo-escuro', tema === 'escuro');
+    sincronizarBotaoTema();
+}
+
+function alternarModoEscuro() {
+    const ativado = document.body.classList.toggle('modo-escuro');
+    localStorage.setItem(CHAVE_TEMA, ativado ? 'escuro' : 'claro');
+    sincronizarBotaoTema();
+}
+
+function inserirOpcaoModoEscuroNoMenu() {
+    const menuConfig = document.querySelector('.topo #menu-config') || document.getElementById('menu-config');
+    if (!menuConfig || document.getElementById('btn-modo-escuro')) return;
+
+    const divisor = document.createElement('div');
+    divisor.className = 'divisor-menu';
+
+    const botao = document.createElement('button');
+    botao.type = 'button';
+    botao.id = 'btn-modo-escuro';
+    botao.setAttribute('role', 'menuitem');
+    botao.innerHTML = `
+        <i class="fa-solid fa-circle-half-stroke" id="icone-modo-escuro"></i>
+        <span id="texto-modo-escuro">Modo escuro</span>
+    `;
+
+    botao.addEventListener('click', alternarModoEscuro);
+
+    menuConfig.appendChild(divisor);
+    menuConfig.appendChild(botao);
+    sincronizarBotaoTema();
+}
+
+aplicarTemaSalvo();
+
+
+// ==========================================
 // CONFIGURAÇÕES GLOBAIS AO CARREGAR A PÁGINA
 // ==========================================
 document.addEventListener('DOMContentLoaded', function () {
+    inserirOpcaoModoEscuroNoMenu();
+    aplicarTemaSalvo();
+
     const temTopoLogado =
         document.getElementById('nome-usuario') ||
         document.getElementById('btn-menu-conta') ||
@@ -513,56 +566,4 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '../pages/entrar.html';
         });
     }
-});
-
-const CHAVE_TEMA = 'tema_clinica';
-
-function sincronizarBotaoTema() {
-    const escuroAtivo = document.body.classList.contains('modo-escuro');
-    const textoTema = document.getElementById('texto-modo-escuro');
-    if (textoTema) {
-        textoTema.textContent = escuroAtivo ? 'Modo claro' : 'Modo escuro';
-    }
-}
-
-function aplicarTemaSalvo() {
-    const tema = localStorage.getItem(CHAVE_TEMA);
-    document.body.classList.toggle('modo-escuro', tema === 'escuro');
-    sincronizarBotaoTema();
-}
-
-function alternarModoEscuro() {
-    const ativado = document.body.classList.toggle('modo-escuro');
-    localStorage.setItem(CHAVE_TEMA, ativado ? 'escuro' : 'claro');
-    sincronizarBotaoTema();
-}
-
-function inserirOpcaoModoEscuroNoMenu() {
-    const menuConfig = document.querySelector('.topo #menu-config') || document.getElementById('menu-config');
-    if (!menuConfig || document.getElementById('btn-modo-escuro')) return;
-
-    const divisor = document.createElement('div');
-    divisor.className = 'divisor-menu';
-
-    const botao = document.createElement('button');
-    botao.type = 'button';
-    botao.id = 'btn-modo-escuro';
-    botao.setAttribute('role', 'menuitem');
-    botao.innerHTML = `
-        <i class="fa-solid fa-circle-half-stroke" id="icone-modo-escuro"></i>
-        <span id="texto-modo-escuro">Modo escuro</span>
-    `;
-
-    botao.addEventListener('click', alternarModoEscuro);
-
-    menuConfig.appendChild(divisor);
-    menuConfig.appendChild(botao);
-    sincronizarBotaoTema();
-}
-
-aplicarTemaSalvo();
-
-document.addEventListener('DOMContentLoaded', () => {
-    inserirOpcaoModoEscuroNoMenu();
-    aplicarTemaSalvo();
 });
