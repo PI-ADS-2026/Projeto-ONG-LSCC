@@ -1,6 +1,7 @@
 // Chaves utilizadas no localStorage.
 const CHAVE_USUARIOS = 'usuarios';
 const CHAVE_SESSAO = 'usuarioLogado';
+const CHAVE_TEMA = 'tema_clinica';
 
 
 // Recupera os usuários cadastrados.
@@ -21,19 +22,19 @@ function validarCPF(cpf) {
     let resto;
 
     for (let i = 1; i <= 9; i++) {
-        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+        soma += parseInt(cpf.substring(i - 1, i), 10) * (11 - i);
     }
     resto = (soma * 10) % 11;
     if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+    if (resto !== parseInt(cpf.substring(9, 10), 10)) return false;
 
     soma = 0;
     for (let i = 1; i <= 10; i++) {
-        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+        soma += parseInt(cpf.substring(i - 1, i), 10) * (12 - i);
     }
     resto = (soma * 10) % 11;
     if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+    if (resto !== parseInt(cpf.substring(10, 11), 10)) return false;
 
     return true;
 }
@@ -171,7 +172,7 @@ function obterDadosCompletosUsuarioLogado() {
 }
 
 
-// Atualiza os dados cadastrais da conta do usuário autenticado (US-005).
+// Atualiza os dados cadastrais da conta do usuário autenticado.
 function atualizarDadosConta(novosDados) {
     const sessao = obterUsuarioLogado();
     if (!sessao) {
@@ -453,9 +454,61 @@ function inicializarTopoAutenticado() {
 
 
 // ==========================================
+// TEMA (MODO CLARO / MODO ESCURO)
+// ==========================================
+function sincronizarBotaoTema() {
+    const escuroAtivo = document.body.classList.contains('modo-escuro');
+    const textoTema = document.getElementById('texto-modo-escuro');
+    if (textoTema) {
+        textoTema.textContent = escuroAtivo ? 'Modo claro' : 'Modo escuro';
+    }
+}
+
+function aplicarTemaSalvo() {
+    const tema = localStorage.getItem(CHAVE_TEMA);
+    document.body.classList.toggle('modo-escuro', tema === 'escuro');
+    sincronizarBotaoTema();
+}
+
+function alternarModoEscuro() {
+    const ativado = document.body.classList.toggle('modo-escuro');
+    localStorage.setItem(CHAVE_TEMA, ativado ? 'escuro' : 'claro');
+    sincronizarBotaoTema();
+}
+
+function inserirOpcaoModoEscuroNoMenu() {
+    const menuConfig = document.querySelector('.topo #menu-config') || document.getElementById('menu-config');
+    if (!menuConfig || document.getElementById('btn-modo-escuro')) return;
+
+    const divisor = document.createElement('div');
+    divisor.className = 'divisor-menu';
+
+    const botao = document.createElement('button');
+    botao.type = 'button';
+    botao.id = 'btn-modo-escuro';
+    botao.setAttribute('role', 'menuitem');
+    botao.innerHTML = `
+        <i class="fa-solid fa-circle-half-stroke" id="icone-modo-escuro"></i>
+        <span id="texto-modo-escuro">Modo escuro</span>
+    `;
+
+    botao.addEventListener('click', alternarModoEscuro);
+
+    menuConfig.appendChild(divisor);
+    menuConfig.appendChild(botao);
+    sincronizarBotaoTema();
+}
+
+aplicarTemaSalvo();
+
+
+// ==========================================
 // CONFIGURAÇÕES GLOBAIS AO CARREGAR A PÁGINA
 // ==========================================
 document.addEventListener('DOMContentLoaded', function () {
+    inserirOpcaoModoEscuroNoMenu();
+    aplicarTemaSalvo();
+
     const temTopoLogado =
         document.getElementById('nome-usuario') ||
         document.getElementById('btn-menu-conta') ||
@@ -501,7 +554,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Chama a função centralizada que já valida o CPF e salva no localStorage
             const resultado = cadastrarUsuario(nome, cpf, email, senha, telefone);
 
             if (!resultado.sucesso) {
