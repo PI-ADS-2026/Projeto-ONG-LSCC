@@ -2333,3 +2333,77 @@ body.modo-escuro .label-status-consulta,
 body.modo-escuro .consultas-vazio {
     color: var(--texto-secundario);
 }
+
+/* Campos de Novo Agendamento no modo escuro */
+body.modo-escuro .campo-agendamento input,
+body.modo-escuro .campo-agendamento select,
+body.modo-escuro .campo-agendamento textarea {
+    background: #151926;
+    color: var(--texto);
+    border-color: #2f3852;
+    color-scheme: dark;
+}
+
+body.modo-escuro .campo-agendamento input:focus,
+body.modo-escuro .campo-agendamento select:focus,
+body.modo-escuro .campo-agendamento textarea:focus {
+    background: #191e2e;
+    border-color: var(--rosa-medio);
+}
+
+body.modo-escuro .campo-agendamento input:disabled,
+body.modo-escuro .campo-agendamento select:disabled {
+    background: #121520;
+    color: #7d89a3;
+    border-color: #252c40;
+}
+
+body.modo-escuro .campo-agendamento input::placeholder,
+body.modo-escuro .campo-agendamento textarea::placeholder {
+    color: #8895b0;
+    opacity: 1;
+}
+
+body.modo-escuro .campo-agendamento select option {
+    background: #151926;
+    color: var(--texto);
+}
+body.modo-escuro .campo-cadastro label:not(.obrigatorio) {
+    color: #c81752;
+}
+body.modo-escuro .campo-agendamento label {
+    color: #c81752;
+}
+body.modo-escuro .pesquisa-pacientes-agendamento {
+    background: #151926 !important;
+    border-color: #2f3852;
+}
+
+body.modo-escuro .pesquisa-pacientes-agendamento input {
+    color: #eef2f8;
+}
+
+body.modo-escuro .pesquisa-pacientes-agendamento input::placeholder {
+    color: #8895b0;
+    opacity: 1;
+}
+
+body.modo-escuro .paciente-agendamento-card:hover {
+    background: #21283b !important;
+    border-color: #f38ab0;
+}
+body.modo-escuro .alterar-conta input,
+body.modo-escuro .alterar-conta select,
+body.modo-escuro .alterar-conta textarea,
+body.modo-escuro form input[type="text"],
+body.modo-escuro form input[type="email"],
+body.modo-escuro form input[type="tel"] {
+    background: #151926 !important;
+    color: var(--texto) !important;
+    border-color: #2f3852 !important;
+}
+
+body.modo-escuro .alterar-conta label,
+body.modo-escuro form label {
+    color: #c81752;
+}

@@ -40,22 +40,22 @@
                     <span>Salas</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/agendamentos.html">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Agendamentos</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/estoque.html">
                     <i class="fa-solid fa-box"></i>
                     <span>Estoque</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/fornecedor.html">
                     <i class="fa-solid fa-truck"></i>
                     <span>Fornecedores</span>
                 </a>
 
-                <a href="#">
+                <a href="../pages/relatorios.html">
                     <i class="fa-solid fa-chart-column"></i>
                     <span>Relatórios</span>
                 </a>
@@ -146,7 +146,7 @@
 
                 <form id="form-alterar-conta" style="padding: 24px; display: grid; gap: 18px; max-width: 680px;">
                     <div style="display: grid; gap: 6px;">
-                        <label for="conta-nome" style="font-weight: 600; font-size: 14px;">Nome completo *</label>
+                        <label for="conta-nome" class="obrigatorio" style="font-weight: 600; font-size: 14px;">Nome completo *</label>
                         <input
                             type="text"
                             id="conta-nome"
@@ -157,7 +157,7 @@
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                         <div style="display: grid; gap: 6px;">
-                            <label for="conta-cpf" style="font-weight: 600; font-size: 14px;">CPF *</label>
+                            <label for="conta-cpf" class="obrigatorio" style="font-weight: 600; font-size: 14px;">CPF *</label>
                             <input
                                 type="text"
                                 id="conta-cpf"
@@ -167,7 +167,7 @@
                         </div>
 
                         <div style="display: grid; gap: 6px;">
-                            <label for="conta-email" style="font-weight: 600; font-size: 14px;">E-mail *</label>
+                            <label for="conta-email" class="obrigatorio" style="font-weight: 600; font-size: 14px;">E-mail *</label>
                             <input
                                 type="email"
                                 id="conta-email"
