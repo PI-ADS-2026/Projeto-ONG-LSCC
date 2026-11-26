@@ -71,7 +71,7 @@
       </nav>
     </aside>
 
-    <!-- CONTEÚDO -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="conteudo">
       <header class="topo">
         <div class="topo-esquerda">
@@ -115,124 +115,6 @@
                 <span>Sair</span>
               </button>
             </div>
-
-            <nav>
-                <a href="../pages/home.html">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Home</span>
-                </a>
-
-                <a href="../pages/paciente.html">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Pacientes</span>
-                </a>
-
-                <a href="../pages/profissional.html">
-                    <i class="fa-solid fa-user-doctor"></i>
-                    <span>Profissionais</span>
-                </a>
-
-                <a href="../pages/sala.html" class="ativo">
-                    <i class="fa-solid fa-door-open"></i>
-                    <span>Salas</span>
-                </a>
-
-                <a href="#">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <span>Agendamentos</span>
-                </a>
-
-                <a href="#">
-                    <i class="fa-solid fa-box"></i>
-                    <span>Estoque</span>
-                </a>
-
-                <a href="#">
-                    <i class="fa-solid fa-truck"></i>
-                    <span>Fornecedores</span>
-                </a>
-
-                <a href="#">
-                    <i class="fa-solid fa-chart-column"></i>
-                    <span>Relatórios</span>
-                </a>
-            </nav>
-
-        </aside>
-
-        <!-- CONTEÚDO -->
-        <div class="conteudo">
-
-            <header class="topo">
-                <div class="topo-esquerda">
-                    <button class="btn-voltar" type="button" onclick="location.href='sala.html'">
-                        <i class="fa-solid fa-arrow-left"></i> Voltar
-                    </button>
-                </div>
-
-                <div class="usuario">
-                    <button type="button" class="btn-notificacao" aria-label="Notificações">
-                        <i class="fa-regular fa-bell"></i>
-                    </button>
-
-                    <div class="usuario-perfil">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span>Olá, Admin</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
-
-                    <button type="button" class="btn-configuracoes" aria-label="Configurações">
-                        <i class="fa-solid fa-gear"></i>
-                    </button>
-                </div>
-            </header>
-
-            <div class="pagina-cadastro">
-
-                <div class="cabecalho-cadastro">
-                    <h1>Cadastro de Sala</h1>
-                    <p>Preencha as informações para cadastrar uma nova sala no sistema.</p>
-                </div>
-
-                <form class="formulario-sala formulario-profissional">
-
-                    <div class="secao-cadastro">
-                        <div class="titulo-secao">
-                            <i class="fa-solid fa-door-open"></i>
-                            <div>
-                                <h2>Informações da Sala</h2>
-                                <p>Dados principais e localização</p>
-                            </div>
-                        </div>
-
-                        <div class="grade-campos">
-                            <div class="campo-cadastro">
-                                <label for="nome" class="obrigatorio">Número da Sala *</label>
-                                <input type="text" id="nome" name="nome" placeholder="Ex: Sala 1" required>
-                            </div>
-
-                            <div class="campo-cadastro">
-                                <label for="tamanho">Metragem (m²)</label>
-                                <input type="number" id="tamanho" name="tamanho" placeholder="Ex: 15" min="1" required>
-                            </div>
-
-                            <div class="campo-cadastro campo-largo">
-                                <label for="materiais">Materiais da Sala</label>
-                                <textarea id="materiais" name="materiais" placeholder="Ex: Macas, mesas, cadeiras..."
-                                    required></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="botoes-cadastro">
-                        <a href="sala.html" class="btn-cancelar">Cancelar</a>
-                        <button type="submit" class="btn-salvar">
-                            <i class="fa-solid fa-check"></i> Salvar Sala
-                        </button>
-                    </div>
-
-                </form>
-
           </div>
 
           <div class="menu-dropdown-wrapper">
@@ -346,8 +228,8 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
+    </div> <!-- Fim de .conteudo -->
+  </div> <!-- Fim de .tela -->
 
   <script src="../js/autenticacao.js"></script>
   <script src="../js/sala.js"></script>
